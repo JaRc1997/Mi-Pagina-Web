@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TRK1EGS3LL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TRK1EGS3LL');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JarcOnline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #F0EFED;
+      --bg2:       #E8E7E4;
+      --card:      #FFFFFF;
+      --border:    rgba(0,0,0,0.09);
+      --accent:    #E8500A;
+      --text:      #111110;
+      --muted:     #78756F;
+      --font-head: 'Syne', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      /* aliases para no romper referencias antiguas */
+      --white:     #111110;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ===== CUSTOM CURSOR ===== */
+    .cursor {
+      position: fixed;
+      width: 7px; height: 7px;
+      background: var(--text);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: transform 0.1s, width 0.2s, height 0.2s;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 30px; height: 30px;
+      border: 1px solid rgba(0,0,0,0.25);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: transform 0.18s ease, width 0.3s, height 0.3s;
+    }
+
+    /* ===== GRAIN OVERLAY (muy sutil) ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.018;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(240,239,237,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); margin-left: -1px; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 4rem 5rem;
+      overflow: hidden;
+    }
+    /* Blob decorativo detrás del hero — estilo screenshot 2 */
+    .hero-glow {
+      position: absolute;
+      width: 560px; height: 560px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,80,10,0.13) 0%, transparent 65%);
+      top: 0; right: 5%;
+      filter: blur(60px);
+    }
+    .hero-glow2 {
+      position: absolute;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(100,60,220,0.08) 0%, transparent 65%);
+      top: 10%; right: 20%;
+      filter: blur(50px);
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 860px; }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--text);
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 20px; height: 1.5px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      line-height: 0.96;
+      letter-spacing: -2px;
+      font-weight: 800;
+      color: var(--text);
+      animation: fadeUp 0.6s 0.08s ease both;
+    }
+    .hero h1 .accent { color: var(--accent); }
+    .hero h1 .accent2 { color: var(--text); }
+
+    .hero-sub {
+      margin-top: 2rem;
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 400;
+      line-height: 1.75;
+      max-width: 440px;
+      animation: fadeUp 0.6s 0.16s ease both;
+    }
+    .hero-sub strong { color: var(--text); font-weight: 600; }
+
+    .hero-ctas {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 2.8rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.22s ease both;
+    }
+    .btn-primary {
+      padding: 0.82rem 1.9rem;
+      background: var(--text);
+      color: var(--bg);
+      font-weight: 600;
+      font-size: 0.83rem;
+      border: none;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      cursor: none;
+    }
+    .btn-primary:hover { opacity: 0.8; transform: translateY(-1px); }
+    .btn-ghost {
+      padding: 0.82rem 1.9rem;
+      background: transparent;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.83rem;
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      cursor: none;
+    }
+    .btn-ghost:hover { border-color: rgba(0,0,0,0.3); color: var(--text); }
+
+    /* Social floating bar */
+    .hero-socials {
+      position: absolute;
+      right: 4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      z-index: 2;
+      animation: fadeUp 0.6s 0.35s ease both;
+    }
+    .social-dot {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 1rem;
+      transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+      cursor: none;
+    }
+    .social-dot:hover {
+      border-color: rgba(0,0,0,0.2);
+      color: var(--text);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    /* ===== SECTION BASE ===== */
+    section { position: relative; padding: 6rem 4rem; z-index: 1; }
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.8rem;
+    }
+    .section-label span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1.5px;
+      background: var(--border);
+      max-width: 50px;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: -1.5px;
+      line-height: 1.02;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 3rem;
+    }
+    .section-title em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    /* ===== ABOUT ===== */
+    #about { background: var(--card); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-avatar-wrap { position: relative; }
+    .about-avatar {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 16px;
+      background: var(--bg2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .about-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    .about-avatar-deco {
+      position: absolute;
+      bottom: -14px; right: -14px;
+      width: 58px; height: 58px;
+      border-radius: 12px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+    .stat-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem;
+    }
+    .stat-num {
+      font-family: var(--font-head);
+      font-size: 1.9rem;
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    .stat-label { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
+
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+      font-size: 0.97rem;
+    }
+    .about-text p strong { color: var(--text); font-weight: 600; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; }
+    .tag {
+      padding: 0.3rem 0.85rem;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      color: var(--muted);
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .tag:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ===== YOUTUBE ===== */
+    #youtube { background: var(--bg2); }
+    .yt-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .yt-channel-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      padding: 0.6rem 1.2rem;
+      border-radius: 100px;
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.8rem;
+      transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+      cursor: none;
+    }
+    .yt-channel-badge:hover { border-color: rgba(255,0,0,0.4); color: var(--text); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .yt-icon { width: 18px; height: 18px; fill: #ff0000; }
+
+    .yt-featured {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .yt-featured-thumb {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: var(--bg2);
+      overflow: hidden;
+    }
+    .yt-featured-thumb iframe { width: 100%; height: 100%; border: none; }
+    .yt-thumb-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg2);
+      font-size: 4rem;
+    }
+    .yt-play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.15);
+      transition: background 0.2s;
+      cursor: none;
+    }
+    .yt-play-btn:hover { background: rgba(0,0,0,0.3); }
+    .yt-play-circle {
+      width: 56px; height: 56px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      transition: transform 0.2s;
+    }
+    .yt-play-btn:hover .yt-play-circle { transform: scale(1.08); }
+
+    .yt-featured-info { padding: 2.2rem; display: flex; flex-direction: column; justify-content: center; }
+    .yt-featured-info .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: rgba(232,80,10,0.08);
+      border: 1.5px solid rgba(232,80,10,0.2);
+      color: var(--accent);
+      font-size: 0.67rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 100px;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+    .yt-featured-info h3 {
+      font-family: var(--font-head);
+      font-size: 1.45rem;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .yt-featured-info p { color: var(--muted); font-size: 0.87rem; line-height: 1.7; }
+
+    .yt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .yt-card {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text);
+      transition: box-shadow 0.2s, border-color 0.2s;
+      cursor: none;
+      display: block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .yt-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.09); border-color: rgba(0,0,0,0.15); }
+    .yt-thumb {
+      aspect-ratio: 16/9;
+      background: var(--bg2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .yt-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .yt-duration {
+      position: absolute;
+      bottom: 6px; right: 6px;
+      background: rgba(0,0,0,0.75);
+      color: #fff;
+      font-size: 0.67rem;
+      font-weight: 500;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .yt-card-body { padding: 1rem 1.1rem; }
+    .yt-card-title { font-size: 0.85rem; font-weight: 500; line-height: 1.5; margin-bottom: 0.4rem; color: var(--text); }
+    .yt-card-meta { font-size: 0.72rem; color: var(--muted); }
+
+    /* ===== PRODUCTS ===== */
+    #productos { background: var(--bg); }
+    .products-intro {
+      max-width: 560px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      margin-top: -1.5rem;
+      font-size: 0.95rem;
+    }
+    .products-intro a { color: var(--accent); text-decoration: none; }
+
+    /* Botón toggle */
+    .btn-toggle-products {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.6rem;
+      background: var(--text);
+      border: none;
+      color: var(--bg);
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 100px;
+      cursor: none;
+      transition: opacity 0.2s;
+      margin-bottom: 2.5rem;
+    }
+    .btn-toggle-products:hover { opacity: 0.8; }
+    .btn-toggle-products .toggle-icon {
+      display: inline-block;
+      transition: transform 0.35s ease;
+      font-style: normal;
+      font-size: 0.68rem;
+    }
+    .btn-toggle-products.open .toggle-icon { transform: rotate(180deg); }
+
+    /* Contenedor colapsable */
+    .products-collapse {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.55s ease, opacity 0.4s ease;
+    }
+    .products-collapse.open { max-height: 9000px; opacity: 1; }
+
+    .products-filter {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .filter-btn {
+      padding: 0.38rem 1rem;
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      color: var(--muted);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      cursor: none;
+      transition: all 0.2s;
+      font-family: var(--font-body);
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--text);
+      border-color: var(--text);
+      color: var(--bg);
+    }
+
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
+
+    .product-card {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: box-shadow 0.2s, border-color 0.2s;
+      cursor: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .product-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.1); border-color: rgba(0,0,0,0.15); }
+    .product-img {
+      aspect-ratio: 4/3;
+      background: var(--bg2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-img img.prod-photo {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+      display: block;
+    }
+    .product-card:hover .product-img img.prod-photo { transform: scale(1.04); }
+    .product-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .product-card:hover .product-img img { transform: scale(1.04); }
+    .product-badge {
+      position: absolute;
+      top: 10px; left: 10px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+    .product-badge.hot { background: var(--accent); color: #fff; }
+
+    .product-body { padding: 1.2rem; }
+    .product-cat { font-size: 0.67rem; color: var(--accent); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .product-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.35rem; line-height: 1.4; color: var(--text); }
+    .product-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; }
+    .product-price { font-family: var(--font-head); font-size: 1.1rem; color: var(--text); font-weight: 700; }
+    .btn-affiliate {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.44rem 1rem;
+      background: var(--text);
+      border: none;
+      color: var(--bg);
+      font-size: 0.72rem;
+      font-weight: 600;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      cursor: none;
+    }
+    .btn-affiliate:hover { opacity: 0.75; }
+
+    /* ===== SOCIAL LINKS ===== */
+    #redes { background: var(--card); }
+    .social-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem; }
+    .social-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem 1.4rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: box-shadow 0.2s, border-color 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      cursor: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .social-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.09); }
+
+    .social-card[data-net="youtube"]:hover  { border-color: rgba(255,0,0,0.35); }
+    .social-card[data-net="instagram"]:hover{ border-color: rgba(225,48,108,0.35); }
+    .social-card[data-net="facebook"]:hover { border-color: rgba(24,119,242,0.35); }
+    .social-card[data-net="reddit"]:hover   { border-color: rgba(255,69,0,0.35); }
+
+    .social-icon { font-size: 1.8rem; }
+    .social-name { font-weight: 700; font-size: 0.95rem; color: var(--text); }
+    .social-handle { font-size: 0.78rem; color: var(--muted); }
+    .social-arrow {
+      margin-top: auto;
+      font-size: 0.72rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* ===== CONTACT ===== */
+    #contacto { background: var(--bg2); text-align: center; }
+    .contact-inner { max-width: 560px; margin: 0 auto; }
+    .contact-inner .section-label { justify-content: center; }
+    .contact-inner .section-label::after { display: none; }
+    .contact-inner .section-title { margin-bottom: 1rem; }
+    .contact-sub { color: var(--muted); line-height: 1.8; margin-bottom: 3rem; font-size: 0.95rem; }
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      padding: 0.9rem 2rem;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.92rem;
+      transition: box-shadow 0.2s, border-color 0.2s;
+      cursor: none;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .contact-email:hover { border-color: rgba(0,0,0,0.2); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+    .contact-also { color: var(--muted); font-size: 0.82rem; }
+    .contact-social-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .cs-btn {
+      padding: 0.45rem 1.2rem;
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      color: var(--muted);
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 0.76rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      cursor: none;
+    }
+    .cs-btn:hover { border-color: rgba(0,0,0,0.25); color: var(--text); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bg);
+      border-top: 1.5px solid var(--border);
+      padding: 2rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer .logo { font-family: var(--font-head); font-size: 1rem; font-weight: 800; letter-spacing: -0.3px; color: var(--text); }
+    footer .logo span { color: var(--accent); margin-left: -1px; }
+    footer p { font-size: 0.75rem; color: var(--muted); }
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .wa-float {
+      position: fixed;
+      bottom: 5rem;
+      right: 2rem;
+      z-index: 999;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #111110;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.45);
+    }
+    .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 6rem 1.5rem 3rem; }
+      .hero-socials { display: none; }
+      section { padding: 4.5rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .yt-featured { grid-template-columns: 1fr; }
+      .yt-grid { grid-template-columns: 1fr 1fr; }
+      footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 600px) {
+      .yt-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo"><img src="assets/logo.png" alt="JarcOnline" style="height:32px;width:32px;object-fit:contain;border-radius:50%;margin-right:0.5rem;vertical-align:middle;">JARC<span>.ONLINE</span></a>
+    <ul class="nav-links">
+      <li><a href="#about"><strong>Sobre mí</strong></a></li>
+      <li><a href="#youtube"><strong>YouTube</strong></a></li>
+      <li><a href="#productos"><strong>Productos</strong></a></li>
+      <li><a href="#redes"><strong>Redes</strong></a></li>
+      <li><a href="#contacto"><strong>Contacto</strong></a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-content">
+      <h1>
+        HOLA, SOY<br>
+        <span class="accent">JAVIER</span><br>
+        <span class="accent2">ONLINE</span>
+      </h1>
+      <p class="hero-sub">
+        Creo contenido sobre <strong>Tecnología</strong>, tutoriales,
+        tips y herramientas digitales. Bienvenido a mi espacio en internet.
+      </p>
+      <div class="hero-ctas">
+        <a href="#youtube" class="btn-primary">Ver mi canal</a>
+        <a href="#contacto" class="btn-ghost">Contáctame</a>
+      </div>
+    </div>
+
+    <!-- Redes flotantes -->
+    <div class="hero-socials">
+      <a href="https://www.youtube.com/@jarconline7" target="_blank" class="social-dot" title="YouTube">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23.5 6.2s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1C17.1 2.6 12 2.6 12 2.6s-5.1 0-8.1.2c-.5.1-1.5.1-2.4 1-.7.7-1 2.4-1 2.4S.3 8.1.3 10v1.8c0 1.9.2 3.8.2 3.8s.2 1.7 1 2.4c.9 1 2.1.9 2.6 1 1.9.2 8 .2 8 .2s5.1 0 8.1-.2c.5-.1 1.5-.1 2.4-1 .7-.7 1-2.4 1-2.4s.2-1.9.2-3.8V10c0-1.9-.3-3.8-.3-3.8zM9.7 14.8V8.4l6.5 3.2-6.5 3.2z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/javier_rueda77/" target="_blank" class="social-dot" title="Instagram">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/javier.ruedacifuentes/" target="_blank" class="social-dot" title="Facebook">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.reddit.com/user/JarcOnline/" target="_blank" class="social-dot" title="Reddit">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid reveal">
+      <div class="about-avatar-wrap">
+        <div class="about-avatar">
+          <img src="assets/photo.jpg" alt="Javier" style="display:block">
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-num">530+</div>
+            <div class="stat-label">Suscriptores</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">220+</div>
+            <div class="stat-label">Videos</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">2+</div>
+            <div class="stat-label">Años creando</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">20,7K</div>
+            <div class="stat-label">Alcance YouTube</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <div class="section-label"><span>Sobre mí</span></div>
+        <h2 class="section-title">Creador de contenido <em>tech</em></h2>
+        <p>
+          Soy <strong>Javier</strong>, creador de contenido enfocado en tecnología, apps y herramientas digitales.
+          En mi canal de YouTube encontrarás tutoriales prácticos, tips, herramientas y
+          cómo aprovechar DaVinci Resolve, trucos y mucho más.
+        </p>
+        <p>
+          Mi objetivo es hacer la tecnología accesible y útil para todos, sin complicaciones
+          y en español. Si pasas tiempo en tu celular, este es tu canal.
+        </p>
+        <div class="tags">
+          <span class="tag">DaVinci Resolve</span>
+          <span class="tag">Redes Sociales</span>
+          <span class="tag">Tecnología</span>
+          <span class="tag">Herramientas digitales</span>
+          <span class="tag">Edición de video</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- YOUTUBE -->
+  <section id="youtube">
+    <div class="yt-header reveal">
+      <div>
+        <div class="section-label"><span>Mi canal</span></div>
+        <h2 class="section-title">Contenido en <em>YouTube</em></h2>
+      </div>
+      <a href="https://www.youtube.com/@jarconline7" target="_blank" class="yt-channel-badge">
+        <svg class="yt-icon" viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1C17.1 2.6 12 2.6 12 2.6s-5.1 0-8.1.2c-.5.1-1.5.1-2.4 1-.7.7-1 2.4-1 2.4S.3 8.1.3 10v1.8c0 1.9.2 3.8.2 3.8s.2 1.7 1 2.4c.9 1 2.1.9 2.6 1 1.9.2 8 .2 8 .2s5.1 0 8.1-.2c.5-.1 1.5-.1 2.4-1 .7-.7 1-2.4 1-2.4s.2-1.9.2-3.8V10c0-1.9-.3-3.8-.3-3.8zM9.7 14.8V8.4l6.5 3.2-6.5 3.2z"/></svg>
+        <strong>@jarconline7</strong> 
+      </a>
+    </div>
+
+    <!-- Video destacado -->
+    <!-- ╔══════════════════════════════════════════════════════════════╗
+         ║  VIDEO DESTACADO — para cambiar solo edita el data-video-url ║
+         ║  Pega cualquier link de YouTube y el código hace el resto    ║
+         ╚══════════════════════════════════════════════════════════════╝ -->
+    <div class="yt-featured reveal"
+         data-video-url="https://youtu.be/ih37p35Fq_g"
+         data-title="✅¿Sabías que Gmail tiene esto escondido para eliminar suscripciones 🤫"
+         data-desc="🤫 ¿Tu Gmail está lleno de correos de publicidad que nunca pediste? 📧 En este video te enseño paso a paso cómo eliminar todas esas suscripciones directamente desde Gmail sin apps externas ✅ Limpia tu bandeja de entrada de una vez y deja de recibir spam para siempre.">
+      <div class="yt-featured-thumb">
+        <img class="yt-auto-thumb" alt="Miniatura video destacado"
+             style="width:100%;height:100%;object-fit:cover;display:block;">
+        <a class="yt-auto-link yt-play-btn" href="#" target="_blank">
+          <div class="yt-play-circle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </a>
+      </div>
+      <div class="yt-featured-info">
+        <span class="badge">⭐ Destacado</span>
+        <h3 class="yt-auto-title"></h3>
+        <p class="yt-auto-desc"></p>
+      </div>
+    </div>
+
+    <!-- Grid de videos -->
+    <!-- ╔══════════════════════════════════════════════════════════════════╗
+         ║  VIDEOS — para cambiar solo edita data-video-url y data-title  ║
+         ║  El código extrae la miniatura de YouTube automáticamente      ║
+         ╚══════════════════════════════════════════════════════════════════╝ -->
+    <div class="yt-grid reveal">
+      <!-- Tarjeta 1 — EDITA SOLO data-video-url y data-title -->
+      <div class="yt-card"
+           data-video-url="https://youtu.be/L5LluzkmiDg"
+           data-title="📸 Remini App: Edita y Genera Fotos con IA de Forma Fácil y Rápida 😄">
+        <div class="yt-thumb"><img class="yt-auto-thumb" alt="" loading="lazy"></div>
+        <div class="yt-card-body">
+          <div class="yt-card-title yt-auto-title"></div>
+          <div class="yt-card-meta">Ver en YouTube →</div>
+        </div>
+      </div>
+      <!-- Tarjeta 2 — EDITA SOLO data-video-url y data-title -->
+      <div class="yt-card"
+           data-video-url="https://youtu.be/ZfGa73pV7jE"
+           data-title="📚 Cómo Poner un Cronómetro en DaVinci Resolve Fácil y Rápido ⏱️">
+        <div class="yt-thumb"><img class="yt-auto-thumb" alt="" loading="lazy"></div>
+        <div class="yt-card-body">
+          <div class="yt-card-title yt-auto-title"></div>
+          <div class="yt-card-meta">Ver en YouTube →</div>
+        </div>
+      </div>
+      <!-- Tarjeta 3 — EDITA SOLO data-video-url y data-title -->
+      <div class="yt-card"
+           data-video-url="https://youtu.be/qSpYl3dPaJI"
+           data-title="🎬 Cómo crear una pantalla final en tus videos fácilmente 😄">
+        <div class="yt-thumb"><img class="yt-auto-thumb" alt="" loading="lazy"></div>
+        <div class="yt-card-body">
+          <div class="yt-card-title yt-auto-title"></div>
+          <div class="yt-card-meta">Ver en YouTube →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CATÁLOGO DE PRODUCTOS — CÓMO AGREGAR O QUITAR UN PRODUCTO:
+       1. Busca el array PRODUCTOS más abajo en el <script>
+       2. Para AGREGAR: copia un bloque { ... } y pégalo al final de la lista
+       3. Para QUITAR:  borra el bloque { ... } del producto que no quieres
+       4. Guarda el archivo. ¡Listo! La web se actualiza sola.
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section id="productos">
+    <div class="section-label reveal"><span>Recomendaciones</span></div>
+    <h2 class="section-title reveal">Productos que <em>uso y recomiendo</em></h2>
+    <p class="products-intro reveal">
+      Equipos y accesorios que uso. Si compras a través de mis links
+      me apoyas a seguir creando sin costo adicional para ti.
+    </p>
+
+    <button class="btn-toggle-products reveal" id="toggleProducts">
+      <span>Ver recomendaciones</span>
+      <em class="toggle-icon">▼</em>
+    </button>
+
+    <div class="products-collapse" id="productsCollapse">
+      <div class="products-filter" id="productsFilter">
+        <button class="filter-btn active" data-filter="todos">Todos</button>
+        <button class="filter-btn" data-filter="audio">Audio</button>
+        <button class="filter-btn" data-filter="movil">Móvil</button>
+        <button class="filter-btn" data-filter="accesorios">Accesorios</button>
+        <button class="filter-btn" data-filter="video">Video</button>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+    </div>
+  </section>
+
+  <!-- REDES SOCIALES -->
+  <section id="redes">
+    <div class="section-label reveal"><span>Encuéntrame</span></div>
+    <h2 class="section-title reveal">Mis <em>redes sociales</em></h2>
+    <div class="social-grid reveal">
+      <a href="https://www.youtube.com/@jarconline7" target="_blank" class="social-card" data-net="youtube">
+        <div class="social-icon">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="#ff0000"><path d="M23.5 6.2s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1C17.1 2.6 12 2.6 12 2.6s-5.1 0-8.1.2c-.5.1-1.5.1-2.4 1-.7.7-1 2.4-1 2.4S.3 8.1.3 10v1.8c0 1.9.2 3.8.2 3.8s.2 1.7 1 2.4c.9 1 2.1.9 2.6 1 1.9.2 8 .2 8 .2s5.1 0 8.1-.2c.5-.1 1.5-.1 2.4-1 .7-.7 1-2.4 1-2.4s.2-1.9.2-3.8V10c0-1.9-.3-3.8-.3-3.8zM9.7 14.8V8.4l6.5 3.2-6.5 3.2z"/></svg>
+        </div>
+        <div class="social-name">YouTube</div>
+        <div class="social-handle">@jarconline7</div>
+        <div class="social-arrow">Ver canal →</div>
+      </a>
+      <a href="https://www.instagram.com/javier_rueda77/" target="_blank" class="social-card" data-net="instagram">
+        <div class="social-icon">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="url(#igGrad)"><defs><linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#f09433"/><stop offset="25%" style="stop-color:#e6683c"/><stop offset="50%" style="stop-color:#dc2743"/><stop offset="75%" style="stop-color:#cc2366"/><stop offset="100%" style="stop-color:#bc1888"/></linearGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </div>
+        <div class="social-name">Instagram</div>
+        <div class="social-handle">@javier_rueda77</div>
+        <div class="social-arrow">Ver perfil →</div>
+      </a>
+      <a href="https://www.facebook.com/javier.ruedacifuentes/" target="_blank" class="social-card" data-net="facebook">
+        <div class="social-icon">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="#1877f2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <div class="social-name">Facebook</div>
+        <div class="social-handle">javier.ruedacifuentes</div>
+        <div class="social-arrow">Ver perfil →</div>
+      </a>
+      <a href="https://www.reddit.com/user/JarcOnline/" target="_blank" class="social-card" data-net="reddit">
+        <div class="social-icon">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="#ff4500"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+        </div>
+        <div class="social-name">Reddit</div>
+        <div class="social-handle">u/JarcOnline</div>
+        <div class="social-arrow">Ver perfil →</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="contact-inner reveal">
+      <div class="section-label"><span>Colaboraciones</span></div>
+      <h2 class="section-title">¿Tienes un<br><em>proyecto</em> en mente?</h2>
+      <p class="contact-sub">
+        Estoy abierto a colaboraciones, menciones de productos, reviews y patrocinios.
+        Si tienes algo interesante, escríbeme y lo hablamos.
+      </p>
+      <a href="mailto:Rueda3062@gmail.com" class="contact-email">
+         Rueda3062@gmail.com
+      </a>
+      <p class="contact-also">También puedes escribirme por:</p>
+      <div class="contact-social-row">
+        <a href="https://www.instagram.com/javier_rueda77/" target="_blank" class="cs-btn">Instagram DM</a>
+        <a href="https://www.youtube.com/@jarconline7" target="_blank" class="cs-btn">YouTube</a>
+        <a href="https://www.facebook.com/javier.ruedacifuentes/" target="_blank" class="cs-btn">Facebook</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/573229426949" target="_blank" rel="noopener" class="wa-float" title="Escríbeme por WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.471 2.027 7.774L0 32l8.468-2.004A15.93 15.93 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.771-1.851l-.485-.288-5.027 1.189 1.224-4.895-.317-.503A13.234 13.234 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.878c-.398-.199-2.355-1.162-2.72-1.294-.366-.133-.632-.199-.899.199-.266.398-1.031 1.294-1.264 1.56-.233.266-.465.299-.863.1-.398-.2-1.681-.619-3.202-1.976-1.184-1.056-1.983-2.36-2.216-2.758-.233-.398-.025-.613.175-.811.18-.178.398-.465.597-.698.2-.233.266-.398.398-.664.133-.266.067-.498-.033-.697-.1-.2-.899-2.168-1.231-2.967-.324-.778-.653-.673-.899-.685l-.765-.013c-.266 0-.698.1-1.064.498-.366.398-1.397 1.365-1.397 3.328s1.43 3.86 1.629 4.127c.2.266 2.815 4.3 6.822 6.03.953.412 1.697.658 2.277.842.957.305 1.828.262 2.516.159.767-.115 2.355-.963 2.688-1.893.333-.93.333-1.727.233-1.893-.1-.166-.366-.266-.764-.465z"/>
+    </svg>
+  </a>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="nav-logo"><img src="assets/logo.png" alt="JarcOnline" style="height:32px;width:32px;object-fit:contain;border-radius:50%;margin-right:0.5rem;vertical-align:middle;">JARC<span>.ONLINE</span></a>
+    <p>© 2026 JARCONLINE.Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // ═══════════════════════════════════════════════════════
+    // YOUTUBE AUTO-THUMBNAIL SYSTEM
+    // Extrae el ID de cualquier formato de URL de YouTube:
+    // youtu.be/ID, youtube.com/watch?v=ID, youtube.com/embed/ID
+    // ═══════════════════════════════════════════════════════
+    function getYouTubeID(url) {
+      const patterns = [
+        /youtu\.be\/([^?&]+)/,
+        /youtube\.com\/watch\?v=([^&]+)/,
+        /youtube\.com\/embed\/([^?&]+)/,
+        /youtube\.com\/shorts\/([^?&]+)/,
+        /v=([^&]+)/
+      ];
+      for (const p of patterns) {
+        const m = url.match(p);
+        if (m) return m[1];
+      }
+      return null;
+    }
+
+    function initYouTubeThumbnails() {
+      // Video destacado
+      const featured = document.querySelector('.yt-featured[data-video-url]');
+      if (featured) {
+        const url   = featured.dataset.videoUrl;
+        const id    = getYouTubeID(url);
+        const title = featured.dataset.title || '';
+        const desc  = featured.dataset.desc  || '';
+        if (id) {
+          const img = featured.querySelector('.yt-auto-thumb');
+          img.src = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+          img.onerror = () => { img.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`; };
+          const link = featured.querySelector('.yt-auto-link');
+          if (link) link.href = url;
+          const h3 = featured.querySelector('.yt-auto-title');
+          if (h3) h3.textContent = title;
+          const p = featured.querySelector('.yt-auto-desc');
+          if (p) p.textContent = desc;
+        }
+      }
+
+      // Tarjetas de video
+      document.querySelectorAll('.yt-card[data-video-url]').forEach(card => {
+        const url   = card.dataset.videoUrl;
+        const id    = getYouTubeID(url);
+        const title = card.dataset.title || '';
+        if (id) {
+          const img = card.querySelector('.yt-auto-thumb');
+          if (img) {
+            img.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+            img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+          }
+          const titleEl = card.querySelector('.yt-auto-title');
+          if (titleEl) titleEl.textContent = title;
+          card.style.cursor = 'none';
+          card.addEventListener('click', () => window.open(url, '_blank'));
+        }
+      });
+    }
+
+    // CURSOR
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    function animCursor() {
+      rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
+      cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      requestAnimationFrame(animCursor);
+    }
+    animCursor();
+    initYouTubeThumbnails();
+
+    // SCROLL REVEAL
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // CATÁLOGO DE PRODUCTOS
+    // ───────────────────────────────────────────────────────────────────────
+    // Para AGREGAR un producto: copia un bloque { } y pégalo antes del ];
+    // Para QUITAR un producto:  borra su bloque { } completo.
+    // Campos:
+    //   nombre   → nombre del producto
+    //   cat      → "audio" | "movil" | "video" | "accesorios"
+    //   desc     → descripción corta
+    //   precio   → precio en COP (texto libre)
+    //   link     → link de afiliado de AliExpress
+    //   emoji    → emoji representativo (se muestra si no hay imagen)
+    //   badge    → "" | "Nuevo" | "Popular" | "Recomendado" (opcional)
+    // ═══════════════════════════════════════════════════════════════════════
+    const PRODUCTOS = [
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S8033f0452b014144bf56dbb66fcbcd92G.jpg_220x220q75.jpg_.avif",
+        nombre: "Trípode Ulanzi TT88",
+        cat: "movil",
+        desc: "Trípode 1.44M para teléfono con palo Selfie, abrazadera magnética y control remoto inalámbrico. Ideal para transmisión en vivo y Vlog.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c3DMAipJ",
+        emoji: "🎯",
+        badge: "Nuevo"
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Saf71161e1ad14c0cbf58e13244768e058.jpg_220x220q75.jpg_.avif",
+        nombre: "Maono T1mini",
+        cat: "audio",
+        desc: "Micrófono inalámbrico de solapa con cancelación de ruido, corte automático y configuración por app. Perfecto para grabación de audio y video.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c4miOBCp",
+        emoji: "🎙️",
+        badge: "Nuevo"
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S34a67cde07964fe391a5234066219bd5E.jpg_220x220q75.jpg_.avif",
+        nombre: "Maono PD100X",
+        cat: "video",
+        desc: "Micrófono dinámico con reducción de ruido por software y luces RGB. Ideal para grabar, hacer gaming y contenido profesional.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c4WxISNR",
+        emoji: "🎤",
+        badge: "Nuevo"
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S9ba0ccf875b24180ae53c1078641cf65A.jpg_220x220q75.jpg_.avif",
+        nombre: "MAONO G1 NEO",
+        cat: "audio",
+        desc: "Interfaz de audio mezcladora con efectos de sonido personalizados, entrada XLR. Perfecta para podcast, gaming y streams.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c4Xdb9w5",
+        emoji: "🎚️",
+        badge: "Nuevo"
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S08f7c8e1b32d43bc83d09977d280e0341.png_220x220.png_.avif",
+        nombre: "Ulanzi D200H",
+        cat: "video",
+        desc: "Teclado controlador de stream 7 en 1 con 14 teclas LCD para OBS, YouTube y creación de contenido. El compañero perfecto del creador.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c3APtmDP",
+        emoji: "⌨️",
+        badge: "Nuevo"
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S82e25f42535a4175b38f843e95a8abeaV.jpg_220x220q75.jpg_.avif",
+        nombre: "AOCHUAN SmartXE",
+        cat: "movil",
+        desc: "Estabilizador gimbal portátil de 3 ejes para iPhone y Android con IA de seguimiento facial. Ideal para TikTok y Vlog.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c3Dzgjs1",
+        emoji: "📸",
+        badge: "Nuevo"
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S0543cb41a08244639e28b32945bca00cV.png_220x220.png_.avif",
+        nombre: "BlitzWolf BW-CML5",
+        cat: "video",
+        desc: "Barra de luz para monitor con control táctil e inalámbrico, protección ocular, antideslumbrante y 300-1000 Lux.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c4XMwJq9",
+        emoji: "💡",
+        badge: "Nuevo"
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S7406d1dbac254c08a076bcba424b8ef1n.jpg_220x220q75.jpg_.avif",
+        nombre: "Ulanzi VL119",
+        cat: "video",
+        desc: "Barra de luz LED RGB de mano, 2500-9000K, tubo magnético portátil para fotografía, video y Vlog.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c3Tdh4vB",
+        emoji: "🌈",
+        badge: "Nuevo"
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S96b9049b40de45fdbd52a46f059371cfy.jpg_220x220q75.jpg_.avif",
+        nombre: "Ulanzi CR2",
+        cat: "accesorios",
+        desc: "Lector de tarjetas todo en uno USB 3.1 a 5 Gbps. Ranuras dual TF/SD/SIM/USB-C para laptop y smartphone.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c35pDYIh",
+        emoji: "💾",
+        badge: "Nuevo"
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Sc994123d4c744c1894d285d743b26647L.jpg_220x220q75.jpg_.avif",
+        nombre: "Kit herramientas eléctricas",
+        cat: "accesorios",
+        desc: "Set de destornilladores eléctricos de precisión con mini brocas inalámbricas recargables. Ideal para reparar celulares y computadores.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c4MCxolR",
+        emoji: "🔧",
+        badge: ""
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Sa259657e87d4403fb8a0a9de8d3ec0de4.jpg?has_lang=1&ver=1_220x220q75.jpg_.avif",
+        nombre: "Power Bank Vention 20000mAh 165W",
+        cat: "movil",
+        desc: "Banco de energía de 20000mAh con carga rápida PD 165W. Compatible con laptop, MacBook, iPhone y Xiaomi.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c2xdQ1fB",
+        emoji: "🔋",
+        badge: "Nuevo"
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Sc10b0c87150b43e7a40bd02306283f76s.jpg?has_lang=1&ver=2_220x220q75.jpg_.avif",
+        nombre: "Power Bank Vention CCC 10000mAh 35W",
+        cat: "accesorios",
+        desc: "Batería externa mini de 10000mAh con carga rápida 35W. Compatible con iPhone 17, Xiaomi y carga de respaldo.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c4TSIQ2D",
+        emoji: "⚡",
+        badge: "Nuevo"
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S2dfceed772c64345aaaed3104b4aa632l.jpg_220x220q75.jpg_.avif",
+        nombre: "Kit limpieza teclado 9 en 1 Lano",
+        cat: "accesorios",
+        desc: "Herramienta de limpieza multifuncional 9 en 1 para teclados, laptops y dispositivos electrónicos.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c4PmxL1L",
+        emoji: "🧹",
+        badge: ""
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Saab0deb47a4842a2aff216309ca68c67V.jpg_220x220q75.jpg_.avif",
+        nombre: "KZ EDX PRO X",
+        cat: "audio",
+        desc: "Auriculares de unidad dinámica Hi-Fi con bajos potentes, diseño metálico deportivo y cable desmontable 2PIN.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c3Gn9Jlb",
+        emoji: "🎧",
+        badge: ""
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Sf98c3dbaa34540a99441e48e573c4494U.jpg_220x220q75.jpg_.avif",
+        nombre: "Mousepad gris gaming",
+        cat: "accesorios",
+        desc: "Alfombrilla grande overlock XXL para teclado y escritorio. Serie gris, superficie suave y base antideslizante.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c33l4L8Z",
+        emoji: "🖱️",
+        badge: ""
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S915053551909492784ee79d15602196dz.jpg?has_lang=1&ver=1_220x220q75.jpg_.avif",
+        nombre: "Mousepad XXL Strata Liquid",
+        cat: "accesorios",
+        desc: "Alfombrilla XXL 900x400 blanca y negra estilo Anime. Para teclado completo y mouse, base de escritorio premium.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c3rziZwz",
+        emoji: "🎨",
+        badge: ""
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Sd7c11eaa2e894c5bb04cd70b1aabf112Q.jpg?has_lang=1&ver=1_220x220q75.jpg_.avif",
+        nombre: "Fondo verde Chroma Key",
+        cat: "accesorios",
+        desc: "Telón de fondo blanco/negro/azul/verde para fotografía y video. Pantalla Chroma Key de muselina para estudio.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c4FSPa4V",
+        emoji: "🟩",
+        badge: ""
+      },
+      {
+        imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S0572201b757840cb9925b26d38e4d3029.jpg?has_lang=1&ver=1_220x220q75.jpg_.avif",
+        nombre: "Monitor Selfie para teléfono",
+        cat: "movil",
+        desc: "Pantalla de monitor selfie con montaje magnético inalámbrico, WiFi y Bluetooth. Usa la cámara trasera para mejores selfies y streams.",
+        precio: "",
+        link: "https://s.click.aliexpress.com/e/_c3ywmYs9",
+        emoji: "📱",
+        badge: "Nuevo"
+      }
+    ];
+
+    // ── Renderiza el catálogo ───────────────────────────────────────────────
+    function renderProductos(filtro = 'todos') {
+      const grid = document.getElementById('productsGrid');
+      const filtered = filtro === 'todos' ? PRODUCTOS : PRODUCTOS.filter(p => p.cat === filtro);
+      grid.innerHTML = filtered.map(p => `
+        <div class="product-card" data-cat="${p.cat}">
+          <div class="product-img">
+            ${p.imagen
+              ? `<img class="prod-photo" src="${p.imagen}" alt="${p.nombre}"
+                      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+              : ''}
+            <span style="font-size:3.5rem;${p.imagen ? 'display:none' : ''}">${p.emoji}</span>
+            ${p.badge ? `<span class="product-badge ${p.badge==='Popular'?'hot':''}">${p.badge}</span>` : ''}
+          </div>
+          <div class="product-body">
+            <div class="product-cat">${p.cat}</div>
+            <div class="product-name">${p.nombre}</div>
+            <div class="product-desc">${p.desc}</div>
+            <div class="product-footer">
+              <span class="product-price">${p.precio}</span>
+              <a href="${p.link}" target="_blank" class="btn-affiliate">Ver en AliExpress →</a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      // Force cards visible immediately — fixes mobile IntersectionObserver timing bug
+      grid.querySelectorAll('.product-card').forEach(card => {
+        card.style.opacity = '1';
+        card.style.transform = 'none';
+      });
+    }
+
+    // ── Filtros ────────────────────────────────────────────────────────────
+    // Run immediately + on DOMContentLoaded for maximum compatibility (fixes mobile)
+    function initProductos() {
+      renderProductos();
+      document.querySelectorAll('#productsFilter .filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#productsFilter .filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderProductos(btn.dataset.filter);
+        });
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initProductos);
+    } else {
+      initProductos();
+    }
+
+    // ── Toggle productos ───────────────────────────────────────────────────
+    const toggleBtn      = document.getElementById('toggleProducts');
+    const productsPanel  = document.getElementById('productsCollapse');
+    const toggleLabel    = toggleBtn.querySelector('span');
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = productsPanel.classList.toggle('open');
+      toggleBtn.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Ocultar recomendaciones' : 'Ver recomendaciones';
+    });
+  </script>
+</body>
+</html>
