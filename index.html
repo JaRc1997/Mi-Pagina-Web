@@ -11,7 +11,9 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="JarcOnline — Creador de contenido tech. Tutoriales, tips y herramientas digitales en español." />
   <title>JarcOnline</title>
+  <link rel="icon" type="image/png" href="assets/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -29,8 +31,6 @@
       --muted:     #78756F;
       --font-head: 'Syne', system-ui, sans-serif;
       --font-body: 'Inter', system-ui, sans-serif;
-      /* aliases para no romper referencias antiguas */
-      --white:     #111110;
     }
 
     html { scroll-behavior: smooth; }
@@ -40,30 +40,9 @@
       color: var(--text);
       font-family: var(--font-body);
       overflow-x: hidden;
-      cursor: none;
+
     }
 
-    /* ===== CUSTOM CURSOR ===== */
-    .cursor {
-      position: fixed;
-      width: 7px; height: 7px;
-      background: var(--text);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%,-50%);
-      transition: transform 0.1s, width 0.2s, height 0.2s;
-    }
-    .cursor-ring {
-      position: fixed;
-      width: 30px; height: 30px;
-      border: 1px solid rgba(0,0,0,0.25);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%,-50%);
-      transition: transform 0.18s ease, width 0.3s, height 0.3s;
-    }
 
     /* ===== GRAIN OVERLAY (muy sutil) ===== */
     body::before {
@@ -106,8 +85,6 @@
       font-weight: 500;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--text); }
-
     /* ===== HERO ===== */
     .hero {
       position: relative;
@@ -117,24 +94,6 @@
       padding: 8rem 4rem 5rem;
       overflow: hidden;
     }
-    /* Blob decorativo detrás del hero — estilo screenshot 2 */
-    .hero-glow {
-      position: absolute;
-      width: 560px; height: 560px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(232,80,10,0.13) 0%, transparent 65%);
-      top: 0; right: 5%;
-      filter: blur(60px);
-    }
-    .hero-glow2 {
-      position: absolute;
-      width: 420px; height: 420px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(100,60,220,0.08) 0%, transparent 65%);
-      top: 10%; right: 20%;
-      filter: blur(50px);
-    }
-
     .hero-content { position: relative; z-index: 1; max-width: 860px; }
     .hero-tag {
       display: inline-flex;
@@ -144,7 +103,7 @@
       font-size: 0.8rem;
       font-weight: 500;
       margin-bottom: 2rem;
-      animation: fadeUp 0.6s ease both;
+      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
     .hero-tag::before {
       content: '';
@@ -160,10 +119,9 @@
       letter-spacing: -2px;
       font-weight: 800;
       color: var(--text);
-      animation: fadeUp 0.6s 0.08s ease both;
+      animation: fadeUp 0.8s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
     .hero h1 .accent { color: var(--accent); }
-    .hero h1 .accent2 { color: var(--text); }
 
     .hero-sub {
       margin-top: 2rem;
@@ -172,7 +130,7 @@
       font-weight: 400;
       line-height: 1.75;
       max-width: 440px;
-      animation: fadeUp 0.6s 0.16s ease both;
+      animation: fadeUp 0.8s 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
     .hero-sub strong { color: var(--text); font-weight: 600; }
 
@@ -181,7 +139,7 @@
       gap: 0.75rem;
       margin-top: 2.8rem;
       flex-wrap: wrap;
-      animation: fadeUp 0.6s 0.22s ease both;
+      animation: fadeUp 0.8s 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
     .btn-primary {
       padding: 0.82rem 1.9rem;
@@ -193,7 +151,7 @@
       border-radius: 100px;
       text-decoration: none;
       transition: opacity 0.2s, transform 0.2s;
-      cursor: none;
+
     }
     .btn-primary:hover { opacity: 0.8; transform: translateY(-1px); }
     .btn-ghost {
@@ -206,7 +164,7 @@
       border-radius: 100px;
       text-decoration: none;
       transition: border-color 0.2s, color 0.2s;
-      cursor: none;
+
     }
     .btn-ghost:hover { border-color: rgba(0,0,0,0.3); color: var(--text); }
 
@@ -220,11 +178,11 @@
       flex-direction: column;
       gap: 0.6rem;
       z-index: 2;
-      animation: fadeUp 0.6s 0.35s ease both;
+      animation: fadeUp 0.8s 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
     .social-dot {
-      width: 38px; height: 38px;
-      border-radius: 10px;
+      width: 52px; height: 52px;
+      border-radius: 14px;
       background: var(--card);
       border: 1.5px solid var(--border);
       display: flex;
@@ -232,9 +190,9 @@
       justify-content: center;
       text-decoration: none;
       color: var(--muted);
-      font-size: 1rem;
+      font-size: 1.3rem;
       transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
-      cursor: none;
+
     }
     .social-dot:hover {
       border-color: rgba(0,0,0,0.2);
@@ -302,7 +260,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: none;
     }
     .about-avatar-deco {
       position: absolute;
@@ -358,6 +315,38 @@
 
     /* ===== YOUTUBE ===== */
     #youtube { background: var(--bg2); }
+    .yt-toggle-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 2rem auto 0;
+      padding: 0.75rem 2rem;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .yt-toggle-btn:hover { opacity: 0.8; transform: translateY(-1px); }
+    .yt-toggle-btn .yt-arrow {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    .yt-toggle-btn.open .yt-arrow { transform: rotate(180deg); }
+    .yt-collapsible {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.5s ease, opacity 0.4s ease;
+      opacity: 0;
+    }
+    .yt-collapsible.open {
+      max-height: 2000px;
+      opacity: 1;
+    }
     .yt-header {
       display: flex;
       align-items: flex-end;
@@ -379,7 +368,7 @@
       font-weight: 500;
       font-size: 0.8rem;
       transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
-      cursor: none;
+
     }
     .yt-channel-badge:hover { border-color: rgba(255,0,0,0.4); color: var(--text); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
     .yt-icon { width: 18px; height: 18px; fill: #ff0000; }
@@ -400,15 +389,6 @@
       background: var(--bg2);
       overflow: hidden;
     }
-    .yt-featured-thumb iframe { width: 100%; height: 100%; border: none; }
-    .yt-thumb-placeholder {
-      width: 100%; height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--bg2);
-      font-size: 4rem;
-    }
     .yt-play-btn {
       position: absolute;
       inset: 0;
@@ -417,7 +397,7 @@
       justify-content: center;
       background: rgba(0,0,0,0.15);
       transition: background 0.2s;
-      cursor: none;
+
     }
     .yt-play-btn:hover { background: rgba(0,0,0,0.3); }
     .yt-play-circle {
@@ -467,7 +447,7 @@
       text-decoration: none;
       color: var(--text);
       transition: box-shadow 0.2s, border-color 0.2s;
-      cursor: none;
+
       display: block;
       box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
@@ -483,16 +463,6 @@
       overflow: hidden;
     }
     .yt-thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .yt-duration {
-      position: absolute;
-      bottom: 6px; right: 6px;
-      background: rgba(0,0,0,0.75);
-      color: #fff;
-      font-size: 0.67rem;
-      font-weight: 500;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
     .yt-card-body { padding: 1rem 1.1rem; }
     .yt-card-title { font-size: 0.85rem; font-weight: 500; line-height: 1.5; margin-bottom: 0.4rem; color: var(--text); }
     .yt-card-meta { font-size: 0.72rem; color: var(--muted); }
@@ -522,7 +492,7 @@
       font-size: 0.82rem;
       font-weight: 600;
       border-radius: 100px;
-      cursor: none;
+
       transition: opacity 0.2s;
       margin-bottom: 2.5rem;
     }
@@ -558,7 +528,7 @@
       border-radius: 100px;
       font-size: 0.75rem;
       font-weight: 500;
-      cursor: none;
+
       transition: all 0.2s;
       font-family: var(--font-body);
     }
@@ -576,7 +546,7 @@
       border-radius: 14px;
       overflow: hidden;
       transition: box-shadow 0.2s, border-color 0.2s;
-      cursor: none;
+
       box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
     .product-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.1); border-color: rgba(0,0,0,0.15); }
@@ -590,23 +560,18 @@
       position: relative;
       overflow: hidden;
     }
-    .product-img img.prod-photo {
+    .product-img img {
       width: 100%; height: 100%;
       object-fit: cover;
       transition: transform 0.5s;
       display: block;
     }
-    .product-card:hover .product-img img.prod-photo { transform: scale(1.04); }
-    .product-img img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.5s;
-    }
     .product-card:hover .product-img img { transform: scale(1.04); }
     .product-badge {
       position: absolute;
       top: 10px; left: 10px;
-      background: var(--text);
-      color: var(--bg);
+      background: #16a34a;
+      color: #fff;
       font-size: 0.62rem;
       font-weight: 600;
       letter-spacing: 0.8px;
@@ -635,7 +600,7 @@
       border-radius: 100px;
       text-decoration: none;
       transition: opacity 0.2s;
-      cursor: none;
+
     }
     .btn-affiliate:hover { opacity: 0.75; }
 
@@ -653,7 +618,7 @@
       display: flex;
       flex-direction: column;
       gap: 0.6rem;
-      cursor: none;
+
       box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
     .social-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.09); }
@@ -695,7 +660,7 @@
       font-weight: 500;
       font-size: 0.92rem;
       transition: box-shadow 0.2s, border-color 0.2s;
-      cursor: none;
+
       margin-bottom: 2rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
@@ -718,7 +683,7 @@
       font-size: 0.76rem;
       font-weight: 500;
       transition: all 0.2s;
-      cursor: none;
+
     }
     .cs-btn:hover { border-color: rgba(0,0,0,0.25); color: var(--text); }
 
@@ -733,8 +698,6 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-    footer .logo { font-family: var(--font-head); font-size: 1rem; font-weight: 800; letter-spacing: -0.3px; color: var(--text); }
-    footer .logo span { color: var(--accent); margin-left: -1px; }
     footer p { font-size: 0.75rem; color: var(--muted); }
 
     /* ===== WHATSAPP FLOAT ===== */
@@ -743,7 +706,7 @@
       bottom: 5rem;
       right: 2rem;
       z-index: 999;
-      width: 56px; height: 56px;
+      width: 68px; height: 68px;
       border-radius: 50%;
       background: #111110;
       display: flex;
@@ -757,43 +720,156 @@
       transform: scale(1.1);
       box-shadow: 0 6px 24px rgba(0,0,0,0.45);
     }
-    .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+    .wa-float svg { width: 38px; height: 38px; fill: #fff; }
 
     /* ===== ANIMATIONS ===== */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(40px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
     }
     .reveal {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(45px) scale(0.97);
+      transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
 
     /* ===== RESPONSIVE ===== */
-    @media (max-width: 900px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .hero { padding: 6rem 1.5rem 3rem; }
-      .hero-socials { display: none; }
-      section { padding: 4.5rem 1.5rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .yt-featured { grid-template-columns: 1fr; }
-      .yt-grid { grid-template-columns: 1fr 1fr; }
-      footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+    /* ===== HAMBURGER ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 200;
     }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* overlay móvil */
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 150;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .nav-overlay.open { display: flex; }
+    .nav-overlay a {
+      font-family: var(--font-head);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      transition: color 0.2s;
+    }
+    .nav-overlay a:hover { color: var(--accent); }
+
+    @media (max-width: 900px) {
+      /* NAV */
+      nav { padding: 1rem 1.5rem; z-index: 200; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      /* HERO */
+      .hero { padding: 6.5rem 1.5rem 4rem; }
+      .hero h1 { font-size: clamp(2.8rem, 13vw, 5rem); letter-spacing: -1px; line-height: 1; }
+      .hero-sub { max-width: 100%; font-size: 0.92rem; }
+      .hero-socials { display: none; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+      .btn-primary, .btn-ghost { width: 100%; text-align: center; }
+
+      /* SECTIONS */
+      section { padding: 4rem 1.5rem; }
+      .section-title { font-size: clamp(1.7rem, 6vw, 2.5rem); letter-spacing: -0.8px; }
+
+      /* ABOUT */
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-avatar { max-width: 300px; margin: 0 auto; }
+      .about-avatar-wrap { display: flex; flex-direction: column; align-items: center; }
+
+      /* YOUTUBE */
+      .yt-header { flex-direction: column; align-items: flex-start; gap: 1.2rem; margin-bottom: 2rem; }
+      .yt-toggle-btn { width: 100%; justify-content: center; }
+      .yt-featured { grid-template-columns: 1fr; }
+      .yt-featured-info { padding: 1.4rem; }
+      .yt-featured-info h3 { font-size: 1.15rem; }
+      .yt-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+
+      /* PRODUCTS */
+      .products-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+      .products-filter { gap: 0.4rem; }
+
+      /* SOCIAL */
+      .social-grid { grid-template-columns: 1fr 1fr; }
+
+      /* CONTACT */
+      .contact-email { font-size: 0.82rem; padding: 0.85rem 1.4rem; max-width: 100%; }
+      .contact-social-row { gap: 0.5rem; }
+
+      /* FOOTER */
+      footer { padding: 1.5rem; flex-direction: column; text-align: center; gap: 0.5rem; }
+
+      /* WHATSAPP */
+      .wa-float { width: 58px; height: 58px; bottom: 1.5rem; right: 1.2rem; }
+      .wa-float svg { width: 32px; height: 32px; }
+    }
+
     @media (max-width: 600px) {
+      /* HERO */
+      .hero { padding: 5.5rem 1.2rem 3.5rem; }
+      .hero h1 { font-size: clamp(2.4rem, 15vw, 3.5rem); }
+
+      /* ABOUT */
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .stat-num { font-size: 1.5rem; }
+
+      /* YOUTUBE */
       .yt-grid { grid-template-columns: 1fr; }
+      .yt-featured { grid-template-columns: 1fr; }
+
+      /* PRODUCTS */
       .products-grid { grid-template-columns: 1fr; }
+
+      /* SOCIAL */
+      .social-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+      .social-card { padding: 1.2rem 1rem; }
+
+      /* CONTACT */
+      .contact-email { word-break: break-all; justify-content: center; display: flex; }
+      .contact-social-row { flex-wrap: wrap; justify-content: center; }
+
+      /* SECTION */
+      section { padding: 3.5rem 1.2rem; }
+      .section-label { font-size: 0.7rem; }
+    }
+
+    @media (max-width: 400px) {
+      .hero h1 { font-size: clamp(2rem, 16vw, 3rem); }
+      .social-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .yt-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-
-  <!-- CURSOR -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
 
   <!-- NAV -->
   <nav>
@@ -805,12 +881,22 @@
       <li><a href="#redes"><strong>Redes</strong></a></li>
       <li><a href="#contacto"><strong>Contacto</strong></a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- MENÚ MÓVIL OVERLAY -->
+  <div class="nav-overlay" id="navOverlay">
+    <a href="#about">Sobre mí</a>
+    <a href="#youtube">YouTube</a>
+    <a href="#productos">Productos</a>
+    <a href="#redes">Redes</a>
+    <a href="#contacto">Contacto</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero" id="inicio">
-    <div class="hero-glow"></div>
-    <div class="hero-glow2"></div>
     <div class="hero-content">
       <h1>
         HOLA, SOY<br>
@@ -849,15 +935,15 @@
     <div class="about-grid reveal">
       <div class="about-avatar-wrap">
         <div class="about-avatar">
-          <img src="assets/photo.jpg" alt="Javier" style="display:block">
+          <img src="assets/photo.jpg" alt="Javier" loading="lazy">
         </div>
         <div class="about-stats">
           <div class="stat-card">
-            <div class="stat-num">530+</div>
+            <div class="stat-num">550+</div>
             <div class="stat-label">Suscriptores</div>
           </div>
           <div class="stat-card">
-            <div class="stat-num">220+</div>
+            <div class="stat-num">230+</div>
             <div class="stat-label">Videos</div>
           </div>
           <div class="stat-card">
@@ -907,15 +993,23 @@
       </a>
     </div>
 
+    <div style="text-align:center;">
+      <button class="yt-toggle-btn" id="ytToggleBtn">
+        Ver contenido <span class="yt-arrow">▼</span>
+      </button>
+    </div>
+
+    <div class="yt-collapsible" id="ytCollapsible">
     <!-- Video destacado -->
     <!-- ╔══════════════════════════════════════════════════════════════╗
          ║  VIDEO DESTACADO — para cambiar solo edita el data-video-url ║
          ║  Pega cualquier link de YouTube y el código hace el resto    ║
          ╚══════════════════════════════════════════════════════════════╝ -->
     <div class="yt-featured reveal"
-         data-video-url="https://youtu.be/ih37p35Fq_g"
-         data-title="✅¿Sabías que Gmail tiene esto escondido para eliminar suscripciones 🤫"
-         data-desc="🤫 ¿Tu Gmail está lleno de correos de publicidad que nunca pediste? 📧 En este video te enseño paso a paso cómo eliminar todas esas suscripciones directamente desde Gmail sin apps externas ✅ Limpia tu bandeja de entrada de una vez y deja de recibir spam para siempre.">
+         data-video-url="https://youtu.be/6FgmTYIs8Xc"
+         data-title="🎥 Cómo usar el gimbal Aochuan Smart XE Evita errores comunes"
+         data-desc="¿Tu gimbal vibra, no estabiliza bien o sientes que no funciona como debería? 🤔
+En este video te muestro cómo usar correctamente el Aochuan Smart XE, desde el balanceo del celular hasta los modos de grabación para lograr tomas mucho más estables y profesionales 🎥🔥">
       <div class="yt-featured-thumb">
         <img class="yt-auto-thumb" alt="Miniatura video destacado"
              style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -940,8 +1034,8 @@
     <div class="yt-grid reveal">
       <!-- Tarjeta 1 — EDITA SOLO data-video-url y data-title -->
       <div class="yt-card"
-           data-video-url="https://youtu.be/L5LluzkmiDg"
-           data-title="📸 Remini App: Edita y Genera Fotos con IA de Forma Fácil y Rápida 😄">
+           data-video-url="https://youtu.be/ZKwasGcqSjM"
+           data-title="📱 Guía Completa para Limpiar tu Historial de Instagram Paso a Paso 😄">
         <div class="yt-thumb"><img class="yt-auto-thumb" alt="" loading="lazy"></div>
         <div class="yt-card-body">
           <div class="yt-card-title yt-auto-title"></div>
@@ -950,8 +1044,8 @@
       </div>
       <!-- Tarjeta 2 — EDITA SOLO data-video-url y data-title -->
       <div class="yt-card"
-           data-video-url="https://youtu.be/ZfGa73pV7jE"
-           data-title="📚 Cómo Poner un Cronómetro en DaVinci Resolve Fácil y Rápido ⏱️">
+           data-video-url="https://youtu.be/FAkmORwdnJM"
+           data-title="📚 Así Funciona Ducker de DaVinci Resolve y Por Qué Deberías Usarlo 🎚️">
         <div class="yt-thumb"><img class="yt-auto-thumb" alt="" loading="lazy"></div>
         <div class="yt-card-body">
           <div class="yt-card-title yt-auto-title"></div>
@@ -960,8 +1054,8 @@
       </div>
       <!-- Tarjeta 3 — EDITA SOLO data-video-url y data-title -->
       <div class="yt-card"
-           data-video-url="https://youtu.be/qSpYl3dPaJI"
-           data-title="🎬 Cómo crear una pantalla final en tus videos fácilmente 😄">
+           data-video-url="https://youtu.be/L5LluzkmiDg"
+           data-title="📸 Remini La App de IA que Mejora y Edita tus Fotos de Forma Increíble 😄">
         <div class="yt-thumb"><img class="yt-auto-thumb" alt="" loading="lazy"></div>
         <div class="yt-card-body">
           <div class="yt-card-title yt-auto-title"></div>
@@ -969,6 +1063,7 @@
         </div>
       </div>
     </div>
+    </div><!-- fin yt-collapsible -->
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════
@@ -1132,25 +1227,37 @@
           }
           const titleEl = card.querySelector('.yt-auto-title');
           if (titleEl) titleEl.textContent = title;
-          card.style.cursor = 'none';
           card.addEventListener('click', () => window.open(url, '_blank'));
         }
       });
     }
 
-    // CURSOR
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-    function animCursor() {
-      rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
-      cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
-      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-      requestAnimationFrame(animCursor);
-    }
-    animCursor();
     initYouTubeThumbnails();
+
+    // YOUTUBE TOGGLE
+    const ytBtn = document.getElementById('ytToggleBtn');
+    const ytPanel = document.getElementById('ytCollapsible');
+    ytBtn.addEventListener('click', () => {
+      ytBtn.classList.toggle('open');
+      ytPanel.classList.toggle('open');
+      ytBtn.childNodes[0].textContent = ytPanel.classList.contains('open') ? 'Ocultar contenido ' : 'Ver contenido ';
+    });
+
+    // HAMBURGER MENU
+    const hamburger = document.getElementById('hamburger');
+    const navOverlay = document.getElementById('navOverlay');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navOverlay.classList.toggle('open');
+      document.body.style.overflow = navOverlay.classList.contains('open') ? 'hidden' : '';
+    });
+    navOverlay.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
 
     // SCROLL REVEAL
     const reveals = document.querySelectorAll('.reveal');
