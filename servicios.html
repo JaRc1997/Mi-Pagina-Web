@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TRK1EGS3LL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TRK1EGS3LL');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="JarcOnline — Servicios de edición de video, thumbnails, producción de contenido y creación de páginas web para creadores." />
+  <title>Servicios — JarcOnline</title>
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0A0A0A;
+      --bg2:       #111111;
+      --card:      #161616;
+      --border:    rgba(255,255,255,0.07);
+      --accent:    #C8FF00;
+      --text:      #EFEFEF;
+      --muted:     #888888;
+      --font-head: 'Space Grotesk', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    /* ===== SCANLINE — sutil ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.012) 2px,
+        rgba(255,255,255,0.012) 4px
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(10,10,10,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    .nav-logo img {
+      height: 32px; width: 32px;
+      object-fit: contain;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+    .nav-logo span { color: var(--accent); margin-left: -1px; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a.active { color: var(--accent); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 200;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 150;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .nav-overlay.open { display: flex; }
+    .nav-overlay a {
+      font-family: var(--font-head);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      transition: color 0.2s;
+    }
+    .nav-overlay a:hover,
+    .nav-overlay a.active { color: var(--accent); }
+
+    /* ===== PAGE HERO ===== */
+    .page-hero {
+      position: relative;
+      z-index: 1;
+      padding: 10rem 4rem 6rem;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    /* ===== DOT GRID en page-hero — canvas interactivo ===== */
+    .page-hero::after { display: none; }
+    .page-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+    .page-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-bottom: 1.6rem;
+    }
+    .page-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
+      flex-shrink: 0;
+    }
+    .page-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 0.97;
+      color: var(--text);
+      margin-bottom: 1.8rem;
+    }
+    .page-hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .page-hero p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 520px;
+    }
+    .page-hero p strong { color: var(--text); font-weight: 600; }
+
+    /* ===== SECTION BASE ===== */
+    section { position: relative; padding: 5rem 4rem; z-index: 1; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.7rem;
+    }
+    .section-label span {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      max-width: 50px;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      letter-spacing: -1.5px;
+      line-height: 1.02;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.9rem;
+    }
+    .section-title em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      max-width: 520px;
+      margin-bottom: 3rem;
+    }
+
+    /* ===== SERVICE CARDS ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover {
+      border-color: rgba(200,255,0,0.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      transform: translateY(-3px);
+    }
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-icon {
+      font-size: 2rem;
+      line-height: 1;
+    }
+    .service-name {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--text);
+    }
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.75;
+      flex: 1;
+    }
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .service-tag {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--muted);
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.2rem 0.6rem;
+    }
+    .btn-contact-service {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      width: fit-content;
+    }
+    .btn-contact-service:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(200,255,0,0.04);
+    }
+
+    /* ===== CATEGORY DIVIDER ===== */
+    .category-block { margin-bottom: 4rem; }
+    .category-block:last-child { margin-bottom: 0; }
+
+    /* ===== PROCESO ===== */
+    #proceso { background: var(--bg2); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .process-step {
+      background: var(--bg2);
+      padding: 2rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+    .step-title {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.2px;
+    }
+    .step-desc {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ===== CTA FINAL ===== */
+    #cta { text-align: center; }
+    .cta-inner { max-width: 600px; margin: 0 auto; }
+    .cta-inner .section-label { justify-content: center; }
+    .cta-inner .section-label::after { display: none; }
+    .cta-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .cta-title em { font-style: normal; color: var(--accent); }
+    .cta-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .btn-cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 700;
+      font-size: 0.85rem;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-cta-primary:hover {
+      opacity: 0.88;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(200,255,0,0.25);
+    }
+    .btn-cta-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.85rem;
+      border: 1.5px solid var(--border);
+      border-radius: 5px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-cta-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: 0.9rem 2rem;
+      color: var(--text);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-weight: 400;
+      font-size: 0.85rem;
+      transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+      margin-bottom: 2rem;
+    }
+    .contact-email:hover { border-color: rgba(200,255,0,0.35); box-shadow: 0 6px 24px rgba(200,255,0,0.08); transform: translateY(-2px); }
+    .contact-also { color: var(--muted); font-size: 0.82rem; }
+    .contact-social-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .cs-btn {
+      padding: 0.42rem 1.1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.76rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .cs-btn:hover { border-color: rgba(200,255,0,0.3); color: var(--accent); transform: translateY(-2px); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1.5px solid var(--border);
+      padding: 2rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer p { font-size: 0.75rem; color: var(--muted); }
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .wa-float {
+      position: fixed;
+      bottom: 5rem;
+      right: 2rem;
+      z-index: 999;
+      width: 76px; height: 76px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 18px rgba(200,255,0,0.55), 0 0 40px rgba(200,255,0,0.25);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: waPulse 2.5s ease-in-out infinite;
+    }
+    @keyframes waPulse {
+      0%, 100% { box-shadow: 0 0 18px rgba(200,255,0,0.55), 0 0 40px rgba(200,255,0,0.25); }
+      50%       { box-shadow: 0 0 26px rgba(200,255,0,0.8),  0 0 60px rgba(200,255,0,0.4); }
+    }
+    .wa-float:hover {
+      transform: scale(1.12);
+      box-shadow: 0 0 32px rgba(200,255,0,0.9), 0 0 70px rgba(200,255,0,0.5);
+      animation: none;
+    }
+    .wa-float svg { width: 42px; height: 42px; fill: var(--bg); }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; z-index: 200; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .page-hero { padding: 7rem 1.5rem 4rem; }
+      .page-hero h1 { font-size: clamp(2.4rem, 12vw, 4rem); letter-spacing: -1px; }
+      section { padding: 4rem 1.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+      .wa-float { width: 64px; height: 64px; bottom: 4rem; right: 1.2rem; }
+      .wa-float svg { width: 36px; height: 36px; }
+    }
+    @media (max-width: 600px) {
+      .page-hero { padding: 6rem 1.2rem 3.5rem; }
+      section { padding: 3.5rem 1.2rem; }
+      .process-steps { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 1.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="JarcOnline">
+      JARC<span>.ONLINE</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">Sobre mí</a></li>
+      <li><a href="index.html#youtube">YouTube</a></li>
+      <li><a href="index.html#productos">Productos</a></li>
+      <li><a href="servicios.html" class="active">Servicios</a></li>
+      <li><a href="index.html#redes">Redes</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MENÚ MÓVIL OVERLAY -->
+  <div class="nav-overlay" id="navOverlay">
+    <a href="index.html#about">Sobre mí</a>
+    <a href="index.html#youtube">YouTube</a>
+    <a href="index.html#productos">Productos</a>
+    <a href="servicios.html" class="active">Servicios</a>
+    <a href="index.html#redes">Redes</a>
+    <a href="index.html#contacto">Contacto</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <h1>Lo que puedo<br>hacer por <em>ti</em></h1>
+      <p>
+        Ofrezco servicios de <strong>producción audiovisual</strong> y
+        <strong>creación de sitios web</strong> para creadores, marcas y emprendedores.
+        Trabajo enfocado en resultados reales y comunicación directa.
+      </p>
+    </div>
+  </div>
+
+  <!-- SERVICIOS AUDIOVISUAL -->
+  <section id="audiovisual">
+    <div class="section-label reveal"><span>01 — Audiovisual</span></div>
+    <h2 class="section-title reveal">Producción de <em>video</em></h2>
+    <p class="section-sub reveal">
+      Desde la edición hasta la miniatura, todo lo que necesita tu contenido
+      para verse profesional y destacar en plataformas digitales.
+    </p>
+
+    <div class="services-grid">
+
+      <!-- Tarjeta 1 -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="assets/video.png" alt="Edición de video" onerror="this.style.display='none';this.nextElementSibling.style.display=''" style="height:2rem;width:auto;display:block;">
+          <span style="display:none">🎬</span>
+        </div>
+        <div class="service-name">Edición de video</div>
+        <p class="service-desc">
+          Edición de videos para YouTube, redes sociales y otros formatos.
+          Incluye cortes, transiciones, subtítulos y exportación optimizada
+          usando DaVinci Resolve.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">DaVinci Resolve</span>
+          <span class="service-tag">YouTube</span>
+          <span class="service-tag">Redes sociales</span>
+        </div>
+        <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Edición de video" class="btn-contact-service">
+          Consultar servicio
+        </a>
+      </div>
+
+      <!-- Tarjeta 2 -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="assets/image.png" alt="Thumbnails / Miniaturas" onerror="this.style.display='none';this.nextElementSibling.style.display=''" style="height:2rem;width:auto;display:block;">
+          <span style="display:none">🖼️</span>
+        </div>
+        <div class="service-name">Thumbnails / Miniaturas</div>
+        <p class="service-desc">
+          Diseño de miniaturas llamativas y optimizadas para aumentar el CTR en YouTube
+          e Instagram. Estilo visual alineado con tu marca y audiencia.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">YouTube</span>
+          <span class="service-tag">Instagram</span>
+          <span class="service-tag">CTR</span>
+        </div>
+        <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Thumbnails" class="btn-contact-service">
+          Consultar servicio
+        </a>
+      </div>
+
+      <!-- Tarjeta 3 -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="assets/device-mobile.png" alt="Contenido para redes" onerror="this.style.display='none';this.nextElementSibling.style.display=''" style="height:2rem;width:auto;display:block;">
+          <span style="display:none">📱</span>
+        </div>
+        <div class="service-name">Contenido para redes</div>
+        <p class="service-desc">
+          Producción de contenido vertical y horizontal para TikTok, Instagram Reels,
+          YouTube Shorts y más. Formatos adaptados a cada plataforma.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">TikTok</span>
+          <span class="service-tag">Reels</span>
+          <span class="service-tag">Shorts</span>
+          <span class="service-tag">Vertical</span>
+        </div>
+        <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Contenido para redes" class="btn-contact-service">
+          Consultar servicio
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICIOS WEB -->
+  <section id="webs" style="background: var(--bg2);">
+    <div class="section-label reveal"><span>02 — Desarrollo web</span></div>
+    <h2 class="section-title reveal">Páginas web que <em>convierten</em></h2>
+    <p class="section-sub reveal">
+      Sitios rápidos, bonitos y funcionales, sin pagar suscripciones mensuales
+      de plataformas. Tú tienes el control total de tu web.
+    </p>
+
+    <div class="services-grid">
+
+      <!-- Tarjeta 4 -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <!-- IMAGEN → cambia src="assets/TU-IMAGEN.png" cuando tengas el archivo -->
+          <img src="assets/globe.png" alt="Web personal" onerror="this.style.display='none';this.nextElementSibling.style.display=''" style="height:2rem;width:auto;display:block;">
+          <span style="display:none">🧑‍💻</span>
+        </div>
+        <div class="service-name">Web personal / portafolio</div>
+        <p class="service-desc">
+          Sitio web que te representa a ti: quién eres, qué haces y cómo contactarte.
+          Ideal para creadores de contenido, freelancers y profesionales independientes.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">HTML/CSS</span>
+          <span class="service-tag">Portafolio</span>
+          <span class="service-tag">Creadores</span>
+        </div>
+        <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Web personal" class="btn-contact-service">
+          Consultar servicio
+        </a>
+      </div>
+
+      <!-- Tarjeta 5 -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <!-- IMAGEN → cambia src="assets/TU-IMAGEN.png" cuando tengas el archivo -->
+          <img src="assets/browsers.png" alt="Landing page" onerror="this.style.display='none';this.nextElementSibling.style.display=''" style="height:2rem;width:auto;display:block;">
+          <span style="display:none">🚀</span>
+        </div>
+        <div class="service-name">Landing page</div>
+        <p class="service-desc">
+          Página de aterrizaje enfocada en un objetivo claro: vender un servicio,
+          captar leads o presentar un producto. Diseñada para convertir visitantes en clientes.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">Conversión</span>
+          <span class="service-tag">CTA</span>
+          <span class="service-tag">Leads</span>
+        </div>
+        <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Landing page" class="btn-contact-service">
+          Consultar servicio
+        </a>
+      </div>
+
+      <!-- Tarjeta 6 -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <!-- IMAGEN → cambia src="assets/TU-IMAGEN.png" cuando tengas el archivo -->
+          <img src="assets/image (1).png" alt="Sitio para creadores" onerror="this.style.display='none';this.nextElementSibling.style.display=''" style="height:2rem;width:auto;display:block;">
+          <span style="display:none">🎙️</span>
+        </div>
+        <div class="service-name">Sitio para creadores</div>
+        <p class="service-desc">
+          Web personalizada para creadores de contenido: integración con redes sociales,
+          galería de videos, sección de afiliados y contacto directo con tu audiencia.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">YouTube</span>
+          <span class="service-tag">Afiliados</span>
+          <span class="service-tag">A medida</span>
+        </div>
+        <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Sitio para creadores" class="btn-contact-service">
+          Consultar servicio
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section id="proceso">
+    <div class="section-label reveal"><span>Cómo trabajo</span></div>
+    <h2 class="section-title reveal">El <em>proceso</em></h2>
+    <p class="section-sub reveal">Simple, directo y sin complicaciones.</p>
+
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <span class="step-num">01</span>
+        <div class="step-title">Me cuentas tu idea</div>
+        <p class="step-desc">
+          Me escribes por email o WhatsApp explicando qué necesitas, para qué plataforma y cuándo lo necesitas.
+        </p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">02</span>
+        <div class="step-title">Hablamos los detalles</div>
+        <p class="step-desc">
+          Acordamos alcance, referencias visuales y tiempos de entrega. Sin sorpresas.
+        </p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">03</span>
+        <div class="step-title">Yo me pongo a trabajar</div>
+        <p class="step-desc">
+          Inicio el proyecto y te muestro avances para ajustar en el camino si es necesario.
+        </p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">04</span>
+        <div class="step-title">Entrega y revisión</div>
+        <p class="step-desc">
+          Recibes el resultado final, revisas y hacemos los ajustes necesarios hasta dejarlo perfecto.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section id="cta">
+    <div class="cta-inner">
+      <div class="section-label">
+        <span>¿Listo?</span>
+      </div>
+      <h2 class="cta-title reveal">Hablemos de tu<br><em>proyecto</em></h2>
+      <p class="cta-sub reveal">
+        Escríbeme y cuéntame lo que necesitas. Sin compromisos.
+      </p>
+      <a href="mailto:Rueda3062@gmail.com" class="contact-email reveal">Rueda3062@gmail.com</a>
+      <p class="contact-also reveal">También puedes escribirme por:</p>
+      <div class="contact-social-row reveal">
+        <a href="https://www.instagram.com/javier_rueda77/" target="_blank" class="cs-btn">Instagram DM</a>
+        <a href="https://wa.me/573229426949" target="_blank" rel="noopener" class="cs-btn">WhatsApp</a>
+        <a href="https://www.facebook.com/javier.ruedacifuentes/" target="_blank" class="cs-btn">Facebook</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/573229426949" target="_blank" rel="noopener" class="wa-float" title="WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.471 2.027 7.774L0 32l8.468-2.004A15.93 15.93 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.771-1.851l-.485-.288-5.027 1.189 1.224-4.895-.317-.503A13.234 13.234 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.878c-.398-.199-2.355-1.162-2.72-1.294-.366-.133-.632-.199-.899.199-.266.398-1.031 1.294-1.264 1.56-.233.266-.465.299-.863.1-.398-.2-1.681-.619-3.202-1.976-1.184-1.056-1.983-2.36-2.216-2.758-.233-.398-.025-.613.175-.811.18-.178.398-.465.597-.698.2-.233.266-.398.398-.664.133-.266.067-.498-.033-.697-.1-.2-.899-2.168-1.231-2.967-.324-.778-.653-.673-.899-.685l-.765-.013c-.266 0-.698.1-1.064.498-.366.398-1.397 1.365-1.397 3.328s1.43 3.86 1.629 4.127c.2.266 2.815 4.3 6.822 6.03.953.412 1.697.658 2.277.842.957.305 1.828.262 2.516.159.767-.115 2.355-.963 2.688-1.893.333-.93.333-1.727.233-1.893-.1-.166-.366-.266-.764-.465z"/>
+    </svg>
+  </a>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="JarcOnline">JARC<span>.ONLINE</span></a>
+    <p>© 2026 JARCONLINE. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // HAMBURGER
+    const hamburger = document.getElementById('hamburger');
+    const navOverlay = document.getElementById('navOverlay');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navOverlay.classList.toggle('open');
+      document.body.style.overflow = navOverlay.classList.contains('open') ? 'hidden' : '';
+    });
+    navOverlay.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // SCROLL REVEAL
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 70);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Dot canvas — ondas constantes ────────────────────────────────────
+    (function() {
+      const c = document.createElement('canvas');
+      c.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;';
+      document.body.prepend(c);
+      const ctx = c.getContext('2d');
+      const S = 28, AMP = 8, SPEED = 0.75, FREQ = 0.013;
+      let dots = [];
+
+      function resize() {
+        c.width = window.innerWidth;
+        c.height = window.innerHeight;
+        dots = [];
+        for (let y = 0; y <= c.height + S; y += S)
+          for (let x = 0; x <= c.width + S; x += S)
+            dots.push({ x, y });
+      }
+
+      function draw() {
+        const t = performance.now() * 0.001 * SPEED;
+        ctx.clearRect(0, 0, c.width, c.height);
+        for (const d of dots) {
+          const phase = t + d.x * FREQ + d.y * FREQ * 0.7;
+          const px = d.x + Math.cos(phase) * AMP;
+          const py = d.y + Math.sin(phase * 1.4) * AMP;
+          const a  = 0.04 + (Math.sin(phase) * 0.5 + 0.5) * 0.24;
+          ctx.beginPath();
+          ctx.arc(px, py, 1, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255,255,255,' + a + ')';
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      draw();
+    })();
+  </script>
+
+</body>
+</html>
