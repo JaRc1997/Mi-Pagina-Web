@@ -2,7 +2,7 @@
 
 Sitio web personal de **Javier Rueda** (@jarconline7), creador de contenido enfocado en tecnología, tutoriales, apps y herramientas digitales en español.
 
-## 🌐 Demo
+## Demo
 
 [jarconline.com](https://jarconline.com)
 
@@ -31,7 +31,7 @@ jarconline-web/
 
 ---
 
-## ✨ Características
+## Características
 
 - **Sin frameworks** — HTML, CSS y JavaScript vanilla puro
 - **Single file** — todo el CSS y JS embebido, sin dependencias externas
@@ -47,7 +47,7 @@ jarconline-web/
 
 ---
 
-## 🎨 Stack de diseño
+## Stack de diseño
 
 | Elemento | Valor |
 |---|---|
@@ -60,7 +60,7 @@ jarconline-web/
 
 ---
 
-## 📦 Secciones — index.html
+## Secciones — index.html
 
 - **Hero** — presentación con fondo de puntos animados
 - **Sobre mí** — foto, descripción y estadísticas del canal
@@ -69,7 +69,7 @@ jarconline-web/
 - **Redes sociales** — YouTube, Instagram, Facebook, Reddit
 - **Contacto** — email y redes para colaboraciones
 
-## 🛠️ Servicios — servicios.html
+## Servicios — servicios.html
 
 **Audiovisual**
 - Edición de video (DaVinci Resolve)
@@ -83,7 +83,7 @@ jarconline-web/
 
 ---
 
-## ✏️ Cómo agregar un producto
+## Cómo agregar un producto
 
 1. Abre `index.html`
 2. Busca el array `PRODUCTOS` en el `<script>`
@@ -102,7 +102,7 @@ jarconline-web/
 }
 ```
 
-## 🎬 Cómo cambiar un video de YouTube
+## Cómo cambiar un video de YouTube
 
 1. Busca el elemento con `data-video-url` en el HTML
 2. Cambia la URL por cualquier link de YouTube
@@ -110,7 +110,7 @@ jarconline-web/
 
 ---
 
-## 📬 Contacto
+## Contacto
 
 - **Email:** Rueda3062@gmail.com
 - **YouTube:** [@jarconline7](https://www.youtube.com/@jarconline7)
