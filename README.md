@@ -8,7 +8,7 @@ Sitio web personal de **Javier Rueda** (@jarconline7), creador de contenido enfo
 
 ---
 
-## 📄 Páginas
+## Páginas
 
 | Página | Descripción |
 |---|---|
