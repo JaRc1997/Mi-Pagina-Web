@@ -17,7 +17,7 @@ Sitio web personal de **Javier Rueda** (@jarconline7), creador de contenido enfo
 
 ---
 
-## 🗂️ Estructura del proyecto
+## Estructura del proyecto
 
 ```
 jarconline-web/
