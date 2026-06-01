@@ -1,8 +1,13 @@
-/* ═══════════════════════════════════════════════════════════════════
-   JarcOnline — Script de servicios.html
-   ═══════════════════════════════════════════════════════════════════ */
+// Si una imagen del servicio falla, muestra el emoji como fallback
+document.querySelectorAll('.service-img').forEach(img => {
+  img.addEventListener('error', () => {
+    img.style.display = 'none';
+    const emoji = img.nextElementSibling;
+    if (emoji) emoji.classList.add('fallback');
+  });
+});
 
-// HAMBURGER MENU
+// Menu hamburguesa
 const hamburger = document.getElementById('hamburger');
 const navOverlay = document.getElementById('navOverlay');
 if (hamburger && navOverlay) {
@@ -20,7 +25,7 @@ if (hamburger && navOverlay) {
   });
 }
 
-// SCROLL REVEAL
+// Animaciones al hacer scroll
 const observer = new IntersectionObserver(entries => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {

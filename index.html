@@ -11,24 +11,68 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="JarcOnline — Creador de contenido tech. Tutoriales, tips y herramientas digitales en español." />
-  <title>JarcOnline</title>
+
+  <!-- SEO basico -->
+  <title>JarcOnline - Creador de contenido tech en español</title>
+  <meta name="description" content="Soy Javier Rueda, creador de contenido enfocado en tecnología, tutoriales de DaVinci Resolve, apps y herramientas digitales para creadores en español." />
+  <meta name="keywords" content="JarcOnline, Javier Rueda, creador contenido tech, tutoriales DaVinci Resolve, apps tecnología, herramientas digitales, español, colombia" />
+  <meta name="author" content="Javier Rueda" />
+  <link rel="canonical" href="https://jarconline.com/" />
+
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="JarcOnline" />
+  <meta property="og:title" content="JarcOnline - Creador de contenido tech" />
+  <meta property="og:description" content="Tutoriales, tips y herramientas digitales en español. Edición con DaVinci Resolve y mucho más." />
+  <meta property="og:url" content="https://jarconline.com/" />
+  <meta property="og:image" content="https://jarconline.com/assets/photo.jpg" />
+  <meta property="og:image:alt" content="Javier Rueda - JarcOnline" />
+  <meta property="og:locale" content="es_CO" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="JarcOnline - Creador de contenido tech" />
+  <meta name="twitter:description" content="Tutoriales y herramientas digitales en español." />
+  <meta name="twitter:image" content="https://jarconline.com/assets/photo.jpg" />
+
   <link rel="icon" type="image/png" href="assets/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Datos estructurados: le dice a Google quien soy -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Javier Rueda",
+    "alternateName": "JarcOnline",
+    "url": "https://jarconline.com",
+    "image": "https://jarconline.com/assets/photo.jpg",
+    "jobTitle": "Creador de contenido tech",
+    "description": "Creador de contenido enfocado en tecnología, edición de video y herramientas digitales.",
+    "sameAs": [
+      "https://www.youtube.com/@jarconline7",
+      "https://www.instagram.com/javier_rueda77/",
+      "https://www.facebook.com/javier.ruedacifuentes/",
+      "https://www.reddit.com/user/JarcOnline/",
+      "https://www.linkedin.com/in/javier-antonio-rueda-cifuentes/"
+    ]
+  }
+  </script>
 </head>
 <body>
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo"><img src="assets/logo.png" alt="JarcOnline" style="height:32px;width:32px;object-fit:contain;border-radius:50%;margin-right:0.5rem;vertical-align:middle;">JARC<span>.ONLINE</span></a>
+    <a href="#" class="nav-logo"><img src="assets/logo.png" alt="JarcOnline">JARC<span>.ONLINE</span></a>
     <ul class="nav-links">
       <li><a href="#about"><strong>Sobre mí</strong></a></li>
       <li><a href="#youtube"><strong>YouTube</strong></a></li>
       <li><a href="#productos"><strong>Productos</strong></a></li>
       <li><a href="servicios.html"><strong>Servicios</strong></a></li>
+      <li><a href="recursos.html"><strong>Recursos</strong></a></li>
       <li><a href="#redes"><strong>Redes</strong></a></li>
       <li><a href="#contacto"><strong>Contacto</strong></a></li>
     </ul>
@@ -43,6 +87,7 @@
     <a href="#youtube">YouTube</a>
     <a href="#productos">Productos</a>
     <a href="servicios.html">Servicios</a>
+    <a href="recursos.html">Recursos</a>
     <a href="#redes">Redes</a>
     <a href="#contacto">Contacto</a>
   </div>
@@ -90,7 +135,7 @@
     <div class="about-grid reveal">
       <div class="about-avatar-wrap">
         <div class="about-avatar">
-          <img src="assets/photo.jpg" alt="Javier" loading="lazy">
+          <img src="assets/photo.jpg" alt="Javier Rueda - Creador de contenido tech" loading="lazy">
         </div>
         <div class="about-stats">
           <div class="stat-card">
@@ -156,10 +201,7 @@
 
     <div class="yt-collapsible" id="ytCollapsible">
     <!-- Video destacado -->
-    <!-- ╔══════════════════════════════════════════════════════════════╗
-         ║  VIDEO DESTACADO — para cambiar solo edita el data-video-url ║
-         ║  Pega cualquier link de YouTube y el código hace el resto    ║
-         ╚══════════════════════════════════════════════════════════════╝ -->
+    <!-- Video destacado: para cambiarlo modifica data-video-url -->
     <div class="yt-featured reveal"
          data-video-url="https://youtu.be/6FgmTYIs8Xc"
          data-title="🎥 Cómo usar el gimbal Aochuan Smart XE Evita errores comunes"
@@ -182,10 +224,7 @@ En este video te muestro cómo usar correctamente el Aochuan Smart XE, desde el 
     </div>
 
     <!-- Grid de videos -->
-    <!-- ╔══════════════════════════════════════════════════════════════════╗
-         ║  VIDEOS — para cambiar solo edita data-video-url y data-title  ║
-         ║  El código extrae la miniatura de YouTube automáticamente      ║
-         ╚══════════════════════════════════════════════════════════════════╝ -->
+    <!-- Grid de videos: edita data-video-url y data-title de cada tarjeta -->
     <div class="yt-grid reveal">
       <!-- Tarjeta 1 — EDITA SOLO data-video-url y data-title -->
       <div class="yt-card"
@@ -221,13 +260,7 @@ En este video te muestro cómo usar correctamente el Aochuan Smart XE, desde el 
     </div><!-- fin yt-collapsible -->
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════════
-       CATÁLOGO DE PRODUCTOS — CÓMO AGREGAR O QUITAR UN PRODUCTO:
-       1. Busca el array PRODUCTOS más abajo en el <script>
-       2. Para AGREGAR: copia un bloque { ... } y pégalo al final de la lista
-       3. Para QUITAR:  borra el bloque { ... } del producto que no quieres
-       4. Guarda el archivo. ¡Listo! La web se actualiza sola.
-       ═══════════════════════════════════════════════════════════════════ -->
+  <!-- Catalogo de productos. Para editarlos modifica el array PRODUCTOS en script.js -->
   <section id="productos">
     <div class="section-label reveal"><span>Recomendaciones</span></div>
     <h2 class="section-title reveal">Productos que <em>uso y recomiendo</em></h2>
@@ -331,10 +364,11 @@ En este video te muestro cómo usar correctamente el Aochuan Smart XE, desde el 
 
   <!-- FOOTER -->
   <footer>
-    <a href="#" class="nav-logo"><img src="assets/logo.png" alt="JarcOnline" style="height:32px;width:32px;object-fit:contain;border-radius:50%;margin-right:0.5rem;vertical-align:middle;">JARC<span>.ONLINE</span></a>
+    <a href="#" class="nav-logo"><img src="assets/logo.png" alt="JarcOnline">JARC<span>.ONLINE</span></a>
     <p>© 2026 JARCONLINE.Todos los derechos reservados.</p>
   </footer>
 
+  <script src="dot-canvas.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>

@@ -1,12 +1,4 @@
-/* ═══════════════════════════════════════════════════════════════════
-   JarcOnline — Script principal (index.html)
-   ═══════════════════════════════════════════════════════════════════ */
-
-// ═══════════════════════════════════════════════════════
-// YOUTUBE AUTO-THUMBNAIL SYSTEM
-// Extrae el ID de cualquier formato de URL de YouTube:
-// youtu.be/ID, youtube.com/watch?v=ID, youtube.com/embed/ID
-// ═══════════════════════════════════════════════════════
+// Extrae el ID de un link de YouTube (admite varios formatos)
 function getYouTubeID(url) {
   const patterns = [
     /youtu\.be\/([^?&]+)/,
@@ -23,7 +15,6 @@ function getYouTubeID(url) {
 }
 
 function initYouTubeThumbnails() {
-  // Video destacado
   const featured = document.querySelector('.yt-featured[data-video-url]');
   if (featured) {
     const url   = featured.dataset.videoUrl;
@@ -43,7 +34,6 @@ function initYouTubeThumbnails() {
     }
   }
 
-  // Tarjetas de video
   document.querySelectorAll('.yt-card[data-video-url]').forEach(card => {
     const url   = card.dataset.videoUrl;
     const id    = getYouTubeID(url);
@@ -63,7 +53,7 @@ function initYouTubeThumbnails() {
 
 initYouTubeThumbnails();
 
-// YOUTUBE TOGGLE
+// Toggle de la seccion de YouTube
 const ytBtn = document.getElementById('ytToggleBtn');
 const ytPanel = document.getElementById('ytCollapsible');
 if (ytBtn && ytPanel) {
@@ -74,7 +64,7 @@ if (ytBtn && ytPanel) {
   });
 }
 
-// HAMBURGER MENU
+// Menu hamburguesa
 const hamburger = document.getElementById('hamburger');
 const navOverlay = document.getElementById('navOverlay');
 if (hamburger && navOverlay) {
@@ -92,7 +82,7 @@ if (hamburger && navOverlay) {
   });
 }
 
-// SCROLL REVEAL
+// Animaciones al hacer scroll
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver(entries => {
   entries.forEach((e, i) => {
@@ -103,20 +93,9 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 reveals.forEach(el => observer.observe(el));
 
-// ═══════════════════════════════════════════════════════════════════════
-// CATÁLOGO DE PRODUCTOS
-// ───────────────────────────────────────────────────────────────────────
-// Para AGREGAR un producto: copia un bloque { } y pégalo antes del ];
-// Para QUITAR un producto:  borra su bloque { } completo.
-// Campos:
-//   nombre   → nombre del producto
-//   cat      → "audio" | "movil" | "video" | "accesorios"
-//   desc     → descripción corta
-//   precio   → precio en COP (texto libre)
-//   link     → link de afiliado de AliExpress
-//   emoji    → emoji representativo (se muestra si no hay imagen)
-//   badge    → "" | "Nuevo" | "Popular" | "Recomendado" (opcional)
-// ═══════════════════════════════════════════════════════════════════════
+// Catalogo de productos.
+// Para agregar uno nuevo, copia un bloque { } y modifica los campos.
+// Categorias validas: audio, movil, video, accesorios.
 const PRODUCTOS = [
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S8033f0452b014144bf56dbb66fcbcd92G.jpg_220x220q75.jpg_.avif",
@@ -330,7 +309,6 @@ const PRODUCTOS = [
   }
 ];
 
-// ── Renderiza el catálogo ───────────────────────────────────────────────
 function renderProductos(filtro = 'todos') {
   const grid = document.getElementById('productsGrid');
   const filtered = filtro === 'todos' ? PRODUCTOS : PRODUCTOS.filter(p => p.cat === filtro);
@@ -355,13 +333,13 @@ function renderProductos(filtro = 'todos') {
       </div>
     </div>
   `).join('');
+  // Forzar visibilidad inmediata (evita un bug en moviles con IntersectionObserver)
   grid.querySelectorAll('.product-card').forEach(card => {
     card.style.opacity = '1';
     card.style.transform = 'none';
   });
 }
 
-// ── Filtros ────────────────────────────────────────────────────────────
 function initProductos() {
   renderProductos();
   document.querySelectorAll('#productsFilter .filter-btn').forEach(btn => {
@@ -378,11 +356,11 @@ if (document.readyState === 'loading') {
   initProductos();
 }
 
-// ── Toggle productos ───────────────────────────────────────────────────
-const toggleBtn      = document.getElementById('toggleProducts');
-const productsPanel  = document.getElementById('productsCollapse');
+// Toggle del panel de productos
+const toggleBtn = document.getElementById('toggleProducts');
+const productsPanel = document.getElementById('productsCollapse');
 if (toggleBtn && productsPanel) {
-  const toggleLabel  = toggleBtn.querySelector('span');
+  const toggleLabel = toggleBtn.querySelector('span');
   toggleBtn.addEventListener('click', () => {
     const isOpen = productsPanel.classList.toggle('open');
     toggleBtn.classList.toggle('open', isOpen);
@@ -390,41 +368,4 @@ if (toggleBtn && productsPanel) {
   });
 }
 
-// ── Dot canvas — ondas constantes ────────────────────────────────────
-(function() {
-  const c = document.createElement('canvas');
-  c.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;';
-  document.body.prepend(c);
-  const ctx = c.getContext('2d');
-  const S = 28, AMP = 8, SPEED = 0.75, FREQ = 0.013;
-  let dots = [];
-
-  function resize() {
-    c.width = window.innerWidth;
-    c.height = window.innerHeight;
-    dots = [];
-    for (let y = 0; y <= c.height + S; y += S)
-      for (let x = 0; x <= c.width + S; x += S)
-        dots.push({ x, y });
-  }
-
-  function draw() {
-    const t = performance.now() * 0.001 * SPEED;
-    ctx.clearRect(0, 0, c.width, c.height);
-    for (const d of dots) {
-      const phase = t + d.x * FREQ + d.y * FREQ * 0.7;
-      const px = d.x + Math.cos(phase) * AMP;
-      const py = d.y + Math.sin(phase * 1.4) * AMP;
-      const a  = 0.04 + (Math.sin(phase) * 0.5 + 0.5) * 0.24;
-      ctx.beginPath();
-      ctx.arc(px, py, 1, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255,255,255,' + a + ')';
-      ctx.fill();
-    }
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener('resize', resize);
-  resize();
-  draw();
-})();
+// El canvas animado de puntos vive en dot-canvas.js para reutilizarlo en todas las paginas
