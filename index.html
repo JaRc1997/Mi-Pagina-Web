@@ -64,6 +64,40 @@
 </head>
 <body>
 
+  <!-- Sprite de íconos SVG — se define una vez, se reutiliza en todo el HTML -->
+  <svg style="display:none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%"   style="stop-color:#f09433"/>
+        <stop offset="25%"  style="stop-color:#e6683c"/>
+        <stop offset="50%"  style="stop-color:#dc2743"/>
+        <stop offset="75%"  style="stop-color:#cc2366"/>
+        <stop offset="100%" style="stop-color:#bc1888"/>
+      </linearGradient>
+    </defs>
+    <symbol id="icon-youtube" viewBox="0 0 24 24">
+      <path d="M23.5 6.2s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1C17.1 2.6 12 2.6 12 2.6s-5.1 0-8.1.2c-.5.1-1.5.1-2.4 1-.7.7-1 2.4-1 2.4S.3 8.1.3 10v1.8c0 1.9.2 3.8.2 3.8s.2 1.7 1 2.4c.9 1 2.1.9 2.6 1 1.9.2 8 .2 8 .2s5.1 0 8.1-.2c.5-.1 1.5-.1 2.4-1 .7-.7 1-2.4 1-2.4s.2-1.9.2-3.8V10c0-1.9-.3-3.8-.3-3.8zM9.7 14.8V8.4l6.5 3.2-6.5 3.2z"/>
+    </symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+    </symbol>
+    <symbol id="icon-facebook" viewBox="0 0 24 24">
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    </symbol>
+    <symbol id="icon-reddit" viewBox="0 0 24 24">
+      <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+    </symbol>
+    <symbol id="icon-linkedin" viewBox="0 0 24 24">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+    </symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 32 32">
+      <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.471 2.027 7.774L0 32l8.468-2.004A15.93 15.93 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.771-1.851l-.485-.288-5.027 1.189 1.224-4.895-.317-.503A13.234 13.234 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.878c-.398-.199-2.355-1.162-2.72-1.294-.366-.133-.632-.199-.899.199-.266.398-1.031 1.294-1.264 1.56-.233.266-.465.299-.863.1-.398-.2-1.681-.619-3.202-1.976-1.184-1.056-1.983-2.36-2.216-2.758-.233-.398-.025-.613.175-.811.18-.178.398-.465.597-.698.2-.233.266-.398.398-.664.133-.266.067-.498-.033-.697-.1-.2-.899-2.168-1.231-2.967-.324-.778-.653-.673-.899-.685l-.765-.013c-.266 0-.698.1-1.064.498-.366.398-1.397 1.365-1.397 3.328s1.43 3.86 1.629 4.127c.2.266 2.815 4.3 6.822 6.03.953.412 1.697.658 2.277.842.957.305 1.828.262 2.516.159.767-.115 2.355-.963 2.688-1.893.333-.93.333-1.727.233-1.893-.1-.166-.366-.266-.764-.465z"/>
+    </symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24">
+      <path d="M8 5v14l11-7z"/>
+    </symbol>
+  </svg>
+
   <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo"><img src="assets/logo.png" alt="JarcOnline">JARC<span>.ONLINE</span></a>
@@ -76,6 +110,7 @@
       <li><a href="#redes"><strong>Redes</strong></a></li>
       <li><a href="#contacto"><strong>Contacto</strong></a></li>
     </ul>
+    <a href="https://www.youtube.com/@jarconline7" target="_blank" rel="noopener noreferrer" class="nav-subscribe">Suscríbete</a>
     <button class="hamburger" id="hamburger" aria-label="Menú">
       <span></span><span></span><span></span>
     </button>
@@ -101,8 +136,7 @@
         <span class="accent2">ONLINE</span>
       </h1>
       <p class="hero-sub">
-        Creo contenido sobre <strong>Tecnología</strong>, tutoriales,
-        tips y herramientas digitales. Bienvenido a mi espacio en internet.
+        Aquí encontrarás tutoriales, tips y herramientas digitales explicados de forma sencilla y directa. Sin tecnicismos raros, sin rodeos. Si usas <strong>tecnología</strong> en tu día a día y quieres sacarle más partido, estás en el lugar correcto. Bienvenido a mi espacio en internet.
       </p>
       <div class="hero-ctas">
         <a href="#youtube" class="btn-primary">Ver mi canal</a>
@@ -113,19 +147,19 @@
     <!-- Redes flotantes -->
     <div class="hero-socials">
       <a href="https://www.youtube.com/@jarconline7" target="_blank" rel="noopener noreferrer" class="social-dot" title="YouTube">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23.5 6.2s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1C17.1 2.6 12 2.6 12 2.6s-5.1 0-8.1.2c-.5.1-1.5.1-2.4 1-.7.7-1 2.4-1 2.4S.3 8.1.3 10v1.8c0 1.9.2 3.8.2 3.8s.2 1.7 1 2.4c.9 1 2.1.9 2.6 1 1.9.2 8 .2 8 .2s5.1 0 8.1-.2c.5-.1 1.5-.1 2.4-1 .7-.7 1-2.4 1-2.4s.2-1.9.2-3.8V10c0-1.9-.3-3.8-.3-3.8zM9.7 14.8V8.4l6.5 3.2-6.5 3.2z"/></svg>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><use href="#icon-youtube"/></svg>
       </a>
       <a href="https://www.instagram.com/javier_rueda77/" target="_blank" rel="noopener noreferrer" class="social-dot" title="Instagram">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><use href="#icon-instagram"/></svg>
       </a>
       <a href="https://www.facebook.com/javier.ruedacifuentes/" target="_blank" rel="noopener noreferrer" class="social-dot" title="Facebook">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><use href="#icon-facebook"/></svg>
       </a>
       <a href="https://www.reddit.com/user/JarcOnline/" target="_blank" rel="noopener noreferrer" class="social-dot" title="Reddit">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><use href="#icon-reddit"/></svg>
       </a>
       <a href="https://www.linkedin.com/in/javier-antonio-rueda-cifuentes/" target="_blank" rel="noopener noreferrer" class="social-dot" title="LinkedIn">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><use href="#icon-linkedin"/></svg>
       </a>
     </div>
   </section>
@@ -161,9 +195,7 @@
         <div class="section-label"><span>Sobre mí</span></div>
         <h2 class="section-title">Creador de contenido <em>tech</em></h2>
         <p>
-          Soy <strong>Javier</strong>, creador de contenido enfocado en tecnología, apps y herramientas digitales.
-          En mi canal de YouTube encontrarás tutoriales prácticos, tips, herramientas y
-          cómo aprovechar DaVinci Resolve, trucos y mucho más.
+          Hola, soy <strong>Javier</strong>. Empecé a crear contenido porque me di cuenta de que mucha gente usa el celular y el computador todos los días sin aprovechar ni la mitad de lo que pueden hacer. Así nació el canal: tutoriales prácticos, tips de apps, herramientas digitales y guías de DaVinci Resolve explicadas de forma sencilla y directa. Sin tecnicismos, sin rodeos y siempre en español. Si buscas aprender a editar, descubrir nuevas herramientas o simplemente sacarle más jugo a la tecnología que ya tienes, aquí vas a encontrar lo que necesitas.
         </p>
         <p>
           Mi objetivo es hacer la tecnología accesible y útil para todos, sin complicaciones
@@ -172,7 +204,7 @@
         <div class="tags">
           <span class="tag">DaVinci Resolve</span>
           <span class="tag">Redes Sociales</span>
-          <span class="tag">Tecnología</span>
+          <span class="tag">Tecnología general</span>
           <span class="tag">Herramientas digitales</span>
           <span class="tag">Edición de video</span>
         </div>
@@ -188,7 +220,7 @@
         <h2 class="section-title">Contenido en <em>YouTube</em></h2>
       </div>
       <a href="https://www.youtube.com/@jarconline7" target="_blank" rel="noopener noreferrer" class="yt-channel-badge">
-        <svg class="yt-icon" viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1C17.1 2.6 12 2.6 12 2.6s-5.1 0-8.1.2c-.5.1-1.5.1-2.4 1-.7.7-1 2.4-1 2.4S.3 8.1.3 10v1.8c0 1.9.2 3.8.2 3.8s.2 1.7 1 2.4c.9 1 2.1.9 2.6 1 1.9.2 8 .2 8 .2s5.1 0 8.1-.2c.5-.1 1.5-.1 2.4-1 .7-.7 1-2.4 1-2.4s.2-1.9.2-3.8V10c0-1.9-.3-3.8-.3-3.8zM9.7 14.8V8.4l6.5 3.2-6.5 3.2z"/></svg>
+        <svg class="yt-icon" viewBox="0 0 24 24"><use href="#icon-youtube"/></svg>
         <strong>@jarconline7</strong> 
       </a>
     </div>
@@ -212,12 +244,12 @@ En este video te muestro cómo usar correctamente el Aochuan Smart XE, desde el 
              style="width:100%;height:100%;object-fit:cover;display:block;">
         <a class="yt-auto-link yt-play-btn" href="#" target="_blank" rel="noopener noreferrer">
           <div class="yt-play-circle">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><use href="#icon-play"/></svg>
           </div>
         </a>
       </div>
       <div class="yt-featured-info">
-        <span class="badge">⭐ Destacado</span>
+        <span class="badge">Destacado</span>
         <h3 class="yt-auto-title"></h3>
         <p class="yt-auto-desc"></p>
       </div>
@@ -228,8 +260,8 @@ En este video te muestro cómo usar correctamente el Aochuan Smart XE, desde el 
     <div class="yt-grid reveal">
       <!-- Tarjeta 1 — EDITA SOLO data-video-url y data-title -->
       <div class="yt-card"
-           data-video-url="https://youtu.be/ZKwasGcqSjM"
-           data-title="📱 Guía Completa para Limpiar tu Historial de Instagram Paso a Paso 😄">
+           data-video-url="https://youtu.be/5dv1NNyfM10"
+           data-title="📲 Esto es todo lo que usé para arrancar mi canal de YouTube 🔥">
         <div class="yt-thumb"><img class="yt-auto-thumb" alt="" loading="lazy"></div>
         <div class="yt-card-body">
           <div class="yt-card-title yt-auto-title"></div>
@@ -238,8 +270,8 @@ En este video te muestro cómo usar correctamente el Aochuan Smart XE, desde el 
       </div>
       <!-- Tarjeta 2 — EDITA SOLO data-video-url y data-title -->
       <div class="yt-card"
-           data-video-url="https://youtu.be/FAkmORwdnJM"
-           data-title="📚 Así Funciona Ducker de DaVinci Resolve y Por Qué Deberías Usarlo 🎚️">
+           data-video-url="https://youtu.be/ZKwasGcqSjM"
+           data-title="📱 Guía Completa para Limpiar tu Historial de Instagram Paso a Paso 😄">
         <div class="yt-thumb"><img class="yt-auto-thumb" alt="" loading="lazy"></div>
         <div class="yt-card-body">
           <div class="yt-card-title yt-auto-title"></div>
@@ -293,7 +325,7 @@ En este video te muestro cómo usar correctamente el Aochuan Smart XE, desde el 
     <div class="social-grid reveal">
       <a href="https://www.youtube.com/@jarconline7" target="_blank" rel="noopener noreferrer" class="social-card" data-net="youtube">
         <div class="social-icon">
-          <svg viewBox="0 0 24 24" width="32" height="32" fill="#ff0000"><path d="M23.5 6.2s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1C17.1 2.6 12 2.6 12 2.6s-5.1 0-8.1.2c-.5.1-1.5.1-2.4 1-.7.7-1 2.4-1 2.4S.3 8.1.3 10v1.8c0 1.9.2 3.8.2 3.8s.2 1.7 1 2.4c.9 1 2.1.9 2.6 1 1.9.2 8 .2 8 .2s5.1 0 8.1-.2c.5-.1 1.5-.1 2.4-1 .7-.7 1-2.4 1-2.4s.2-1.9.2-3.8V10c0-1.9-.3-3.8-.3-3.8zM9.7 14.8V8.4l6.5 3.2-6.5 3.2z"/></svg>
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="#ff0000"><use href="#icon-youtube"/></svg>
         </div>
         <div class="social-name">YouTube</div>
         <div class="social-handle">@jarconline7</div>
@@ -301,7 +333,18 @@ En este video te muestro cómo usar correctamente el Aochuan Smart XE, desde el 
       </a>
       <a href="https://www.instagram.com/javier_rueda77/" target="_blank" rel="noopener noreferrer" class="social-card" data-net="instagram">
         <div class="social-icon">
-          <svg viewBox="0 0 24 24" width="32" height="32" fill="url(#igGrad)"><defs><linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#f09433"/><stop offset="25%" style="stop-color:#e6683c"/><stop offset="50%" style="stop-color:#dc2743"/><stop offset="75%" style="stop-color:#cc2366"/><stop offset="100%" style="stop-color:#bc1888"/></linearGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <svg viewBox="0 0 24 24" width="32" height="32">
+            <defs>
+              <linearGradient id="igGradCard" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%"   stop-color="#f09433"/>
+                <stop offset="25%"  stop-color="#e6683c"/>
+                <stop offset="50%"  stop-color="#dc2743"/>
+                <stop offset="75%"  stop-color="#cc2366"/>
+                <stop offset="100%" stop-color="#bc1888"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#igGradCard)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
         </div>
         <div class="social-name">Instagram</div>
         <div class="social-handle">@javier_rueda77</div>
@@ -309,7 +352,7 @@ En este video te muestro cómo usar correctamente el Aochuan Smart XE, desde el 
       </a>
       <a href="https://www.facebook.com/javier.ruedacifuentes/" target="_blank" rel="noopener noreferrer" class="social-card" data-net="facebook">
         <div class="social-icon">
-          <svg viewBox="0 0 24 24" width="32" height="32" fill="#1877f2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="#1877f2"><use href="#icon-facebook"/></svg>
         </div>
         <div class="social-name">Facebook</div>
         <div class="social-handle">javier.ruedacifuentes</div>
@@ -317,7 +360,7 @@ En este video te muestro cómo usar correctamente el Aochuan Smart XE, desde el 
       </a>
       <a href="https://www.reddit.com/user/JarcOnline/" target="_blank" rel="noopener noreferrer" class="social-card" data-net="reddit">
         <div class="social-icon">
-          <svg viewBox="0 0 24 24" width="32" height="32" fill="#ff4500"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="#ff4500"><use href="#icon-reddit"/></svg>
         </div>
         <div class="social-name">Reddit</div>
         <div class="social-handle">u/JarcOnline</div>
@@ -325,7 +368,7 @@ En este video te muestro cómo usar correctamente el Aochuan Smart XE, desde el 
       </a>
       <a href="https://www.linkedin.com/in/javier-antonio-rueda-cifuentes/" target="_blank" rel="noopener noreferrer" class="social-card" data-net="linkedin">
         <div class="social-icon">
-          <svg viewBox="0 0 24 24" width="32" height="32" fill="#0a66c2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="#0a66c2"><use href="#icon-linkedin"/></svg>
         </div>
         <div class="social-name">LinkedIn</div>
         <div class="social-handle">Javier Rueda Cifuentes</div>
@@ -357,9 +400,7 @@ En este video te muestro cómo usar correctamente el Aochuan Smart XE, desde el 
 
   <!-- WHATSAPP FLOAT -->
   <a href="https://wa.me/573229426949" target="_blank" rel="noopener noreferrer" class="wa-float" title="Escríbeme por WhatsApp">
-    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.471 2.027 7.774L0 32l8.468-2.004A15.93 15.93 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.771-1.851l-.485-.288-5.027 1.189 1.224-4.895-.317-.503A13.234 13.234 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.878c-.398-.199-2.355-1.162-2.72-1.294-.366-.133-.632-.199-.899.199-.266.398-1.031 1.294-1.264 1.56-.233.266-.465.299-.863.1-.398-.2-1.681-.619-3.202-1.976-1.184-1.056-1.983-2.36-2.216-2.758-.233-.398-.025-.613.175-.811.18-.178.398-.465.597-.698.2-.233.266-.398.398-.664.133-.266.067-.498-.033-.697-.1-.2-.899-2.168-1.231-2.967-.324-.778-.653-.673-.899-.685l-.765-.013c-.266 0-.698.1-1.064.498-.366.398-1.397 1.365-1.397 3.328s1.43 3.86 1.629 4.127c.2.266 2.815 4.3 6.822 6.03.953.412 1.697.658 2.277.842.957.305 1.828.262 2.516.159.767-.115 2.355-.963 2.688-1.893.333-.93.333-1.727.233-1.893-.1-.166-.366-.266-.764-.465z"/>
-    </svg>
+    <svg viewBox="0 0 32 32"><use href="#icon-whatsapp"/></svg>
   </a>
 
   <!-- FOOTER -->

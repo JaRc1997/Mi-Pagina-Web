@@ -105,7 +105,7 @@ const PRODUCTOS = [
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c3DMAipJ",
     emoji: "🎯",
-    badge: "Nuevo"
+    badge: ""
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Saf71161e1ad14c0cbf58e13244768e058.jpg_220x220q75.jpg_.avif",
@@ -115,7 +115,7 @@ const PRODUCTOS = [
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c4miOBCp",
     emoji: "🎙️",
-    badge: "Nuevo"
+    badge: ""
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S34a67cde07964fe391a5234066219bd5E.jpg_220x220q75.jpg_.avif",
@@ -125,7 +125,7 @@ const PRODUCTOS = [
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c4WxISNR",
     emoji: "🎤",
-    badge: "Nuevo"
+    badge: ""
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S9ba0ccf875b24180ae53c1078641cf65A.jpg_220x220q75.jpg_.avif",
@@ -135,7 +135,7 @@ const PRODUCTOS = [
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c4Xdb9w5",
     emoji: "🎚️",
-    badge: "Nuevo"
+    badge: ""
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S08f7c8e1b32d43bc83d09977d280e0341.png_220x220.png_.avif",
@@ -145,7 +145,7 @@ const PRODUCTOS = [
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c3APtmDP",
     emoji: "⌨️",
-    badge: "Nuevo"
+    badge: ""
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S82e25f42535a4175b38f843e95a8abeaV.jpg_220x220q75.jpg_.avif",
@@ -155,7 +155,7 @@ const PRODUCTOS = [
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c3Dzgjs1",
     emoji: "📸",
-    badge: "Nuevo"
+    badge: ""
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S0543cb41a08244639e28b32945bca00cV.png_220x220.png_.avif",
@@ -165,7 +165,7 @@ const PRODUCTOS = [
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c4XMwJq9",
     emoji: "💡",
-    badge: "Nuevo"
+    badge: ""
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S7406d1dbac254c08a076bcba424b8ef1n.jpg_220x220q75.jpg_.avif",
@@ -175,7 +175,7 @@ const PRODUCTOS = [
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c3Tdh4vB",
     emoji: "🌈",
-    badge: "Nuevo"
+    badge: ""
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S96b9049b40de45fdbd52a46f059371cfy.jpg_220x220q75.jpg_.avif",
@@ -185,7 +185,7 @@ const PRODUCTOS = [
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c35pDYIh",
     emoji: "💾",
-    badge: "Nuevo"
+    badge: ""
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Sc994123d4c744c1894d285d743b26647L.jpg_220x220q75.jpg_.avif",
@@ -205,7 +205,7 @@ const PRODUCTOS = [
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c2xdQ1fB",
     emoji: "🔋",
-    badge: "Nuevo"
+    badge: ""
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Sc10b0c87150b43e7a40bd02306283f76s.jpg?has_lang=1&ver=2_220x220q75.jpg_.avif",
@@ -215,7 +215,7 @@ const PRODUCTOS = [
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c4TSIQ2D",
     emoji: "⚡",
-    badge: "Nuevo"
+    badge: ""
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S2dfceed772c64345aaaed3104b4aa632l.jpg_220x220q75.jpg_.avif",
@@ -228,14 +228,14 @@ const PRODUCTOS = [
     badge: ""
   },
   {
-    imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Saab0deb47a4842a2aff216309ca68c67V.jpg_220x220q75.jpg_.avif",
+    imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S8a5fd29e363b4d018c1a7038cbfcb8aaX.jpg?has_lang=1&ver=2_220x220q75.jpg_.avif",
     nombre: "KZ EDX PRO X",
     cat: "audio",
-    desc: "Auriculares de unidad dinámica Hi-Fi con bajos potentes, diseño metálico deportivo y cable desmontable 2PIN.",
+    desc: "KZ EDX PRO 10mm circuito magnético Dual unidad dinámica auricular HIFI bajo auricular deporte cancelación de ruido auriculares KZ ZSTX ZSN PRO ZAS",
     precio: "",
-    link: "https://s.click.aliexpress.com/e/_c3Gn9Jlb",
+    link: "https://s.click.aliexpress.com/e/_c4kAf8dL",
     emoji: "🎧",
-    badge: ""
+    badge: "Nuevo"
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Sf98c3dbaa34540a99441e48e573c4494U.jpg_220x220q75.jpg_.avif",
