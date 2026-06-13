@@ -66,7 +66,7 @@
       <li><a href="index.html#redes">Redes</a></li>
       <li><a href="index.html#contacto">Contacto</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menú">
+    <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false" aria-controls="navOverlay">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -122,9 +122,14 @@
           <span class="service-tag">YouTube</span>
           <span class="service-tag">Redes sociales</span>
         </div>
-        <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Edición de video" class="btn-contact-service">
-          Consultar servicio
-        </a>
+        <div class="service-actions">
+          <a href="https://wa.me/573229426949?text=Hola%20Javier%2C%20me%20interesa%20el%20servicio%20de%20edici%C3%B3n%20de%20video" target="_blank" rel="noopener noreferrer" class="btn-wa-service">
+            Consultar por WhatsApp
+          </a>
+          <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Edición de video" class="btn-contact-service">
+            Email
+          </a>
+        </div>
       </div>
 
       <!-- Tarjeta 2 -->
@@ -143,9 +148,14 @@
           <span class="service-tag">Instagram</span>
           <span class="service-tag">CTR</span>
         </div>
-        <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Thumbnails" class="btn-contact-service">
-          Consultar servicio
-        </a>
+        <div class="service-actions">
+          <a href="https://wa.me/573229426949?text=Hola%20Javier%2C%20me%20interesan%20las%20miniaturas%20para%20YouTube" target="_blank" rel="noopener noreferrer" class="btn-wa-service">
+            Consultar por WhatsApp
+          </a>
+          <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Thumbnails" class="btn-contact-service">
+            Email
+          </a>
+        </div>
       </div>
 
       <!-- Tarjeta 3 -->
@@ -165,9 +175,14 @@
           <span class="service-tag">Shorts</span>
           <span class="service-tag">Vertical</span>
         </div>
-        <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Contenido para redes" class="btn-contact-service">
-          Consultar servicio
-        </a>
+        <div class="service-actions">
+          <a href="https://wa.me/573229426949?text=Hola%20Javier%2C%20me%20interesa%20el%20servicio%20de%20contenido%20para%20redes" target="_blank" rel="noopener noreferrer" class="btn-wa-service">
+            Consultar por WhatsApp
+          </a>
+          <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Contenido para redes" class="btn-contact-service">
+            Email
+          </a>
+        </div>
       </div>
 
     </div>
@@ -201,9 +216,14 @@
           <span class="service-tag">Portafolio</span>
           <span class="service-tag">Creadores</span>
         </div>
-        <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Web personal" class="btn-contact-service">
-          Consultar servicio
-        </a>
+        <div class="service-actions">
+          <a href="https://wa.me/573229426949?text=Hola%20Javier%2C%20me%20interesa%20una%20web%20personal%20o%20portafolio" target="_blank" rel="noopener noreferrer" class="btn-wa-service">
+            Consultar por WhatsApp
+          </a>
+          <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Web personal" class="btn-contact-service">
+            Email
+          </a>
+        </div>
       </div>
 
       <!-- Tarjeta 5 -->
@@ -223,9 +243,14 @@
           <span class="service-tag">CTA</span>
           <span class="service-tag">Leads</span>
         </div>
-        <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Landing page" class="btn-contact-service">
-          Consultar servicio
-        </a>
+        <div class="service-actions">
+          <a href="https://wa.me/573229426949?text=Hola%20Javier%2C%20me%20interesa%20una%20landing%20page" target="_blank" rel="noopener noreferrer" class="btn-wa-service">
+            Consultar por WhatsApp
+          </a>
+          <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Landing page" class="btn-contact-service">
+            Email
+          </a>
+        </div>
       </div>
 
       <!-- Tarjeta 6 -->
@@ -245,10 +270,98 @@
           <span class="service-tag">Afiliados</span>
           <span class="service-tag">A medida</span>
         </div>
-        <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Sitio para creadores" class="btn-contact-service">
-          Consultar servicio
-        </a>
+        <div class="service-actions">
+          <a href="https://wa.me/573229426949?text=Hola%20Javier%2C%20me%20interesa%20un%20sitio%20web%20para%20creadores" target="_blank" rel="noopener noreferrer" class="btn-wa-service">
+            Consultar por WhatsApp
+          </a>
+          <a href="mailto:Rueda3062@gmail.com?subject=Servicio: Sitio para creadores" class="btn-contact-service">
+            Email
+          </a>
+        </div>
       </div>
+
+    </div>
+  </section>
+
+  <!-- PORTAFOLIO - Casos de trabajo
+       Cada proyecto va UNA sola vez. Para agregar uno nuevo copia un bloque
+       <a class="portfolio-item"> completo y cambia imagen, textos y link.
+       La clase extra "portfolio-featured" hace que la tarjeta ocupe doble ancho. -->
+  <section id="portafolio" class="section-alt">
+    <div class="section-label reveal"><span>Trabajos recientes</span></div>
+    <h2 class="section-title reveal">Esto es lo que <em>entrego</em></h2>
+    <p class="section-sub reveal">
+      Proyectos reales, no promesas. Haz clic en cualquiera para verlo en vivo.
+    </p>
+    <div class="portfolio-grid reveal">
+
+      <!-- Proyecto destacado: este sitio web -->
+      <a class="portfolio-item portfolio-featured" href="https://jarconline.com" target="_blank" rel="noopener noreferrer">
+        <img src="assets/portafolio/web-1.png" alt="Sitio web JarcOnline.com diseñado y desarrollado desde cero" loading="lazy">
+        <div class="portfolio-body">
+          <span class="portfolio-tag">Proyecto web</span>
+          <h3 class="portfolio-title">JarcOnline.com</h3>
+          <p class="portfolio-desc">
+            Este mismo sitio: diseñado y programado desde cero, sin plantillas ni
+            suscripciones mensuales. Incluye catálogo de productos, recursos
+            descargables, SEO técnico y analítica.
+          </p>
+          <div class="service-tags">
+            <span class="service-tag">HTML/CSS/JS</span>
+            <span class="service-tag">SEO</span>
+            <span class="service-tag">Responsive</span>
+          </div>
+          <span class="portfolio-link">Lo estás navegando ahora mismo</span>
+        </div>
+      </a>
+
+      <!-- Miniatura: Fuentes gratis -->
+      <a class="portfolio-item" href="https://youtu.be/CJp-QWyVnD4" target="_blank" rel="noopener noreferrer">
+        <img src="assets/portafolio/miniatura-16.jpg" alt="Miniatura diseñada para video de DaVinci Resolve" loading="lazy">
+        <div class="portfolio-body">
+          <span class="portfolio-tag">Miniatura</span>
+          <h3 class="portfolio-title">Fuentes gratis en segundos</h3>
+          <p class="portfolio-desc">
+            Diseño de miniatura para video de DaVinci Resolve: texto de alto
+            contraste y composición pensada para CTR.
+          </p>
+          <span class="portfolio-link">Ver el video</span>
+        </div>
+      </a>
+
+      <!-- Edición: video de equipo -->
+      <a class="portfolio-item" href="https://youtu.be/5dv1NNyfM10" target="_blank" rel="noopener noreferrer">
+        <img src="assets/portafolio/miniatura-4.png" alt="Fotografía de equipo para video de YouTube" loading="lazy">
+        <div class="portfolio-body">
+          <span class="portfolio-tag">Edición de video</span>
+          <h3 class="portfolio-title">Mi equipo para crear contenido</h3>
+          <p class="portfolio-desc">
+            Video completo editado en DaVinci Resolve: cortes, transiciones,
+            color y fotografía de producto propia.
+          </p>
+          <span class="portfolio-link">Ver el video</span>
+        </div>
+      </a>
+
+      <!-- Plantilla para tu SaaS: guarda el pantallazo en assets/portafolio/,
+           cambia URL, imagen y textos, y descomenta este bloque.
+
+      <a class="portfolio-item portfolio-featured" href="https://URL-DE-TU-SAAS.com" target="_blank" rel="noopener noreferrer">
+        <img src="assets/portafolio/saas-1.png" alt="Aplicación web desarrollada por JarcOnline" loading="lazy">
+        <div class="portfolio-body">
+          <span class="portfolio-tag">Aplicación web</span>
+          <h3 class="portfolio-title">Nombre de tu SaaS</h3>
+          <p class="portfolio-desc">
+            Qué hace, para quién es y qué construiste tú (frontend, diseño, etc).
+          </p>
+          <div class="service-tags">
+            <span class="service-tag">SaaS</span>
+            <span class="service-tag">Web app</span>
+          </div>
+          <span class="portfolio-link">Ver proyecto →</span>
+        </div>
+      </a>
+      -->
 
     </div>
   </section>

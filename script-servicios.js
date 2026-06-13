@@ -14,12 +14,14 @@ if (hamburger && navOverlay) {
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('open');
     navOverlay.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', hamburger.classList.contains('open'));
     document.body.style.overflow = navOverlay.classList.contains('open') ? 'hidden' : '';
   });
   navOverlay.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       hamburger.classList.remove('open');
       navOverlay.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     });
   });
