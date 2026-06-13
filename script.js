@@ -46,23 +46,21 @@ function initYouTubeThumbnails() {
       }
       const titleEl = card.querySelector('.yt-auto-title');
       if (titleEl) titleEl.textContent = title;
-      // Las tarjetas son enlaces reales: funcionan con teclado y "abrir en pestana nueva"
-      card.href = url;
+      card.addEventListener('click', () => window.open(url, '_blank'));
     }
   });
 }
 
 initYouTubeThumbnails();
 
-// Toggle de los videos adicionales (el destacado siempre esta visible)
+// Toggle de la seccion de YouTube
 const ytBtn = document.getElementById('ytToggleBtn');
 const ytPanel = document.getElementById('ytCollapsible');
 if (ytBtn && ytPanel) {
   ytBtn.addEventListener('click', () => {
-    const abierto = ytPanel.classList.toggle('open');
-    ytBtn.classList.toggle('open', abierto);
-    ytBtn.setAttribute('aria-expanded', abierto);
-    ytBtn.childNodes[0].textContent = abierto ? 'Ocultar videos ' : 'Ver más videos ';
+    ytBtn.classList.toggle('open');
+    ytPanel.classList.toggle('open');
+    ytBtn.childNodes[0].textContent = ytPanel.classList.contains('open') ? 'Ocultar contenido ' : 'Ver contenido ';
   });
 }
 
@@ -73,14 +71,12 @@ if (hamburger && navOverlay) {
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('open');
     navOverlay.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', hamburger.classList.contains('open'));
     document.body.style.overflow = navOverlay.classList.contains('open') ? 'hidden' : '';
   });
   navOverlay.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       hamburger.classList.remove('open');
       navOverlay.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     });
   });
@@ -155,11 +151,11 @@ const PRODUCTOS = [
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S82e25f42535a4175b38f843e95a8abeaV.jpg_220x220q75.jpg_.avif",
     nombre: "AOCHUAN SmartXE",
     cat: "movil",
-    desc: "Estabilizador gimbal portátil de 3 ejes para iPhone y Android con IA de seguimiento facial. Ideal para TikTok y Vlog. Tengo video tutorial en el canal.",
+    desc: "Estabilizador gimbal portátil de 3 ejes para iPhone y Android con IA de seguimiento facial. Ideal para TikTok y Vlog.",
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c3Dzgjs1",
     emoji: "📸",
-    badge: "Popular"
+    badge: ""
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S0543cb41a08244639e28b32945bca00cV.png_220x220.png_.avif",
@@ -235,7 +231,7 @@ const PRODUCTOS = [
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S8a5fd29e363b4d018c1a7038cbfcb8aaX.jpg?has_lang=1&ver=2_220x220q75.jpg_.avif",
     nombre: "KZ EDX PRO X",
     cat: "audio",
-    desc: "Auriculares in-ear Hi-Fi con driver dinámico de 10mm y bajos potentes. Cable desmontable y aislamiento de ruido, ideales para monitorear audio al editar.",
+    desc: "KZ EDX PRO 10mm circuito magnético Dual unidad dinámica auricular HIFI bajo auricular deporte cancelación de ruido auriculares KZ ZSTX ZSN PRO ZAS",
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c4kAf8dL",
     emoji: "🎧",
@@ -303,26 +299,20 @@ const PRODUCTOS = [
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S3ac20bdf7b2442c8879c0eca746c9529v.jpg_220x220q75.jpg_.avif",
-    nombre: "Soporte de monitor NB F80",
+    nombre: "NB nuevo F80 17-30",
     cat: "accesorios",
-    desc: "Brazo articulado con pistón de gas para monitores de 17 a 30 pulgadas. Libera espacio en el escritorio y ajustas altura y ángulo sin esfuerzo.",
+    desc: "NB nuevo F80 17-30 2-9kg doble brazo prensa de aire resorte de gas vesa 100x100 monitor soporte de escritorio abrazadera ojal base soporte de escritorio para PC",
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c3zoHnC9",
-    emoji: "🖥️",
+    emoji: "📱",
     badge: "Nuevo"
   }
 ];
 
-// Cuantos productos se muestran antes del boton "Ver todas"
-const PRODUCTOS_VISIBLES = 6;
-let filtroActual = 'todos';
-let mostrarTodos = false;
-
-function renderProductos() {
+function renderProductos(filtro = 'todos') {
   const grid = document.getElementById('productsGrid');
-  const filtered = filtroActual === 'todos' ? PRODUCTOS : PRODUCTOS.filter(p => p.cat === filtroActual);
-  const lista = mostrarTodos ? filtered : filtered.slice(0, PRODUCTOS_VISIBLES);
-  grid.innerHTML = lista.map(p => `
+  const filtered = filtro === 'todos' ? PRODUCTOS : PRODUCTOS.filter(p => p.cat === filtro);
+  grid.innerHTML = filtered.map(p => `
     <div class="product-card" data-cat="${p.cat}">
       <div class="product-img">
         ${p.imagen
@@ -348,21 +338,6 @@ function renderProductos() {
     card.style.opacity = '1';
     card.style.transform = 'none';
   });
-
-  // Boton "Ver todas": solo aparece si hay mas productos que el limite
-  const btn = document.getElementById('toggleProducts');
-  if (btn) {
-    const label = btn.querySelector('span');
-    const ocultos = filtered.length - PRODUCTOS_VISIBLES;
-    btn.style.display = ocultos > 0 ? '' : 'none';
-    btn.classList.toggle('open', mostrarTodos);
-    btn.setAttribute('aria-expanded', mostrarTodos);
-    if (label) {
-      label.textContent = mostrarTodos
-        ? 'Mostrar menos'
-        : `Ver todas las recomendaciones (${filtered.length})`;
-    }
-  }
 }
 
 function initProductos() {
@@ -371,26 +346,26 @@ function initProductos() {
     btn.addEventListener('click', () => {
       document.querySelectorAll('#productsFilter .filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      filtroActual = btn.dataset.filter;
-      renderProductos();
+      renderProductos(btn.dataset.filter);
     });
   });
-  const toggleBtn = document.getElementById('toggleProducts');
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      mostrarTodos = !mostrarTodos;
-      renderProductos();
-      // Al contraer, vuelve al inicio de la seccion para no dejar al usuario perdido
-      if (!mostrarTodos) {
-        document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  }
 }
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initProductos);
 } else {
   initProductos();
+}
+
+// Toggle del panel de productos
+const toggleBtn = document.getElementById('toggleProducts');
+const productsPanel = document.getElementById('productsCollapse');
+if (toggleBtn && productsPanel) {
+  const toggleLabel = toggleBtn.querySelector('span');
+  toggleBtn.addEventListener('click', () => {
+    const isOpen = productsPanel.classList.toggle('open');
+    toggleBtn.classList.toggle('open', isOpen);
+    toggleLabel.textContent = isOpen ? 'Ocultar recomendaciones' : 'Ver recomendaciones';
+  });
 }
 
 // El canvas animado de puntos vive en dot-canvas.js para reutilizarlo en todas las paginas

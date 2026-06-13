@@ -22,9 +22,6 @@
     }
   }
 
-  // Si el usuario prefiere menos movimiento, se dibuja un solo cuadro estatico
-  const reducirMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   function draw() {
     const t = performance.now() * 0.001 * VELOCIDAD;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -38,10 +35,10 @@
       ctx.fillStyle = 'rgba(255,255,255,' + alpha + ')';
       ctx.fill();
     }
-    if (!reducirMovimiento) requestAnimationFrame(draw);
+    requestAnimationFrame(draw);
   }
 
-  window.addEventListener('resize', () => { resize(); if (reducirMovimiento) draw(); });
+  window.addEventListener('resize', resize);
   resize();
   draw();
 })();

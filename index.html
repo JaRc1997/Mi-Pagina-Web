@@ -111,7 +111,7 @@
       <li><a href="#contacto"><strong>Contacto</strong></a></li>
     </ul>
     <a href="https://www.youtube.com/@jarconline7" target="_blank" rel="noopener noreferrer" class="nav-subscribe">Suscríbete</a>
-    <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false" aria-controls="navOverlay">
+    <button class="hamburger" id="hamburger" aria-label="Menú">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -225,7 +225,15 @@
       </a>
     </div>
 
-    <!-- Video destacado siempre visible: para cambiarlo modifica data-video-url -->
+    <div style="text-align:center;">
+      <button class="yt-toggle-btn" id="ytToggleBtn">
+        Ver contenido <span class="yt-arrow">▼</span>
+      </button>
+    </div>
+
+    <div class="yt-collapsible" id="ytCollapsible">
+    <!-- Video destacado -->
+    <!-- Video destacado: para cambiarlo modifica data-video-url -->
     <div class="yt-featured reveal"
          data-video-url="https://youtu.be/6FgmTYIs8Xc"
          data-title="🎥 Cómo usar el gimbal Aochuan Smart XE Evita errores comunes"
@@ -247,46 +255,39 @@ En este video te muestro cómo usar correctamente el Aochuan Smart XE, desde el 
       </div>
     </div>
 
-    <!-- Videos adicionales: ocultos hasta pulsar el boton -->
-    <div style="text-align:center;">
-      <button class="yt-toggle-btn" id="ytToggleBtn" aria-expanded="false" aria-controls="ytCollapsible">
-        Ver más videos <span class="yt-arrow">▼</span>
-      </button>
-    </div>
-
-    <div class="yt-collapsible" id="ytCollapsible">
+    <!-- Grid de videos -->
     <!-- Grid de videos: edita data-video-url y data-title de cada tarjeta -->
     <div class="yt-grid reveal">
       <!-- Tarjeta 1 — EDITA SOLO data-video-url y data-title -->
-      <a class="yt-card" href="#" target="_blank" rel="noopener noreferrer"
-         data-video-url="https://youtu.be/5dv1NNyfM10"
-         data-title="📲 Esto es todo lo que usé para arrancar mi canal de YouTube 🔥">
+      <div class="yt-card"
+           data-video-url="https://youtu.be/5dv1NNyfM10"
+           data-title="📲 Esto es todo lo que usé para arrancar mi canal de YouTube 🔥">
         <div class="yt-thumb"><img class="yt-auto-thumb" alt="" loading="lazy"></div>
         <div class="yt-card-body">
           <div class="yt-card-title yt-auto-title"></div>
           <div class="yt-card-meta">Ver en YouTube →</div>
         </div>
-      </a>
+      </div>
       <!-- Tarjeta 2 — EDITA SOLO data-video-url y data-title -->
-      <a class="yt-card" href="#" target="_blank" rel="noopener noreferrer"
-         data-video-url="https://youtu.be/ZKwasGcqSjM"
-         data-title="📱 Guía Completa para Limpiar tu Historial de Instagram Paso a Paso 😄">
+      <div class="yt-card"
+           data-video-url="https://youtu.be/ZKwasGcqSjM"
+           data-title="📱 Guía Completa para Limpiar tu Historial de Instagram Paso a Paso 😄">
         <div class="yt-thumb"><img class="yt-auto-thumb" alt="" loading="lazy"></div>
         <div class="yt-card-body">
           <div class="yt-card-title yt-auto-title"></div>
           <div class="yt-card-meta">Ver en YouTube →</div>
         </div>
-      </a>
+      </div>
       <!-- Tarjeta 3 — EDITA SOLO data-video-url y data-title -->
-      <a class="yt-card" href="#" target="_blank" rel="noopener noreferrer"
-         data-video-url="https://youtu.be/lkB9c4UfDFM"
-         data-title="🎶 Flow Music la IA de Google que crea canciones desde cero 🚀">
+      <div class="yt-card"
+           data-video-url="https://youtu.be/lkB9c4UfDFM"
+           data-title="🎶 Flow Music la IA de Google que crea canciones desde cero 🚀">
         <div class="yt-thumb"><img class="yt-auto-thumb" alt="" loading="lazy"></div>
         <div class="yt-card-body">
           <div class="yt-card-title yt-auto-title"></div>
           <div class="yt-card-meta">Ver en YouTube →</div>
         </div>
-      </a>
+      </div>
     </div>
     </div><!-- fin yt-collapsible -->
   </section>
@@ -300,31 +301,20 @@ En este video te muestro cómo usar correctamente el Aochuan Smart XE, desde el 
       me apoyas a seguir creando sin costo adicional para ti.
     </p>
 
-    <div class="products-filter reveal" id="productsFilter">
-      <button class="filter-btn active" data-filter="todos">Todos</button>
-      <button class="filter-btn" data-filter="audio">Audio</button>
-      <button class="filter-btn" data-filter="movil">Móvil</button>
-      <button class="filter-btn" data-filter="accesorios">Accesorios</button>
-      <button class="filter-btn" data-filter="video">Video</button>
-    </div>
-    <div class="products-grid" id="productsGrid"></div>
-    <div class="products-more-wrap">
-      <button class="btn-toggle-products" id="toggleProducts" aria-expanded="false">
-        <span>Ver todas las recomendaciones</span>
-        <em class="toggle-icon">▼</em>
-      </button>
-    </div>
-  </section>
+    <button class="btn-toggle-products reveal" id="toggleProducts">
+      <span>Ver recomendaciones</span>
+      <em class="toggle-icon">▼</em>
+    </button>
 
-  <!-- BANDA DE SERVICIOS: puente hacia servicios.html -->
-  <section id="servicios-banner" class="services-band-section">
-    <div class="services-band reveal">
-      <div class="services-band-text">
-        <div class="section-label"><span>Trabajemos juntos</span></div>
-        <h2 class="services-band-title">¿Necesitas <em>edición de video</em>, miniaturas o una <em>página web</em>?</h2>
-        <p>También ofrezco servicios para creadores, marcas y emprendedores.</p>
+    <div class="products-collapse" id="productsCollapse">
+      <div class="products-filter" id="productsFilter">
+        <button class="filter-btn active" data-filter="todos">Todos</button>
+        <button class="filter-btn" data-filter="audio">Audio</button>
+        <button class="filter-btn" data-filter="movil">Móvil</button>
+        <button class="filter-btn" data-filter="accesorios">Accesorios</button>
+        <button class="filter-btn" data-filter="video">Video</button>
       </div>
-      <a href="servicios.html" class="btn-primary">Ver servicios</a>
+      <div class="products-grid" id="productsGrid"></div>
     </div>
   </section>
 
@@ -416,7 +406,7 @@ En este video te muestro cómo usar correctamente el Aochuan Smart XE, desde el 
   <!-- FOOTER -->
   <footer>
     <a href="#" class="nav-logo"><img src="assets/logo.png" alt="JarcOnline">JARC<span>.ONLINE</span></a>
-    <p>© 2026 JARCONLINE. Todos los derechos reservados.</p>
+    <p>© 2026 JARCONLINE.Todos los derechos reservados.</p>
   </footer>
 
   <script src="dot-canvas.js" defer></script>
