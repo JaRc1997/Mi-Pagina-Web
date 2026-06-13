@@ -279,7 +279,7 @@ nav {
 .hero-socials {
   position: absolute;
   right: 4rem;
-  top: 50%;
+  top: 20%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
@@ -318,7 +318,7 @@ section { position: relative; padding: 6rem 4rem; z-index: 1; }
 }
 .section-label span {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -409,7 +409,7 @@ section { position: relative; padding: 6rem 4rem; z-index: 1; }
   font-weight: 700;
   letter-spacing: -1px;
 }
-.stat-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); margin-top: 0.2rem; }
+.stat-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); margin-top: 0.2rem; }
 
 .about-text p {
   color: var(--muted);
@@ -536,7 +536,7 @@ section { position: relative; padding: 6rem 4rem; z-index: 1; }
   border: 1px solid rgba(200,255,0,0.25);
   color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -580,7 +580,7 @@ section { position: relative; padding: 6rem 4rem; z-index: 1; }
 .yt-thumb img { width: 100%; height: 100%; object-fit: cover; }
 .yt-card-body { padding: 1rem 1.1rem; }
 .yt-card-title { font-size: 0.85rem; font-weight: 500; line-height: 1.5; margin-bottom: 0.4rem; color: var(--text); }
-.yt-card-meta { font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); }
+.yt-card-meta { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); }
 
 /* products */
 .products-intro {
@@ -618,13 +618,8 @@ section { position: relative; padding: 6rem 4rem; z-index: 1; }
 }
 .btn-toggle-products.open .toggle-icon { transform: rotate(180deg); }
 
-.products-collapse {
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.55s ease, opacity 0.4s ease;
-}
-.products-collapse.open { max-height: 9000px; opacity: 1; }
+.products-more-wrap { text-align: center; margin-top: 2.5rem; }
+.products-more-wrap .btn-toggle-products { margin-bottom: 0; }
 
 .products-filter {
   display: flex;
@@ -682,7 +677,7 @@ section { position: relative; padding: 6rem 4rem; z-index: 1; }
   top: 10px; left: 10px;
   background: #16a34a;
   color: #fff;
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.8px;
   text-transform: uppercase;
@@ -692,7 +687,7 @@ section { position: relative; padding: 6rem 4rem; z-index: 1; }
 .product-badge.hot { background: var(--accent); color: var(--bg); }
 
 .product-body { padding: 1.2rem; }
-.product-cat { font-family: var(--font-mono); font-size: 0.62rem; color: var(--accent); font-weight: 500; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.4rem; }
+.product-cat { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); font-weight: 500; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.4rem; }
 .product-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.35rem; line-height: 1.4; color: var(--text); }
 .product-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
 .product-footer { display: flex; align-items: center; justify-content: space-between; }
@@ -742,7 +737,7 @@ section { position: relative; padding: 6rem 4rem; z-index: 1; }
 .social-arrow {
   margin-top: auto;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   color: var(--muted);
   display: flex;
   align-items: center;
@@ -850,7 +845,7 @@ section { position: relative; padding: 6rem 4rem; z-index: 1; }
 .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .service-tag {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   color: var(--muted);
   background: var(--bg2);
   border: 1px solid var(--border);
@@ -902,7 +897,7 @@ section { position: relative; padding: 6rem 4rem; z-index: 1; }
 }
 .step-num {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   color: var(--accent);
   letter-spacing: 1px;
 }
@@ -1116,8 +1111,8 @@ footer a span { color: var(--accent); }
   footer { padding: 1.5rem; flex-direction: column; text-align: center; gap: 0.5rem; }
 
   /* WHATSAPP */
-  .wa-float { width: 64px; height: 64px; bottom: 4rem; right: 1.2rem; }
-  .wa-float svg { width: 36px; height: 36px; }
+  .wa-float { width: 56px; height: 56px; bottom: 1.5rem; right: 1.2rem; }
+  .wa-float svg { width: 30px; height: 30px; }
 }
 
 @media (max-width: 600px) {
@@ -1237,7 +1232,7 @@ footer a span { color: var(--accent); }
 
 .recurso-cat-tag {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -1307,6 +1302,53 @@ footer a span { color: var(--accent); }
   .recurso-card { padding: 1.4rem 1.2rem; }
 }
 
+/* Banda de servicios en el home */
+.services-band-section { background: var(--card); padding: 4rem; }
+.services-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  background: var(--bg);
+  padding: 2.5rem 3rem;
+}
+.services-band-title {
+  font-family: var(--font-head);
+  font-size: clamp(1.3rem, 2.6vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 0.6rem;
+  max-width: 640px;
+}
+.services-band-title em { font-style: normal; color: var(--accent); }
+.services-band-text p { color: var(--muted); font-size: 0.92rem; line-height: 1.7; }
+.services-band .btn-primary { flex-shrink: 0; white-space: nowrap; }
+
+/* Foco visible para navegacion con teclado */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Respeta la preferencia de menos movimiento del sistema */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
 /* Nav — botón suscríbete */
 .nav-subscribe {
   display: inline-block;
@@ -1327,4 +1369,157 @@ footer a span { color: var(--accent); }
 
 @media (max-width: 900px) {
   .nav-subscribe { display: none; }
+  .services-band-section { padding: 3rem 1.5rem; }
+  .services-band { padding: 1.8rem 1.5rem; }
+  .services-band .btn-primary { width: 100%; text-align: center; }
 }
+
+/* Botones de las tarjetas de servicio: WhatsApp principal, email secundario */
+.service-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+.btn-wa-service {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 5px;
+  color: var(--bg);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+  width: fit-content;
+}
+.btn-wa-service:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(200,255,0,0.25);
+}
+.service-actions .btn-contact-service { margin-top: 0; }
+
+/* Portafolio (servicios.html) */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.4rem;
+}
+@media (max-width: 600px) {
+  .portfolio-grid { grid-template-columns: 1fr; }
+}
+.portfolio-item {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+.portfolio-item:hover {
+  border-color: rgba(200,255,0,0.25);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  transform: translateY(-3px);
+}
+.portfolio-item img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  border-bottom: 1px solid var(--border);
+}
+.portfolio-featured {
+  grid-column: span 2;
+}
+.portfolio-body {
+  padding: 1.4rem 1.5rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.portfolio-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.portfolio-title {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--text);
+  line-height: 1.2;
+}
+.portfolio-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.7;
+  flex: 1;
+}
+.portfolio-link {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+  transition: color 0.2s;
+}
+.portfolio-item:hover .portfolio-link { color: var(--accent); }
+
+/* Carrusel de pantallazos dentro de la tarjeta destacada */
+.portfolio-carousel {
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+  padding: 12px 0;
+}
+.portfolio-track {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  padding: 0 12px;
+  animation: portfolioScroll 32s linear infinite;
+}
+/* Pausa el desfile al pasar el cursor por la tarjeta */
+.portfolio-featured:hover .portfolio-track {
+  animation-play-state: paused;
+}
+.portfolio-track img {
+  width: 380px;
+  height: 214px;
+  object-fit: cover;
+  object-position: top;
+  flex-shrink: 0;
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  aspect-ratio: auto;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+}
+/* La imagen bajo el cursor se amplia y resalta */
+.portfolio-track img:hover {
+  transform: scale(1.06);
+  border-color: rgba(200,255,0,0.5);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 0 1px rgba(200,255,0,0.25);
+  position: relative;
+  z-index: 2;
+}
+@keyframes portfolioScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (max-width: 760px) {
+  .portfolio-featured { grid-column: span 1; }
+  .portfolio-track img { width: 280px; height: 158px; }
+}
+
