@@ -110,6 +110,14 @@
 
     <!-- Tarjetas (renderizadas desde script-recursos.js) -->
     <div class="recursos-grid reveal" id="recursosGrid"></div>
+
+    <!-- Botón "Ver más": solo visible en móvil cuando hay más de 4 recursos -->
+    <div class="recursos-vermas-wrap" id="recursosVerMasWrap">
+      <button class="btn-toggle-products" id="recursosVerMas" aria-expanded="false">
+        <span>Ver más</span>
+        <em class="toggle-icon">▼</em>
+      </button>
+    </div>
   </section>
 
   <!-- CTA final -->
@@ -142,10 +150,14 @@
       <img src="assets/logo.png" alt="JarcOnline">
       JARC<span>.ONLINE</span>
     </a>
-    <p>© 2026 JARCONLINE. Todos los derechos reservados.</p>
+    <div class="footer-meta">
+      <a href="privacidad.html" class="footer-link">Política de privacidad</a>
+      <p>© 2026 JARCONLINE. Todos los derechos reservados.</p>
+    </div>
   </footer>
 
   <script src="dot-canvas.js" defer></script>
+  <script src="cookie-banner.js" defer></script>
   <script src="script-recursos.js" defer></script>
 
 </body>

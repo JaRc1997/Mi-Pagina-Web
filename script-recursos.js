@@ -167,6 +167,7 @@ function renderRecursos(filtro = 'todos') {
 
   if (lista.length === 0) {
     grid.innerHTML = '<p class="empty-state">No hay recursos en esta categoria todavia.</p>';
+    document.getElementById('recursosVerMasWrap')?.classList.remove('activo');
     return;
   }
 
@@ -198,6 +199,34 @@ function renderRecursos(filtro = 'todos') {
       </div>
     </article>
   `).join('');
+
+  // Modo "ver más" (solo afecta en móvil vía CSS): colapsa el grid y muestra
+  // el botón si la lista filtrada tiene más de 4 recursos. Se reinicia en cada render.
+  const VISIBLES_MOVIL = 4;
+  grid.classList.add('colapsado');
+  document.getElementById('recursosVerMasWrap')?.classList.toggle('activo', lista.length > VISIBLES_MOVIL);
+  const btn = document.getElementById('recursosVerMas');
+  if (btn) {
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.querySelector('span').textContent = 'Ver más';
+  }
+}
+
+// Botón "Ver más / Ver menos" del listado de recursos (solo visible en móvil)
+function initVerMas() {
+  const btn = document.getElementById('recursosVerMas');
+  const grid = document.getElementById('recursosGrid');
+  if (!btn || !grid) return;
+  btn.addEventListener('click', () => {
+    const colapsado = grid.classList.toggle('colapsado');
+    const abierto = !colapsado;
+    btn.classList.toggle('open', abierto);
+    btn.setAttribute('aria-expanded', String(abierto));
+    btn.querySelector('span').textContent = abierto ? 'Ver menos' : 'Ver más';
+    // Al volver a plegar, regresa al inicio del listado para no dejar al usuario perdido
+    if (!abierto) document.getElementById('listado').scrollIntoView({ behavior: 'smooth' });
+  });
 }
 
 function initFiltros() {
@@ -262,6 +291,7 @@ function initReveal() {
 function init() {
   renderRecursos();
   initFiltros();
+  initVerMas();
   initDescargasTracking();
   initHamburger();
   initReveal();

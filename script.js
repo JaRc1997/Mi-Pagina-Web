@@ -101,6 +101,57 @@ reveals.forEach(el => observer.observe(el));
 // Para agregar uno nuevo, copia un bloque { } y modifica los campos.
 // Categorias validas: audio, movil, video, accesorios.
 const PRODUCTOS = [
+{
+    imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S9f670164c54d4b7ea3689f3d70785709V.jpg?has_lang=1&ver=2_220x220q75.jpg_.avif",
+    nombre: "Netac SATA SSD 2TB 4TB 1tb 128gb SSD 480gb 512gb 256gb",
+    cat: "accesorios",
+    desc: "HD SSD disco duro Hdd unidad interna de estado sólido para ordenador portátil",
+    precio: "",
+    link: "https://s.click.aliexpress.com/e/_c3jWkrrX",
+    emoji: "🖥️",
+    badge: "Nuevo"
+  },
+  {
+    imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S8a5fd29e363b4d018c1a7038cbfcb8aaX.jpg?has_lang=1&ver=2_220x220q75.jpg_.avif",
+    nombre: "KZ EDX PRO X",
+    cat: "audio",
+    desc: "Auriculares in-ear Hi-Fi con driver dinámico de 10mm y bajos potentes. Cable desmontable y aislamiento de ruido, ideales para monitorear audio al editar.",
+    precio: "",
+    link: "https://s.click.aliexpress.com/e/_c4kAf8dL",
+    emoji: "🎧",
+    badge: "Nuevo"
+  },
+  {
+    imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Se5f1ab879d3240a1b01eeeffb7e1f1a7J.jpg_220x220q75.jpg_.avif",
+    nombre: "Batería Externa Vention de 20000mAh",
+    cat: "movil",
+    desc: "Batería Externa Vention de 20000mAh, Carga Rápida PD de 65W, Cable Tipo-C Integrado, para iPhone 17 y Portátiles",
+    precio: "",
+    link: "https://s.click.aliexpress.com/e/_c3fJpPqt",
+    emoji: "📱",
+    badge: "Nuevo"
+  },
+  {
+    imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Sc9b5ab8c08744227955c4afe2f5e8700t.jpg_220x220q75.jpg_.avif",
+    nombre: "Cámara Web 1080P 60FPS USB EMEET S600",
+    cat: "video",
+    desc: "Cámara Web 4K para Streaming, Cámara Web 1080P 60FPS USB EMEET S600 con Autoenfoque y Micrófonos para Tiktok/YouTube",
+    precio: "",
+    link: "https://s.click.aliexpress.com/e/_c3EdkFsd",
+    emoji: "📱",
+    badge: "Nuevo"
+  },
+  {
+    imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S3ac20bdf7b2442c8879c0eca746c9529v.jpg_220x220q75.jpg_.avif",
+    nombre: "Soporte de monitor NB F80",
+    cat: "accesorios",
+    desc: "Brazo articulado con pistón de gas para monitores de 17 a 30 pulgadas. Libera espacio en el escritorio y ajustas altura y ángulo sin esfuerzo.",
+    precio: "",
+    link: "https://s.click.aliexpress.com/e/_c3zoHnC9",
+    emoji: "🖥️",
+    badge: "Nuevo"
+  },
+
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S8033f0452b014144bf56dbb66fcbcd92G.jpg_220x220q75.jpg_.avif",
     nombre: "Trípode Ulanzi TT88",
@@ -119,7 +170,7 @@ const PRODUCTOS = [
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c4miOBCp",
     emoji: "🎙️",
-    badge: ""
+    badge: "Popular"
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S34a67cde07964fe391a5234066219bd5E.jpg_220x220q75.jpg_.avif",
@@ -129,7 +180,7 @@ const PRODUCTOS = [
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c4WxISNR",
     emoji: "🎤",
-    badge: ""
+    badge: "Popular"
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S9ba0ccf875b24180ae53c1078641cf65A.jpg_220x220q75.jpg_.avif",
@@ -159,7 +210,7 @@ const PRODUCTOS = [
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c3Dzgjs1",
     emoji: "📸",
-    badge: "Popular"
+    badge: ""
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S0543cb41a08244639e28b32945bca00cV.png_220x220.png_.avif",
@@ -209,7 +260,7 @@ const PRODUCTOS = [
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c2xdQ1fB",
     emoji: "🔋",
-    badge: ""
+    badge: "Nuevo"
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Sc10b0c87150b43e7a40bd02306283f76s.jpg?has_lang=1&ver=2_220x220q75.jpg_.avif",
@@ -230,16 +281,6 @@ const PRODUCTOS = [
     link: "https://s.click.aliexpress.com/e/_c4PmxL1L",
     emoji: "🧹",
     badge: ""
-  },
-  {
-    imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S8a5fd29e363b4d018c1a7038cbfcb8aaX.jpg?has_lang=1&ver=2_220x220q75.jpg_.avif",
-    nombre: "KZ EDX PRO X",
-    cat: "audio",
-    desc: "Auriculares in-ear Hi-Fi con driver dinámico de 10mm y bajos potentes. Cable desmontable y aislamiento de ruido, ideales para monitorear audio al editar.",
-    precio: "",
-    link: "https://s.click.aliexpress.com/e/_c4kAf8dL",
-    emoji: "🎧",
-    badge: "Nuevo"
   },
   {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Sf98c3dbaa34540a99441e48e573c4494U.jpg_220x220q75.jpg_.avif",
@@ -280,37 +321,8 @@ const PRODUCTOS = [
     link: "https://s.click.aliexpress.com/e/_c3ywmYs9",
     emoji: "📱",
     badge: ""
-  },
-  {
-    imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Se5f1ab879d3240a1b01eeeffb7e1f1a7J.jpg_220x220q75.jpg_.avif",
-    nombre: "Batería Externa Vention de 20000mAh",
-    cat: "movil",
-    desc: "Batería Externa Vention de 20000mAh, Carga Rápida PD de 65W, Cable Tipo-C Integrado, para iPhone 17 y Portátiles",
-    precio: "",
-    link: "https://s.click.aliexpress.com/e/_c3fJpPqt",
-    emoji: "📱",
-    badge: "Nuevo"
-  },
-  {
-    imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Sc9b5ab8c08744227955c4afe2f5e8700t.jpg_220x220q75.jpg_.avif",
-    nombre: "Cámara Web 1080P 60FPS USB EMEET S600",
-    cat: "video",
-    desc: "Cámara Web 4K para Streaming, Cámara Web 1080P 60FPS USB EMEET S600 con Autoenfoque y Micrófonos para Tiktok/YouTube",
-    precio: "",
-    link: "https://s.click.aliexpress.com/e/_c3EdkFsd",
-    emoji: "📱",
-    badge: "Nuevo"
-  },
-  {
-    imagen: "https://ae-pic-a1.aliexpress-media.com/kf/S3ac20bdf7b2442c8879c0eca746c9529v.jpg_220x220q75.jpg_.avif",
-    nombre: "Soporte de monitor NB F80",
-    cat: "accesorios",
-    desc: "Brazo articulado con pistón de gas para monitores de 17 a 30 pulgadas. Libera espacio en el escritorio y ajustas altura y ángulo sin esfuerzo.",
-    precio: "",
-    link: "https://s.click.aliexpress.com/e/_c3zoHnC9",
-    emoji: "🖥️",
-    badge: "Nuevo"
   }
+
 ];
 
 // Cuantos productos se muestran antes del boton "Ver todas"
