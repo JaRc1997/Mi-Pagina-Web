@@ -1548,124 +1548,84 @@ button:focus-visible {
   .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
 }
 
-/* Portafolio (servicios.html) */
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 1.4rem;
+/* Trabajos recientes (servicios.html) - desfile horizontal automático, solo visual.
+   Misma presentación y animación que los testimonios de "Mi comunidad". */
+.trabajos-marquee {
+  overflow: hidden;
+  width: 100%;
+  /* difumina los bordes izquierdo y derecho para que entren y salgan suave */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
 }
-@media (max-width: 600px) {
-  .portfolio-grid { grid-template-columns: 1fr; }
+.trabajos-track {
+  display: flex;
+  gap: 1.2rem;
+  width: max-content;
+  --marquee-shift: 50%; /* valor de respaldo; el JS pone el exacto en píxeles */
+  animation: marqueeScroll 25s linear infinite;
+  /* puramente visual: no se puede seleccionar ni interactuar */
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
 }
-.portfolio-item {
-  display: block;
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-1 * var(--marquee-shift))); }
+}
+.trabajo-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 10px;
   overflow: hidden;
-  text-decoration: none;
-  color: var(--text);
-  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  margin: 0;
+  width: 320px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
 }
-.portfolio-item:hover {
-  border-color: rgba(200,255,0,0.25);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-  transform: translateY(-3px);
-}
-.portfolio-item img {
+.trabajo-thumb {
   width: 100%;
   aspect-ratio: 16/9;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+}
+.trabajo-thumb img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: top;
   display: block;
-  border-bottom: 1px solid var(--border);
 }
-.portfolio-featured {
-  grid-column: span 2;
-}
-.portfolio-body {
-  padding: 1.4rem 1.5rem 1.6rem;
+.trabajo-body {
+  padding: 1.3rem 1.4rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
-.portfolio-tag {
+.trabajo-tag {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   font-weight: 500;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--accent);
 }
-.portfolio-title {
+.trabajo-title {
   font-family: var(--font-head);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: -0.3px;
   color: var(--text);
   line-height: 1.2;
 }
-.portfolio-desc {
-  font-size: 0.85rem;
+.trabajo-desc {
+  font-size: 0.83rem;
   color: var(--muted);
-  line-height: 1.7;
-  flex: 1;
+  line-height: 1.6;
 }
-.portfolio-link {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--muted);
-  margin-top: 0.4rem;
-  transition: color 0.2s;
-}
-.portfolio-item:hover .portfolio-link { color: var(--accent); }
-
-/* Carrusel de pantallazos dentro de la tarjeta destacada */
-.portfolio-carousel {
-  overflow: hidden;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg2);
-  padding: 12px 0;
-}
-.portfolio-track {
-  display: flex;
-  gap: 12px;
-  width: max-content;
-  padding: 0 12px;
-  animation: portfolioScroll 32s linear infinite;
-}
-/* Pausa el desfile al pasar el cursor por la tarjeta */
-.portfolio-featured:hover .portfolio-track {
-  animation-play-state: paused;
-}
-.portfolio-track img {
-  width: 380px;
-  height: 214px;
-  object-fit: cover;
-  object-position: top;
-  flex-shrink: 0;
-  display: block;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  aspect-ratio: auto;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.3s ease;
-}
-/* La imagen bajo el cursor se amplia y resalta */
-.portfolio-track img:hover {
-  transform: scale(1.06);
-  border-color: rgba(200,255,0,0.5);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 0 1px rgba(200,255,0,0.25);
-  position: relative;
-  z-index: 2;
-}
-@keyframes portfolioScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-@media (max-width: 760px) {
-  .portfolio-featured { grid-column: span 1; }
-  .portfolio-track img { width: 280px; height: 158px; }
+@media (max-width: 600px) {
+  .trabajo-card { width: 280px; }
 }
 
 /* Link de política de privacidad en el footer */

@@ -243,16 +243,6 @@ const PRODUCTOS = [
     badge: ""
   },
   {
-    imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Sc994123d4c744c1894d285d743b26647L.jpg_220x220q75.jpg_.avif",
-    nombre: "Kit herramientas eléctricas",
-    cat: "accesorios",
-    desc: "Set de destornilladores eléctricos de precisión con mini brocas inalámbricas recargables. Ideal para reparar celulares y computadores.",
-    precio: "",
-    link: "https://s.click.aliexpress.com/e/_c4MCxolR",
-    emoji: "🔧",
-    badge: ""
-  },
-  {
     imagen: "https://ae-pic-a1.aliexpress-media.com/kf/Sa259657e87d4403fb8a0a9de8d3ec0de4.jpg?has_lang=1&ver=1_220x220q75.jpg_.avif",
     nombre: "Power Bank Vention 20000mAh 165W",
     cat: "movil",

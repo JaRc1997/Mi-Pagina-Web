@@ -27,11 +27,10 @@ if (hamburger && navOverlay) {
   });
 }
 
-// Desfile de testimonios: bucle continuo sin cortes. En el HTML solo hace falta
-// escribir cada testimonio una vez; aquí se clona lo necesario para llenar la
-// pantalla y para que el punto de reinicio sea invisible.
-(function () {
-  const track = document.querySelector('.testimonios-track');
+// Desfile horizontal en bucle continuo (testimonios y trabajos recientes).
+// En el HTML se escribe cada tarjeta una sola vez; aquí se clona lo necesario
+// para llenar la pantalla y para que el punto de reinicio sea invisible.
+function montarMarquee(track, velocidad) {
   if (!track || track.children.length === 0) return;
   const originales = Array.prototype.slice.call(track.children);
 
@@ -57,10 +56,13 @@ if (hamburger && navOverlay) {
 
   // 3) Desplazamiento exacto (en píxeles) = donde empieza la copia del bloque
   const shift = track.children[bloque.length].offsetLeft - track.children[0].offsetLeft;
-  const VELOCIDAD = 45; // píxeles por segundo (velocidad constante)
+  const VELOCIDAD = velocidad || 45; // píxeles por segundo (velocidad constante)
   track.style.setProperty('--marquee-shift', shift + 'px');
   track.style.animationDuration = (shift / VELOCIDAD) + 's';
-})();
+}
+
+montarMarquee(document.querySelector('.testimonios-track'), 45);
+montarMarquee(document.querySelector('.trabajos-track'), 62);
 
 // Animaciones al hacer scroll
 const observer = new IntersectionObserver(entries => {
