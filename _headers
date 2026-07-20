@@ -1,0 +1,28 @@
+# Cabeceras de seguridad para el sitio (las aplica Netlify automaticamente).
+# Si algun dia el sitio se mueve a otro hosting, este archivo se ignora sin causar errores.
+
+/*
+  # Evita que otra web meta tu sitio dentro de un iframe (clickjacking)
+  X-Frame-Options: SAMEORIGIN
+
+  # Impide que el navegador adivine el tipo de archivo y ejecute algo indebido
+  X-Content-Type-Options: nosniff
+
+  # Al salir del sitio no se envia la direccion completa de la pagina de origen
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Ninguna pagina puede pedir camara, microfono ni ubicacion
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+
+  # Obliga a usar siempre HTTPS durante un ano
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Opcional: politica de contenido (CSP). Controla desde que dominios se puede cargar
+# cada recurso. Esta lista ya incluye todo lo que usa el sitio hoy: fuentes de Google,
+# Google Analytics y las imagenes de productos de AliExpress.
+# Para activarla, quita el simbolo # de las cuatro lineas siguientes y sube el cambio.
+# Despues comprueba dos cosas: que las fotos de los productos sigan viendose y que
+# Analytics siga registrando visitas.
+#
+#/*
+#  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.aliexpress-media.com https://www.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'
