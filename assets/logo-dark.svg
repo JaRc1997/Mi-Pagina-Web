@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="JarcOnline">
+  <title>JarcOnline</title>
+  <rect x="2" y="2" width="96" height="96" rx="26" fill="#0A0A0A" stroke="#C8FF00" stroke-width="3"/>
+  <path d="M24 35 L39 50 L24 65" stroke="#C8FF00" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M70 31 L70 57 C70 67 63 72 56 72 C50 72 46 68 46 63" stroke="#FFFFFF" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
