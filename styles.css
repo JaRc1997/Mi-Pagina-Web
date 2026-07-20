@@ -56,11 +56,13 @@ nav {
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
 }
+/* El nombre de la marca usa la tipografia del logo (mas gruesa y compacta).
+   El resto de la web mantiene sus propias fuentes. */
 .nav-logo {
-  font-family: var(--font-head);
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: -0.3px;
+  font-family: 'Arial Black', 'Arial Bold', Arial, sans-serif;
+  font-size: 1.02rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
   color: var(--text);
   text-decoration: none;
   display: flex;
@@ -69,7 +71,7 @@ nav {
 .nav-logo img {
   height: 32px; width: 32px;
   object-fit: contain;
-  border-radius: 50%;
+  /* el logo ya trae sus esquinas redondeadas, no hay que recortarlo en circulo */
   margin-right: 0.5rem;
 }
 .nav-logo span { color: var(--accent); margin-left: -1px; }
@@ -1033,7 +1035,8 @@ footer a {
 footer a img {
   height: 32px; width: 32px;
   object-fit: contain;
-  border-radius: 50%;
+  /* el logo ya trae sus esquinas redondeadas, no hay que recortarlo en circulo */
+  flex-shrink: 0;
   margin-right: 0.5rem;
 }
 footer a span { color: var(--accent); }
