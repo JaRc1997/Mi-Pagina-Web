@@ -196,6 +196,24 @@ nav {
   animation: fadeUp 0.8s 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* En pantallas grandes el hero se reparte en dos columnas: el titulo a la
+   izquierda y el texto con los botones a la derecha, para no dejar vacia
+   media pantalla. Debajo de 1200px todo vuelve a ir apilado como en movil. */
+@media (min-width: 1200px) {
+  .hero-content {
+    max-width: 1500px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 4rem;
+    align-items: center;
+    padding-right: 5rem; /* deja aire para los iconos de redes flotantes */
+  }
+  .hero-aside { max-width: 520px; }
+  .hero-sub { margin-top: 0; max-width: 100%; }
+  .hero-ctas { margin-top: 2.2rem; }
+}
+
 /* page hero (servicios.html) */
 .page-hero {
   position: relative;

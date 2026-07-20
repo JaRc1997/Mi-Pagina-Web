@@ -135,12 +135,15 @@
         <span class="accent">JAVIER</span><br>
         <span class="accent2">ONLINE</span>
       </h1>
-      <p class="hero-sub">
-       Bienvenido a mi espacio en internet. Aquí encontrarás tutoriales, tips y herramientas digitales explicados de forma sencilla y directa. Sin tecnicismos raros, sin rodeos. Si usas tecnología en tu día a día y quieres sacarle más partido, estás en el lugar correcto.
-      </p>
-      <div class="hero-ctas">
-        <a href="#youtube" class="btn-primary">Ver mi canal</a>
-        <a href="#contacto" class="btn-ghost">Contáctame</a>
+      <!-- En pantallas grandes este bloque pasa a la columna derecha del hero -->
+      <div class="hero-aside">
+        <p class="hero-sub">
+         Bienvenido a mi espacio en internet. Aquí encontrarás tutoriales, tips y herramientas digitales explicados de forma sencilla y directa. Sin tecnicismos raros, sin rodeos. Si usas tecnología en tu día a día y quieres sacarle más partido, estás en el lugar correcto.
+        </p>
+        <div class="hero-ctas">
+          <a href="#youtube" class="btn-primary">Ver mi canal</a>
+          <a href="#contacto" class="btn-ghost">Contáctame</a>
+        </div>
       </div>
     </div>
 
@@ -396,8 +399,8 @@ desde el principio para crear y subir contenido sin complicarme la vida. ✅">
         Estoy abierto a colaboraciones, menciones de productos, reviews y patrocinios.
         Si tienes algo interesante, escríbeme y lo hablamos.
       </p>
-      <a href="mailto:Rueda3062@gmail.com" class="contact-email">
-         Rueda3062@gmail.com
+      <a class="contact-email" data-mail="Rueda3062" data-dom="gmail.com" data-mostrar="si">
+        Escríbeme por correo
       </a>
       <p class="contact-also">También puedes escribirme por:</p>
       <div class="contact-social-row">
@@ -425,6 +428,7 @@ desde el principio para crear y subir contenido sin complicarme la vida. ✅">
 
   <script src="dot-canvas.js" defer></script>
   <script src="cookie-banner.js" defer></script>
+  <script src="email-protect.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>
