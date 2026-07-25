@@ -75,12 +75,13 @@ nav {
   margin-right: 0.5rem;
 }
 .nav-logo span { color: var(--accent); margin-left: -1px; }
-.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a {
   text-decoration: none;
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 500;
+  white-space: nowrap;
   transition: color 0.2s, transform 0.2s;
 }
 .nav-links a:hover { color: var(--accent); transform: translateY(-2px); }
@@ -220,7 +221,7 @@ nav {
 .page-hero {
   position: relative;
   z-index: 1;
-  padding: 10rem 4rem 6rem;
+  padding: 8.5rem 4rem 4rem;
   overflow: hidden;
   border-bottom: 1px solid var(--border);
 }
@@ -344,7 +345,10 @@ nav {
 }
 
 /* section base */
-section { position: relative; padding: 6rem 4rem; z-index: 1; }
+section { position: relative; padding: 5rem 4rem; z-index: 1; }
+/* La primera sección después del hero de página no repite el hueco grande:
+   así el hero no queda flotando con un vacío enorme debajo. */
+.page-hero + section { padding-top: 3.5rem; }
 .section-label {
   display: flex;
   align-items: center;
@@ -1409,6 +1413,14 @@ button:focus-visible {
 }
 .nav-subscribe:hover { opacity: 0.82; transform: translateY(-1px); }
 
+/* El menú horizontal necesita espacio; en tablet pasa antes a hamburguesa
+   para que el logo y los enlaces no se amontonen entre 900 y 1050px. */
+@media (max-width: 1050px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-subscribe { display: none; }
+}
+
 @media (max-width: 900px) {
   .nav-subscribe { display: none; }
   .services-band-section { padding: 3rem 1.5rem; }
@@ -1627,7 +1639,9 @@ button:focus-visible {
 }
 .trabajo-thumb {
   width: 100%;
-  aspect-ratio: 16/9;
+  /* Alto de la imagen. Sube el segundo número para imagen más alta (3/2 = alta,
+     16/9 = más panorámica). */
+  aspect-ratio: 3/2;
   overflow: hidden;
   border-bottom: 1px solid var(--border);
   background: var(--bg2);
@@ -1640,10 +1654,10 @@ button:focus-visible {
   display: block;
 }
 .trabajo-body {
-  padding: 1.3rem 1.4rem 1.5rem;
+  padding: 0.9rem 1.2rem 1.1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.35rem;
 }
 .trabajo-tag {
   font-family: var(--font-mono);
@@ -1655,16 +1669,16 @@ button:focus-visible {
 }
 .trabajo-title {
   font-family: var(--font-head);
-  font-size: 1.1rem;
+  font-size: 1.02rem;
   font-weight: 700;
   letter-spacing: -0.3px;
   color: var(--text);
   line-height: 1.2;
 }
 .trabajo-desc {
-  font-size: 0.83rem;
+  font-size: 0.8rem;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.45;
 }
 /* En movil las tarjetas se hacen mas compactas: asi entra mas de una en pantalla
    y el texto se alcanza a leer mientras desfilan. */
@@ -1674,6 +1688,50 @@ button:focus-visible {
   .trabajo-tag { font-size: 0.6rem; letter-spacing: 1.2px; }
   .trabajo-title { font-size: 0.95rem; }
   .trabajo-desc { font-size: 0.75rem; line-height: 1.5; }
+}
+
+/* Cuadrícula de trabajos (portafolio.html): tarjetas fijas clickeables.
+   A diferencia del desfile, aquí el cliente se detiene, mira y hace clic. */
+.trabajos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.6rem;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.trabajos-grid .trabajo-card { width: auto; }
+.trabajo-thumb img { transition: transform 0.35s ease; }
+
+/* Cuando la tarjeta es un enlace <a>: cursor, elevación y borde lima al pasar */
+a.trabajo-card {
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+a.trabajo-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.45);
+}
+a.trabajo-card:hover .trabajo-thumb img { transform: scale(1.04); }
+
+.trabajo-cta {
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: gap 0.2s ease;
+}
+a.trabajo-card:hover .trabajo-cta { gap: 0.6rem; }
+
+@media (max-width: 600px) {
+  .trabajos-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  .trabajos-grid .trabajo-card { width: auto; }
 }
 
 /* Link de política de privacidad en el footer */

@@ -69,12 +69,12 @@
       JARC<span>.ONLINE</span>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html#about">Sobre mí</a></li>
-      <li><a href="index.html#youtube">YouTube</a></li>
-      <li><a href="index.html#productos">Productos</a></li>
       <li><a href="servicios.html" class="active">Servicios</a></li>
+      <li><a href="portafolio.html">Portafolio</a></li>
       <li><a href="recursos.html">Recursos</a></li>
-      <li><a href="index.html#redes">Redes</a></li>
+      <li><a href="index.html#about">Sobre mí</a></li>
+      <li><a href="index.html#productos">Productos</a></li>
+      <li><a href="index.html#youtube">YouTube</a></li>
       <li><a href="index.html#contacto">Contacto</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false" aria-controls="navOverlay">
@@ -84,19 +84,19 @@
 
   <!-- MENÚ MÓVIL OVERLAY -->
   <div class="nav-overlay" id="navOverlay">
-    <a href="index.html#about">Sobre mí</a>
-    <a href="index.html#youtube">YouTube</a>
-    <a href="index.html#productos">Productos</a>
     <a href="servicios.html" class="active">Servicios</a>
+    <a href="portafolio.html">Portafolio</a>
     <a href="recursos.html">Recursos</a>
-    <a href="index.html#redes">Redes</a>
+    <a href="index.html#about">Sobre mí</a>
+    <a href="index.html#productos">Productos</a>
+    <a href="index.html#youtube">YouTube</a>
     <a href="index.html#contacto">Contacto</a>
   </div>
 
   <!-- PAGE HERO -->
   <div class="page-hero">
     <div class="page-hero-inner">
-      <h1>Lo que puedo<br>hacer por <em>ti</em></h1>
+      <h1>Lo que puedo<br>hacer por ti</h1>
       <p>
         Ofrezco servicios de producción audiovisual y
         creación de sitios web para creadores, marcas y emprendedores.
@@ -108,7 +108,7 @@
   <!-- SERVICIOS AUDIOVISUAL -->
   <section id="audiovisual">
     <div class="section-label reveal"><span>Audiovisual</span></div>
-    <h2 class="section-title reveal">Producción de <em>video</em></h2>
+    <h2 class="section-title reveal">Producción de video</h2>
     <p class="section-sub reveal">
       Desde la edición hasta la miniatura, todo lo que necesita tu contenido
       para verse profesional y destacar en plataformas digitales.
@@ -134,7 +134,7 @@
           <span class="service-tag">Redes sociales</span>
         </div>
         <div class="service-price">
-          desde <strong>$35.000</strong>
+          desde <strong>$50.000</strong>
           <span class="service-price-note">Reels y Shorts, video de YouTube desde $100.000</span>
         </div>
         <div class="service-actions">
@@ -163,7 +163,7 @@
           <span class="service-tag">CTR</span>
         </div>
         <div class="service-price">
-          desde <strong>$20.000</strong>
+          desde <strong>$35.000</strong>
           <span class="service-price-note">Packs: 3 por $50.000 o 5 por $80.000</span>
         </div>
         <div class="service-actions">
@@ -213,7 +213,7 @@
   <!-- SERVICIOS WEB -->
   <section id="webs" class="section-alt">
     <div class="section-label reveal"><span>Desarrollo web</span></div>
-    <h2 class="section-title reveal">Páginas web que <em>convierten</em></h2>
+    <h2 class="section-title reveal">Páginas web que convierten</h2>
     <p class="section-sub reveal">
       Sitios rápidos, bonitos y funcionales, sin pagar suscripciones mensuales de plataformas. Tú tienes el control total de tu web.
     </p>
@@ -292,138 +292,120 @@
     <p class="pricing-note reveal">
       Para iniciar cualquier proyecto se requiere un <strong>anticipo del 50%</strong>; el resto al entregar.
       El <strong>dominio propio</strong> (.com, .co) y el hosting de pago, si los necesitas, corren por cuenta del cliente,
-      te asesoro para elegir la mejor opción. ¿Cambios o mantenimiento después? Servicios sueltos <strong>desde $30.000</strong>.
+      te asesoro para elegir la mejor opción. ¿Cambios o mantenimiento después? Tienes el plan de
+      <strong>Mantenimiento mensual</strong> (aquí abajo) o servicios sueltos <strong>desde $30.000</strong>.
     </p>
   </section>
 
-  <!-- PORTAFOLIO - Casos de trabajo
-       Cada proyecto va UNA sola vez. Para agregar uno nuevo copia un bloque
-       <a class="portfolio-item"> completo y cambia imagen, textos y link.
-       La clase extra "portfolio-featured" hace que la tarjeta ocupe doble ancho. -->
-  <section id="portafolio" class="section-alt">
-    <div class="section-label reveal"><span>Trabajos recientes</span></div>
-    <h2 class="section-title reveal">Esto es lo que <em>entrego</em></h2>
+  <!-- MARCA Y WEB
+       Para agregar otro servicio copia una <div class="service-card"> completa
+       y cambia emoji, nombre, descripción, etiquetas, precio y los enlaces. -->
+  <section id="marca-web">
+    <div class="section-label reveal"><span>Marca y web</span></div>
+    <h2 class="section-title reveal">Haz crecer tu marca</h2>
     <p class="section-sub reveal">
-      Proyectos reales, no promesas. Una muestra de lo que entrego.
+      Servicios para posicionar, mantener y dar identidad a tu presencia digital.
     </p>
 
-    <!-- Desfile automático: el JS duplica las tarjetas para el bucle continuo.
-         Escribe cada trabajo UNA sola vez aquí dentro. -->
-    <div class="trabajos-marquee reveal" aria-label="Trabajos recientes">
-      <div class="trabajos-track">
+    <div class="services-grid">
 
-        <!-- Proyecto web para cliente: LUAR JOYAS -->
-        <figure class="trabajo-card">
-          <div class="trabajo-thumb"><img src="assets/portafolio/luar-joyas.jpg" alt="Sitio web de LUAR JOYAS, alta joyería" loading="lazy"></div>
-          <figcaption class="trabajo-body">
-            <span class="trabajo-tag">Proyecto web · Cliente</span>
-            <h3 class="trabajo-title">LUAR JOYAS</h3>
-            <p class="trabajo-desc">Sitio de alta joyería con catálogo por categorías, galería de piezas y consulta directa por WhatsApp. Envíos a toda Colombia.</p>
-          </figcaption>
-        </figure>
-
-        <!-- Proyecto web: este sitio -->
-        <figure class="trabajo-card">
-          <div class="trabajo-thumb"><img src="assets/portafolio/web-1.png" alt="Sitio web JarcOnline.com" loading="lazy"></div>
-          <figcaption class="trabajo-body">
-            <span class="trabajo-tag">Proyecto web</span>
-            <h3 class="trabajo-title">JarcOnline.com</h3>
-            <p class="trabajo-desc">Diseñado y programado desde cero, sin plantillas ni suscripciones. Catálogo, recursos, SEO y analítica.</p>
-          </figcaption>
-        </figure>
-
-        <!-- Miniatura -->
-        <figure class="trabajo-card">
-          <div class="trabajo-thumb"><img src="assets/portafolio/miniatura-16.jpg" alt="Miniatura para video de DaVinci Resolve" loading="lazy"></div>
-          <figcaption class="trabajo-body">
-            <span class="trabajo-tag">Miniatura</span>
-            <h3 class="trabajo-title">Fuentes gratis en segundos</h3>
-            <p class="trabajo-desc">Miniatura para video de DaVinci Resolve: texto de alto contraste y composición pensada para CTR.</p>
-          </figcaption>
-        </figure>
-
-                <!-- Proyecto web: este sitio -->
-        <figure class="trabajo-card">
-          <div class="trabajo-thumb"><img src="assets/portafolio/web-2.png" alt="Sitio web JarcOnline.com" loading="lazy"></div>
-          <figcaption class="trabajo-body">
-            <span class="trabajo-tag">Proyecto web</span>
-            <h3 class="trabajo-title">JarcOnline.com</h3>
-            <p class="trabajo-desc">Diseñado y programado desde cero, sin plantillas ni suscripciones. Catálogo, recursos, SEO y analítica.</p>
-          </figcaption>
-        </figure>
-
-        <!-- Edición de video -->
-        <figure class="trabajo-card">
-          <div class="trabajo-thumb"><img src="assets/portafolio/miniatura-4.png" alt="Fotografía de equipo para video de YouTube" loading="lazy"></div>
-          <figcaption class="trabajo-body">
-            <span class="trabajo-tag">Edición de video</span>
-            <h3 class="trabajo-title">Mi equipo para crear contenido</h3>
-            <p class="trabajo-desc">Video completo editado en DaVinci Resolve: cortes, transiciones, color y fotografía de producto propia.</p>
-          </figcaption>
-        </figure>
-
-        <!-- Proyecto web: este sitio -->
-        <figure class="trabajo-card">
-          <div class="trabajo-thumb"><img src="assets/portafolio/web-3.png" alt="Sitio web JarcOnline.com" loading="lazy"></div>
-          <figcaption class="trabajo-body">
-            <span class="trabajo-tag">Proyecto web</span>
-            <h3 class="trabajo-title">JarcOnline.com</h3>
-            <p class="trabajo-desc">Diseñado y programado desde cero, sin plantillas ni suscripciones. Catálogo, recursos, SEO y analítica.</p>
-          </figcaption>
-        </figure>
-
-        <!-- Miniatura -->
-        <figure class="trabajo-card">
-          <div class="trabajo-thumb"><img src="assets/portafolio/miniatura-15.jpg" alt="Miniatura para video de DaVinci Resolve" loading="lazy"></div>
-          <figcaption class="trabajo-body">
-            <span class="trabajo-tag">Miniatura</span>
-            <h3 class="trabajo-title">Composición para YouTube</h3>
-            <p class="trabajo-desc">Miniatura con jerarquía visual clara y color pensado para destacar entre los videos sugeridos.</p>
-          </figcaption>
-        </figure>
-
-                <!-- Proyecto web: este sitio -->
-        <figure class="trabajo-card">
-          <div class="trabajo-thumb"><img src="assets/portafolio/web-4.png" alt="Sitio web JarcOnline.com" loading="lazy"></div>
-          <figcaption class="trabajo-body">
-            <span class="trabajo-tag">Proyecto web</span>
-            <h3 class="trabajo-title">JarcOnline.com</h3>
-            <p class="trabajo-desc">Diseñado y programado desde cero, sin plantillas ni suscripciones. Catálogo, recursos, SEO y analítica.</p>
-          </figcaption>
-        </figure>
-
-                <!-- Miniatura -->
-        <figure class="trabajo-card">
-          <div class="trabajo-thumb"><img src="assets/portafolio/miniatura-46.jpg" alt="Miniatura para video de DaVinci Resolve" loading="lazy"></div>
-          <figcaption class="trabajo-body">
-            <span class="trabajo-tag">Miniatura</span>
-            <h3 class="trabajo-title">Composición para YouTube</h3>
-            <p class="trabajo-desc">Miniatura con jerarquía visual clara y color pensado para destacar entre los videos sugeridos.</p>
-          </figcaption>
-        </figure>
-
-        <!-- Para agregar un trabajo: copia un bloque <figure class="trabajo-card"> completo,
-             guarda la imagen en assets/portafolio/ y cambia imagen, etiqueta, título y texto.
-             Escríbelo UNA sola vez; el JS lo duplica para el bucle.
-
-        <figure class="trabajo-card">
-          <div class="trabajo-thumb"><img src="assets/portafolio/tu-imagen.png" alt="Descripción de la imagen" loading="lazy"></div>
-          <figcaption class="trabajo-body">
-            <span class="trabajo-tag">Tipo de trabajo</span>
-            <h3 class="trabajo-title">Nombre del trabajo</h3>
-            <p class="trabajo-desc">Descripción corta de qué hiciste.</p>
-          </figcaption>
-        </figure>
-        -->
-
+      <!-- Mantenimiento web mensual -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="assets/wrench.png" alt="Mantenimiento web" class="service-img">
+          <span class="service-emoji">🛠️</span>
+        </div>
+        <div class="service-name">Mantenimiento web mensual</div>
+        <p class="service-desc">
+          Cambios menores, respaldos y monitoreo mes a mes, para que tu sitio
+          siempre esté al día y seguro sin que te ocupes de la parte técnica.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">Cambios</span>
+          <span class="service-tag">Respaldos</span>
+          <span class="service-tag">Soporte</span>
+        </div>
+        <div class="service-price">
+          desde <strong>$60.000</strong><span class="service-price-unit">/mes</span>
+          <span class="service-price-note">Incluye hasta 3 ajustes al mes; cambios extra como servicio suelto desde $30.000</span>
+        </div>
+        <div class="service-actions">
+          <a href="https://wa.me/573229426949?text=Hola%20Javier%2C%20me%20interesa%20el%20mantenimiento%20web%20mensual" target="_blank" rel="noopener noreferrer" class="btn-wa-service">
+            Consultar por WhatsApp
+          </a>
+          <a class="btn-contact-service" data-mail="Rueda3062" data-dom="gmail.com" data-asunto="Servicio: Mantenimiento web mensual">
+            Email
+          </a>
+        </div>
       </div>
+
+      <!-- SEO / Posicionamiento -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="assets/magnifying-glass.png" alt="SEO y posicionamiento" class="service-img">
+          <span class="service-emoji">🔍</span>
+        </div>
+        <div class="service-name">SEO / Posicionamiento</div>
+        <p class="service-desc">
+          Configuro tu sitio para que Google lo encuentre: Search Console,
+          sitemap, metadatos y tu Perfil de Negocio en Google.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">Google</span>
+          <span class="service-tag">Search Console</span>
+          <span class="service-tag">Perfil de Negocio</span>
+        </div>
+        <div class="service-price">
+          desde <strong>$130.000</strong>
+          <span class="service-price-note">Configuración inicial, pago único</span>
+        </div>
+        <div class="service-actions">
+          <a href="https://wa.me/573229426949?text=Hola%20Javier%2C%20me%20interesa%20el%20servicio%20de%20SEO%20y%20posicionamiento%20en%20Google" target="_blank" rel="noopener noreferrer" class="btn-wa-service">
+            Consultar por WhatsApp
+          </a>
+          <a class="btn-contact-service" data-mail="Rueda3062" data-dom="gmail.com" data-asunto="Servicio: SEO / Posicionamiento">
+            Email
+          </a>
+        </div>
+      </div>
+
+      <!-- Identidad de marca / Logo -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="assets/palette.png" alt="Identidad de marca" class="service-img">
+          <span class="service-emoji">🎨</span>
+        </div>
+        <div class="service-name">Identidad de marca</div>
+        <p class="service-desc">
+          Le doy identidad a tu negocio: logo, paleta de colores, favicons y
+          versiones listas para usar en todas tus redes.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">Logo</span>
+          <span class="service-tag">Colores</span>
+          <span class="service-tag">Redes</span>
+        </div>
+        <div class="service-price">
+          desde <strong>$100.000</strong>
+          <span class="service-price-note">Logo + kit básico de marca</span>
+        </div>
+        <div class="service-actions">
+          <a href="https://wa.me/573229426949?text=Hola%20Javier%2C%20me%20interesa%20el%20servicio%20de%20identidad%20de%20marca%20y%20logo" target="_blank" rel="noopener noreferrer" class="btn-wa-service">
+            Consultar por WhatsApp
+          </a>
+          <a class="btn-contact-service" data-mail="Rueda3062" data-dom="gmail.com" data-asunto="Servicio: Identidad de marca">
+            Email
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- PROCESO -->
   <section id="proceso">
     <div class="section-label reveal"><span>Cómo trabajo</span></div>
-    <h2 class="section-title reveal">El <em>proceso</em></h2>
+    <h2 class="section-title reveal">El proceso</h2>
     <p class="section-sub reveal">Simple, directo y sin complicaciones.</p>
 
     <div class="process-steps reveal">
@@ -454,81 +436,6 @@
         <p class="step-desc">
           Recibes el resultado final, revisas y hacemos los ajustes necesarios hasta dejarlo perfecto.
         </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIOS / Lo que dice mi comunidad
-       IMPORTANTE: los textos de abajo son EJEMPLOS de relleno. Reemplázalos por
-       comentarios REALES sacados de tus redes (YouTube, Instagram, Facebook, WhatsApp).
-       Para agregar uno nuevo copia un bloque <figure class="testimonio-card"> y cambia
-       el texto, el nombre y el ícono. Redes disponibles: youtube, instagram, facebook, whatsapp. -->
-  <section id="testimonios">
-    <div class="section-label reveal"><span>Lo que dicen</span></div>
-    <h2 class="section-title reveal">Mi <em>comunidad</em></h2>
-    <p class="section-sub reveal">
-      Comentarios reales de quienes ven mi contenido en redes.
-    </p>
-
-    <!-- Desfile automático: el JS duplica las tarjetas para el bucle continuo.
-         Tú solo escribe cada testimonio UNA vez aquí dentro. -->
-    <div class="testimonios-marquee reveal" aria-label="Comentarios de la comunidad">
-      <div class="testimonios-track">
-
-      <!-- EJEMPLO 1 (reemplazar) -->
-      <figure class="testimonio-card">
-        <blockquote class="testimonio-texto">muy buen microfono lo acabo de comprar y el sonido es excelente.</blockquote>
-        <figcaption class="testimonio-autor">
-          <span class="testimonio-red"><svg viewBox="0 0 24 24" fill="#ff0000"><use href="#icon-youtube"/></svg></span>
-          <span class="testimonio-nombre">@f.m.agemmaluk<span class="testimonio-fuente">
-        </figcaption>
-      </figure>
-
-   <!-- EJEMPLO 2 (reemplazar) -->
-      <figure class="testimonio-card">
-        <blockquote class="testimonio-texto">Gracias, justo lo que estaba buscando, va tu like!</blockquote>
-        <figcaption class="testimonio-autor">
-          <span class="testimonio-red"><svg viewBox="0 0 24 24" fill="#ff0000"><use href="#icon-youtube"/></svg></span>
-          <span class="testimonio-nombre">@betogutierrez191<span class="testimonio-fuente">
-        </figcaption>
-      </figure>
-
-   <!-- EJEMPLO 3 (reemplazar) -->
-      <figure class="testimonio-card">
-        <blockquote class="testimonio-texto">Muy bien video, muchas gracias! 👌</blockquote>
-        <figcaption class="testimonio-autor">
-          <span class="testimonio-red"><svg viewBox="0 0 24 24" fill="#ff0000"><use href="#icon-youtube"/></svg></span>
-          <span class="testimonio-nombre">@AndresGutierrez-jz1om<span class="testimonio-fuente">
-        </figcaption>
-      </figure>
-
-    <!-- EJEMPLO 4 (reemplazar) -->
-      <figure class="testimonio-card">
-        <blockquote class="testimonio-texto">Me costo encontrar este video, gracias hermano, suscrito 🙌</blockquote>
-        <figcaption class="testimonio-autor">
-          <span class="testimonio-red"><svg viewBox="0 0 24 24" fill="#ff0000"><use href="#icon-youtube"/></svg></span>
-          <span class="testimonio-nombre">@Edu90c<span class="testimonio-fuente">
-        </figcaption>
-      </figure>
-
-      <!-- EJEMPLO 5 (reemplazar) -->
-      <figure class="testimonio-card">
-        <blockquote class="testimonio-texto">Buenísimo el trabajo, justo lo que necesitaba para mi</blockquote>
-        <figcaption class="testimonio-autor">
-          <span class="testimonio-red"><svg viewBox="0 0 24 24" fill="#E1306C"><use href="#icon-instagram"/></svg></span>
-          <span class="testimonio-nombre">Comentario en Instagram <span class="testimonio-fuente">
-        </figcaption>
-      </figure>
-
-      <!-- EJEMPLO 5 (reemplazar) -->
-      <figure class="testimonio-card">
-        <blockquote class="testimonio-texto">Quedó increíble el trabajo, muy recomendado.</blockquote>
-        <figcaption class="testimonio-autor">
-          <span class="testimonio-red"><svg viewBox="0 0 32 32" fill="#25D366"><use href="#icon-whatsapp"/></svg></span>
-          <span class="testimonio-nombre">Mensaje por WhatsApp <span class="testimonio-fuente">
-        </figcaption>
-      </figure>
-
       </div>
     </div>
   </section>
