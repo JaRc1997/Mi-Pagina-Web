@@ -1729,6 +1729,47 @@ a.trabajo-card:hover .trabajo-thumb img { transform: scale(1.04); }
 }
 a.trabajo-card:hover .trabajo-cta { gap: 0.6rem; }
 
+/* Marcas / logos de clientes (portafolio). Tiles uniformes: cada logo va sobre
+   el fondo que le conviene. Por defecto el tile es claro (para logos oscuros);
+   agrega la clase marca-logo--dark para logos claros o blancos. */
+.marcas-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.marca-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 260px;
+  height: 130px;
+  padding: 1.4rem 1.8rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.marca-logo--dark { background: #000; border-color: rgba(255,255,255,0.6); }
+.marca-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+.marca-logo:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+}
+@media (max-width: 600px) {
+  .marcas-row { gap: 1rem; }
+  .marca-logo { width: 100%; max-width: 300px; height: 120px; }
+}
+
 @media (max-width: 600px) {
   .trabajos-grid { grid-template-columns: 1fr; gap: 1.2rem; }
   .trabajos-grid .trabajo-card { width: auto; }

@@ -25,18 +25,22 @@
   <meta property="og:title" content="Portafolio - Proyectos web, edición y miniaturas" />
   <meta property="og:description" content="Trabajos reales, no promesas. Sitios web para clientes, edición de video y miniaturas. Mira lo que entrego." />
   <meta property="og:url" content="https://jarconline.com/portafolio.html" />
-  <meta property="og:image" content="https://jarconline.com/assets/portafolio/luar-joyas.jpg" />
-  <meta property="og:image:alt" content="Portafolio de trabajos de JarcOnline" />
+  <meta property="og:image" content="https://jarconline.com/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Logo de JarcOnline" />
   <meta property="og:locale" content="es_CO" />
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Portafolio JarcOnline - Trabajos reales" />
   <meta name="twitter:description" content="Sitios web para clientes, edición de video y miniaturas para YouTube." />
-  <meta name="twitter:image" content="https://jarconline.com/assets/portafolio/luar-joyas.jpg" />
+  <meta name="twitter:image" content="https://jarconline.com/assets/og-image.png" />
 
+  <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
-  <link rel="alternate icon" type="image/png" href="assets/logo.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/marca/icono-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/marca/icono-192.png" />
   <link rel="apple-touch-icon" href="assets/marca/icono-180.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -104,6 +108,31 @@
       </p>
     </div>
   </div>
+
+  <!-- MARCAS / Clientes con los que he trabajado
+       Guarda cada logo en assets/marcas/ (idealmente en BLANCO o claro y con
+       fondo transparente, para que se lea bien sobre el fondo oscuro).
+       Para agregar otra marca copia un bloque <div class="marca-logo"> y cambia
+       la imagen y el alt. Si quieres que el logo enlace al sitio del cliente,
+       envuélvelo en <a href="..." target="_blank" rel="noopener noreferrer">. -->
+  <section id="marcas">
+    <div class="section-label reveal"><span>Clientes</span></div>
+    <h2 class="section-title reveal">Marcas que confían en mí</h2>
+    <p class="section-sub reveal">
+      Negocios reales que ya trabajaron conmigo.
+    </p>
+
+    <div class="marcas-row reveal">
+      <!-- Tile oscuro: para logos claros/blancos (como LUAR) -->
+      <div class="marca-logo marca-logo--dark">
+        <img src="assets/marcas/luar.jpeg" alt="LUAR JOYAS" loading="lazy">
+      </div>
+      <!-- Tile claro: para logos oscuros o de color (como GCP) -->
+      <div class="marca-logo">
+        <img src="assets/marcas/gcp.png" alt="GCP Gorras, confecciones publicitarias" loading="lazy">
+      </div>
+    </div>
+  </section>
 
   <!-- PORTAFOLIO - Casos de trabajo
        Cuadrícula de proyectos. Cada tarjeta es un enlace clickeable que abre el
