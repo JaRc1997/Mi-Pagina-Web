@@ -1820,6 +1820,39 @@ a.trabajo-card:hover .trabajo-cta { gap: 0.6rem; }
   .caso-title { font-size: 1.3rem; }
 }
 
+/* Animación de entrada: overlay a pantalla completa con el logo dibujándose.
+   Se muestra una sola vez por sesión (lo controla el script inline). */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.intro--out { animation: introOut 0.6s ease forwards; }
+@keyframes introOut { to { opacity: 0; visibility: hidden; } }
+.intro-logo {
+  width: 118px;
+  height: 118px;
+  animation: introPop 1.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes introPop {
+  0%   { transform: scale(0.85); opacity: 0; }
+  18%  { opacity: 1; }
+  72%  { transform: scale(1); }
+  84%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+.il-border { stroke-dasharray: 400; stroke-dashoffset: 400; animation: introDraw 0.75s 0.1s ease forwards; }
+.il-arrow  { stroke-dasharray: 80;  stroke-dashoffset: 80;  animation: introDraw 0.5s 0.55s ease forwards; }
+.il-j      { stroke-dasharray: 95;  stroke-dashoffset: 95;  animation: introDraw 0.5s 0.85s ease forwards; }
+@keyframes introDraw { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .intro-logo, .il-border, .il-arrow, .il-j { animation: none; stroke-dashoffset: 0; opacity: 1; }
+}
+
 @media (max-width: 600px) {
   .trabajos-grid { grid-template-columns: 1fr; gap: 1.2rem; }
   .trabajos-grid .trabajo-card { width: auto; }

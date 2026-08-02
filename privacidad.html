@@ -28,6 +28,27 @@
 </head>
 <body>
 
+  <!-- Animación de entrada: el logo se dibuja solo. Se muestra 1 vez por sesión. -->
+  <div class="intro" id="intro" role="presentation">
+    <svg class="intro-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect class="il-border" x="2" y="2" width="96" height="96" rx="26" fill="#0A0A0A" stroke="#C8FF00" stroke-width="3"/>
+      <path class="il-arrow" d="M24 35 L39 50 L24 65" stroke="#C8FF00" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="il-j" d="M70 31 L70 57 C70 67 63 72 56 72 C50 72 46 68 46 63" stroke="#FFFFFF" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <script>
+  (function(){
+    var i = document.getElementById('intro');
+    if (!i) return;
+    if (sessionStorage.getItem('jarcIntro')) { i.parentNode.removeChild(i); return; }
+    sessionStorage.setItem('jarcIntro', '1');
+    setTimeout(function(){
+      i.classList.add('intro--out');
+      setTimeout(function(){ if (i.parentNode) i.parentNode.removeChild(i); }, 650);
+    }, 1600);
+  })();
+  </script>
+
   <!-- Sprite de íconos SVG -->
   <svg style="display:none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
     <symbol id="icon-whatsapp" viewBox="0 0 32 32">
@@ -86,7 +107,7 @@
       <p>
         Este sitio web (jarconline.com) es operado por Javier Antonio Rueda Cifuentes
         (JarcOnline), creador de contenido digital con domicilio en Colombia. Para cualquier asunto
-        relacionado con tus datos puedes escribir a <a data-mail="Rueda3062" data-dom="gmail.com" data-mostrar="si">nuestro correo</a>.
+        relacionado con tus datos puedes escribir a <a data-mail="jarc.online21" data-dom="gmail.com" data-mostrar="si">nuestro correo</a>.
       </p>
 
       <h2>2. Qué información recopilamos</h2>
@@ -124,7 +145,7 @@
         Como titular de tus datos tienes derecho a conocer, actualizar, rectificar y solicitar la
         eliminación de tus datos personales, así como a revocar la autorización para su tratamiento.
         Para ejercer cualquiera de estos derechos, escríbenos a
-        <a data-mail="Rueda3062" data-dom="gmail.com" data-mostrar="si">nuestro correo</a> y atenderemos tu solicitud.
+        <a data-mail="jarc.online21" data-dom="gmail.com" data-mostrar="si">nuestro correo</a> y atenderemos tu solicitud.
       </p>
 
       <h2>7. Conservación</h2>
@@ -143,7 +164,7 @@
       <h2>9. Contacto</h2>
       <p>
         ¿Dudas sobre tus datos o esta política? Escríbenos a
-        <a data-mail="Rueda3062" data-dom="gmail.com" data-mostrar="si">nuestro correo</a>.
+        <a data-mail="jarc.online21" data-dom="gmail.com" data-mostrar="si">nuestro correo</a>.
       </p>
     </div>
   </section>

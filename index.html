@@ -60,8 +60,8 @@
     "description": "Creador de contenido enfocado en tecnología, edición de video y herramientas digitales.",
     "sameAs": [
       "https://www.youtube.com/@jarconline7",
-      "https://www.instagram.com/javier_rueda77/",
-      "https://www.facebook.com/javier.ruedacifuentes/",
+      "https://www.instagram.com/jarconline/",
+      "https://www.facebook.com/share/1DzqaMsKxz/?mibextid=wwXIfr",
       "https://www.reddit.com/user/JarcOnline/",
       "https://www.linkedin.com/in/javier-antonio-rueda-cifuentes/"
     ]
@@ -69,6 +69,27 @@
   </script>
 </head>
 <body>
+
+  <!-- Animación de entrada: el logo se dibuja solo. Se muestra 1 vez por sesión. -->
+  <div class="intro" id="intro" role="presentation">
+    <svg class="intro-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect class="il-border" x="2" y="2" width="96" height="96" rx="26" fill="#0A0A0A" stroke="#C8FF00" stroke-width="3"/>
+      <path class="il-arrow" d="M24 35 L39 50 L24 65" stroke="#C8FF00" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="il-j" d="M70 31 L70 57 C70 67 63 72 56 72 C50 72 46 68 46 63" stroke="#FFFFFF" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <script>
+  (function(){
+    var i = document.getElementById('intro');
+    if (!i) return;
+    if (sessionStorage.getItem('jarcIntro')) { i.parentNode.removeChild(i); return; }
+    sessionStorage.setItem('jarcIntro', '1');
+    setTimeout(function(){
+      i.classList.add('intro--out');
+      setTimeout(function(){ if (i.parentNode) i.parentNode.removeChild(i); }, 650);
+    }, 1600);
+  })();
+  </script>
 
   <!-- Sprite de íconos SVG — se define una vez, se reutiliza en todo el HTML -->
   <svg style="display:none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -158,10 +179,10 @@
       <a href="https://www.youtube.com/@jarconline7" target="_blank" rel="noopener noreferrer" class="social-dot" title="YouTube">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><use href="#icon-youtube"/></svg>
       </a>
-      <a href="https://www.instagram.com/javier_rueda77/" target="_blank" rel="noopener noreferrer" class="social-dot" title="Instagram">
+      <a href="https://www.instagram.com/jarconline/" target="_blank" rel="noopener noreferrer" class="social-dot" title="Instagram">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><use href="#icon-instagram"/></svg>
       </a>
-      <a href="https://www.facebook.com/javier.ruedacifuentes/" target="_blank" rel="noopener noreferrer" class="social-dot" title="Facebook">
+      <a href="https://www.facebook.com/share/1DzqaMsKxz/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-dot" title="Facebook">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><use href="#icon-facebook"/></svg>
       </a>
       <a href="https://www.reddit.com/user/JarcOnline/" target="_blank" rel="noopener noreferrer" class="social-dot" title="Reddit">
@@ -350,7 +371,7 @@ desde el principio para crear y subir contenido sin complicarme la vida. ✅">
         <div class="social-handle">@jarconline7</div>
         <div class="social-arrow">Ver canal</div>
       </a>
-      <a href="https://www.instagram.com/javier_rueda77/" target="_blank" rel="noopener noreferrer" class="social-card" data-net="instagram">
+      <a href="https://www.instagram.com/jarconline/" target="_blank" rel="noopener noreferrer" class="social-card" data-net="instagram">
         <div class="social-icon">
           <svg viewBox="0 0 24 24" width="32" height="32">
             <defs>
@@ -366,15 +387,15 @@ desde el principio para crear y subir contenido sin complicarme la vida. ✅">
           </svg>
         </div>
         <div class="social-name">Instagram</div>
-        <div class="social-handle">@javier_rueda77</div>
+        <div class="social-handle">@jarconline</div>
         <div class="social-arrow">Ver perfil</div>
       </a>
-      <a href="https://www.facebook.com/javier.ruedacifuentes/" target="_blank" rel="noopener noreferrer" class="social-card" data-net="facebook">
+      <a href="https://www.facebook.com/share/1DzqaMsKxz/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-card" data-net="facebook">
         <div class="social-icon">
           <svg viewBox="0 0 24 24" width="32" height="32" fill="#1877f2"><use href="#icon-facebook"/></svg>
         </div>
         <div class="social-name">Facebook</div>
-        <div class="social-handle">javier.ruedacifuentes</div>
+        <div class="social-handle">JarcOnline</div>
         <div class="social-arrow">Ver perfil</div>
       </a>
       <a href="https://www.reddit.com/user/JarcOnline/" target="_blank" rel="noopener noreferrer" class="social-card" data-net="reddit">
@@ -405,14 +426,14 @@ desde el principio para crear y subir contenido sin complicarme la vida. ✅">
         Estoy abierto a colaboraciones, menciones de productos, reviews y patrocinios.
         Si tienes algo interesante, escríbeme y lo hablamos.
       </p>
-      <a class="contact-email" data-mail="Rueda3062" data-dom="gmail.com" data-mostrar="si">
+      <a class="contact-email" data-mail="jarc.online21" data-dom="gmail.com" data-mostrar="si">
         Escríbeme por correo
       </a>
       <p class="contact-also">También puedes escribirme por:</p>
       <div class="contact-social-row">
-        <a href="https://www.instagram.com/javier_rueda77/" target="_blank" rel="noopener noreferrer" class="cs-btn">Instagram DM</a>
+        <a href="https://www.instagram.com/jarconline/" target="_blank" rel="noopener noreferrer" class="cs-btn">Instagram DM</a>
         <a href="https://wa.me/573229426949" target="_blank" rel="noopener noreferrer" class="cs-btn">WhatsApp</a>
-        <a href="https://www.facebook.com/javier.ruedacifuentes/" target="_blank" rel="noopener noreferrer" class="cs-btn">Facebook</a>
+        <a href="https://www.facebook.com/share/1DzqaMsKxz/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="cs-btn">Facebook</a>
       </div>
     </div>
   </section>
