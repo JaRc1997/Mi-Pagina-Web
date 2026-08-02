@@ -141,7 +141,7 @@ nav {
 /* hero (index.html) */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   padding: 8rem 4rem 5rem;
@@ -170,9 +170,9 @@ nav {
 
 .hero h1 {
   font-family: var(--font-head);
-  font-size: clamp(3.5rem, 9vw, 8rem);
-  line-height: 0.96;
-  letter-spacing: -2px;
+  font-size: clamp(3.5rem, 10.5vw, 12rem);
+  line-height: 0.95;
+  letter-spacing: -3px;
   font-weight: 800;
   color: var(--text);
   animation: fadeUp 0.8s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -199,22 +199,12 @@ nav {
   animation: fadeUp 0.8s 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* En pantallas grandes el hero se reparte en dos columnas: el titulo a la
-   izquierda y el texto con los botones a la derecha, para no dejar vacia
-   media pantalla. Debajo de 1200px todo vuelve a ir apilado como en movil. */
+/* En pantallas grandes el hero se mantiene en UNA sola columna alineada a la
+   izquierda: título, texto y botones juntos y coherentes. El lado derecho queda
+   como aire, equilibrado por la barra de redes flotante. */
 @media (min-width: 1200px) {
-  .hero-content {
-    max-width: 1500px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 4rem;
-    align-items: center;
-    padding-right: 5rem; /* deja aire para los iconos de redes flotantes */
-  }
-  .hero-aside { max-width: 520px; }
-  .hero-sub { margin-top: 0; max-width: 100%; }
-  .hero-ctas { margin-top: 2.2rem; }
+  .hero-content { max-width: none; padding-right: 6rem; }
+  .hero-sub { max-width: 560px; }
 }
 
 /* page hero (servicios.html) */
@@ -249,10 +239,10 @@ nav {
 }
 .page-hero h1 {
   font-family: var(--font-head);
-  font-size: clamp(2.8rem, 7vw, 6rem);
+  font-size: clamp(2.8rem, 9vw, 9rem);
   font-weight: 700;
-  letter-spacing: -2px;
-  line-height: 0.97;
+  letter-spacing: -2.5px;
+  line-height: 0.95;
   color: var(--text);
   margin-bottom: 1.8rem;
 }
@@ -268,19 +258,12 @@ nav {
 }
 .page-hero p strong { color: var(--text); font-weight: 600; }
 
-/* En pantallas grandes el encabezado de las paginas internas (Servicios, Recursos,
-   Privacidad) se reparte en dos columnas: titulo a la izquierda y texto a la derecha,
-   igual que el inicio. Debajo de 1200px todo vuelve a ir apilado como en movil. */
+/* En pantallas grandes el encabezado de las páginas internas (Servicios, Portafolio,
+   Recursos, Privacidad) se mantiene en UNA columna alineada a la izquierda:
+   título arriba y texto justo debajo, cohesionados. */
 @media (min-width: 1200px) {
-  .page-hero-inner {
-    max-width: 1500px;
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 4rem;
-    align-items: center;
-  }
-  .page-hero h1 { margin-bottom: 0; }
-  .page-hero p { max-width: 100%; }
+  .page-hero-inner { max-width: none; }
+  .page-hero p { max-width: 620px; }
 }
 
 /* botones */
@@ -315,7 +298,7 @@ nav {
 .hero-socials {
   position: absolute;
   right: 4rem;
-  top: 20%;
+  top: 50%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
@@ -1768,6 +1751,56 @@ a.trabajo-card:hover .trabajo-cta { gap: 0.6rem; }
 @media (max-width: 600px) {
   .marcas-row { gap: 1rem; }
   .marca-logo { width: 100%; max-width: 300px; height: 120px; }
+}
+
+/* Casos de estudio (portafolio): tarjeta con reto, lo que hice y resultado. */
+.casos-grid { display: grid; gap: 1.5rem; max-width: 920px; margin: 0 auto; }
+.caso-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 2rem 2.2rem;
+}
+.caso-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.caso-title {
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--text);
+  margin: 0.4rem 0 1.5rem;
+}
+.caso-bloques { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+.caso-etq {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+.caso-bloque p { font-size: 0.85rem; line-height: 1.55; color: var(--text); }
+.caso-link {
+  display: inline-block;
+  margin-top: 1.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.caso-link:hover { opacity: 0.75; }
+@media (max-width: 700px) {
+  .caso-bloques { grid-template-columns: 1fr; gap: 1.1rem; }
+  .caso-card { padding: 1.6rem; }
+  .caso-title { font-size: 1.3rem; }
 }
 
 @media (max-width: 600px) {
