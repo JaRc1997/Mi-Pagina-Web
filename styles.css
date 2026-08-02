@@ -141,7 +141,7 @@ nav {
 /* hero (index.html) */
 .hero {
   position: relative;
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   padding: 8rem 4rem 5rem;
@@ -170,9 +170,9 @@ nav {
 
 .hero h1 {
   font-family: var(--font-head);
-  font-size: clamp(3.5rem, 10.5vw, 12rem);
-  line-height: 0.95;
-  letter-spacing: -3px;
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  line-height: 0.96;
+  letter-spacing: -2px;
   font-weight: 800;
   color: var(--text);
   animation: fadeUp 0.8s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -203,8 +203,18 @@ nav {
    izquierda: título, texto y botones juntos y coherentes. El lado derecho queda
    como aire, equilibrado por la barra de redes flotante. */
 @media (min-width: 1200px) {
-  .hero-content { max-width: none; padding-right: 6rem; }
-  .hero-sub { max-width: 560px; }
+  .hero-content {
+    max-width: 1500px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 4rem;
+    align-items: center;
+    padding-right: 5rem;
+  }
+  .hero-aside { max-width: 520px; }
+  .hero-sub { margin-top: 0; max-width: 100%; }
+  .hero-ctas { margin-top: 2.2rem; }
 }
 
 /* page hero (servicios.html) */
@@ -239,10 +249,10 @@ nav {
 }
 .page-hero h1 {
   font-family: var(--font-head);
-  font-size: clamp(2.8rem, 9vw, 9rem);
+  font-size: clamp(2.8rem, 7vw, 6rem);
   font-weight: 700;
-  letter-spacing: -2.5px;
-  line-height: 0.95;
+  letter-spacing: -2px;
+  line-height: 0.97;
   color: var(--text);
   margin-bottom: 1.8rem;
 }
@@ -262,8 +272,15 @@ nav {
    Recursos, Privacidad) se mantiene en UNA columna alineada a la izquierda:
    título arriba y texto justo debajo, cohesionados. */
 @media (min-width: 1200px) {
-  .page-hero-inner { max-width: none; }
-  .page-hero p { max-width: 620px; }
+  .page-hero-inner {
+    max-width: 1500px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .page-hero h1 { margin-bottom: 0; }
+  .page-hero p { max-width: 100%; }
 }
 
 /* botones */
@@ -298,7 +315,7 @@ nav {
 .hero-socials {
   position: absolute;
   right: 4rem;
-  top: 50%;
+  top: 20%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
