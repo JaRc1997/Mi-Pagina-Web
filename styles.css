@@ -1630,18 +1630,20 @@ button:focus-visible {
 }
 .tienda-online-title {
   font-family: var(--font-head);
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
   color: var(--text);
   margin: 0.9rem 0 0.6rem;
 }
 .tienda-online-desc {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--muted);
-  line-height: 1.65;
+  line-height: 1.6;
   margin-bottom: 1.2rem;
 }
+.tienda-online .pricing-price { border-bottom: none; padding-bottom: 0; }
+.tienda-online .pricing-delivery { margin-top: 0.3rem; }
 .tienda-online .btn-wa-service { margin-top: 1rem; }
 .tienda-online-list { margin: 0; }
 @media (max-width: 800px) {
