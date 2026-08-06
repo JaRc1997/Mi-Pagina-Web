@@ -27,10 +27,12 @@ if (hamburger && navOverlay) {
   });
 }
 
-// Desfile horizontal en bucle continuo (testimonios y trabajos recientes).
-// En el HTML se escribe cada tarjeta una sola vez; aquí se clona lo necesario
-// para llenar la pantalla y para que el punto de reinicio sea invisible.
-function montarMarquee(track, velocidad) {
+// Carrusel horizontal en bucle continuo (testimonios). Se desplaza solo y además
+// se puede arrastrar con el mouse (escritorio) o deslizar con el dedo (móvil).
+// El auto-desplazamiento se pausa mientras el usuario interactúa.
+function montarCarrusel(marquee, velocidad) {
+  if (!marquee) return;
+  const track = marquee.querySelector('.testimonios-track');
   if (!track || track.children.length === 0) return;
   const originales = Array.prototype.slice.call(track.children);
 
@@ -42,27 +44,60 @@ function montarMarquee(track, velocidad) {
     });
   }
 
-  // 1) Repite el set hasta que llene el ancho de la pantalla (así nunca se ve un hueco)
+  // Rellena hasta cubrir la pantalla y luego duplica el bloque: así el punto de
+  // reinicio es invisible (la segunda mitad es idéntica a la primera).
   let guardia = 0;
-  while (track.scrollWidth < window.innerWidth * 1.15 && guardia < 20) {
+  while (track.scrollWidth < marquee.offsetWidth * 2 && guardia < 20) {
     agregarClones(originales);
     guardia++;
   }
-
-  // 2) Duplica todo el bloque: la segunda mitad es idéntica a la primera,
-  //    así al reiniciar el salto es invisible (bucle continuo)
   const bloque = Array.prototype.slice.call(track.children);
   agregarClones(bloque);
-
-  // 3) Desplazamiento exacto (en píxeles) = donde empieza la copia del bloque
   const shift = track.children[bloque.length].offsetLeft - track.children[0].offsetLeft;
-  const VELOCIDAD = velocidad || 45; // píxeles por segundo (velocidad constante)
-  track.style.setProperty('--marquee-shift', shift + 'px');
-  track.style.animationDuration = (shift / VELOCIDAD) + 's';
+
+  const VELOCIDAD = velocidad || 45; // píxeles por segundo
+  let auto = true, arrastrando = false, inicioX = 0, inicioScroll = 0, prev = null, reanudar;
+  // La posición se lleva en decimal: scrollLeft se redondea a enteros y, como el
+  // avance por frame es < 1px, frenaría el auto. Así se mueve suave siempre.
+  let pos = 0;
+
+  function bucle(ts) {
+    if (prev === null) prev = ts;
+    const dt = (ts - prev) / 1000; prev = ts;
+    if (auto && !arrastrando) {
+      pos += VELOCIDAD * dt;
+      if (pos >= shift) pos -= shift;
+      marquee.scrollLeft = pos;
+    } else {
+      // el usuario está moviendo el carrusel: seguimos su posición
+      pos = marquee.scrollLeft;
+      if (pos >= shift) { pos -= shift; marquee.scrollLeft = pos; }
+    }
+    requestAnimationFrame(bucle);
+  }
+  requestAnimationFrame(bucle);
+
+  // Escritorio: pausa al pasar el mouse y permite arrastrar
+  marquee.addEventListener('mouseenter', function () { auto = false; });
+  marquee.addEventListener('mouseleave', function () { auto = true; arrastrando = false; marquee.classList.remove('arrastrando'); });
+  marquee.addEventListener('mousedown', function (e) {
+    arrastrando = true; inicioX = e.pageX; inicioScroll = marquee.scrollLeft;
+    marquee.classList.add('arrastrando'); e.preventDefault();
+  });
+  window.addEventListener('mousemove', function (e) {
+    if (!arrastrando) return;
+    marquee.scrollLeft = inicioScroll - (e.pageX - inicioX);
+  });
+  window.addEventListener('mouseup', function () {
+    if (arrastrando) { arrastrando = false; marquee.classList.remove('arrastrando'); }
+  });
+
+  // Móvil: el dedo usa el scroll nativo; pausamos el auto y lo reanudamos al soltar
+  marquee.addEventListener('touchstart', function () { auto = false; clearTimeout(reanudar); }, { passive: true });
+  marquee.addEventListener('touchend', function () { clearTimeout(reanudar); reanudar = setTimeout(function () { auto = true; }, 2000); }, { passive: true });
 }
 
-montarMarquee(document.querySelector('.testimonios-track'), 45);
-montarMarquee(document.querySelector('.trabajos-track'), 62);
+montarCarrusel(document.querySelector('.testimonios-marquee'), 45);
 
 // Animaciones al hacer scroll
 const observer = new IntersectionObserver(entries => {
