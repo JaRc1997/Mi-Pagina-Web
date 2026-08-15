@@ -436,7 +436,6 @@ section { position: relative; padding: 5rem 4rem; z-index: 1; }
 .stat-card {
   background: var(--bg);
   border: 1px solid var(--border);
-  border-left: 2px solid var(--accent);
   border-radius: 6px;
   padding: 1.1rem;
 }
@@ -1357,7 +1356,6 @@ footer a span { color: var(--accent); }
   gap: 2.5rem;
   flex-wrap: wrap;
   border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
   border-radius: 10px;
   background: var(--bg);
   padding: 2.5rem 3rem;
