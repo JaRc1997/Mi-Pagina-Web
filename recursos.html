@@ -131,14 +131,28 @@
     <div class="page-hero-inner">
       <h1>Recursos <em>gratis</em><br>para creadores</h1>
       <p>
-        Plantillas, <strong>música libre de derechos</strong>, efectos de video y zonas seguras para tus Reels y Shorts. Todo lo que uso en mis videos,
-        ahora disponible para ti.
+        <strong>Plugins para DaVinci Resolve</strong>, plantillas, música libre de derechos, efectos de video y zonas seguras
+        para tus Reels y Shorts. Todo lo que uso en mis videos, ahora disponible para ti.
       </p>
     </div>
   </div>
 
+  <!-- MIS PLUGINS: desarrollos propios, destacados sobre el catalogo.
+       El contenido sale de la lista PLUGINS en script-recursos.js.
+       Los botones de Descargar, GitHub y Tutorial se ocultan solos mientras
+       su enlace siga marcado como PENDIENTE. -->
+  <section id="plugins">
+    <div class="section-label reveal"><span>Desarrollo propio</span></div>
+    <h2 class="section-title reveal">Mis plugins</h2>
+    <p class="recursos-intro reveal">
+      Herramientas que programé para resolver problemas reales al editar. Gratis y de código abierto.
+    </p>
+
+    <div class="plugins-grid reveal" id="pluginsGrid"></div>
+  </section>
+
   <!-- Listado de recursos -->
-  <section id="listado">
+  <section id="listado" class="section-alt">
     <div class="section-label reveal"><span>Catalogo</span></div>
     <h2 class="section-title reveal">Descarga lo que necesites</h2>
     <p class="recursos-intro reveal">
@@ -149,6 +163,7 @@
     <!-- Filtros por categoría -->
     <div class="recursos-filter reveal" id="recursosFilter">
       <button class="filter-btn active" data-filter="todos">Todos</button>
+      <button class="filter-btn" data-filter="plugins">Plugins</button>
       <button class="filter-btn" data-filter="audio">Audio</button>
       <button class="filter-btn" data-filter="video">Video</button>
       <button class="filter-btn" data-filter="thumbnails">Thumbnails</button>

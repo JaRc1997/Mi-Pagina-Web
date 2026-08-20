@@ -12,6 +12,50 @@
 //   imagen     -> ruta de imagen en /assets (opcional). Si la pones, reemplaza al emoji.
 //                 Ejemplo: imagen: 'assets/icono-musica.png'
 // ----------------------------------------------------------------
+// ----------------------------------------------------------------
+// Plugins propios (desarrollados por JarcOnline)
+// Se muestran en la seccion destacada de arriba y tambien dentro del
+// catalogo bajo la categoria 'plugins'. Se escriben UNA sola vez aqui.
+//
+// Campos:
+//   nombre     -> nombre del plugin
+//   software   -> para que programa es (ej: 'DaVinci Resolve')
+//   sistema    -> sistema operativo (ej: 'Windows')
+//   version    -> version actual (ej: 'v1.0')
+//   descripcion-> que hace y para que sirve
+//   tamano     -> peso del archivo
+//   link       -> descarga directa (Google Drive)
+//   github     -> repositorio en GitHub (deja '' si no quieres el boton)
+//   tutorial   -> video de YouTube explicando como se instala (deja '' si no hay)
+//   imagen     -> icono en /assets (opcional)
+// ----------------------------------------------------------------
+const PLUGINS = [
+  {
+    nombre: 'Plugin de Zonas Seguras',
+    software: 'DaVinci Resolve',
+    sistema: 'Windows',
+    version: 'v1.0',
+    descripcion: 'Coloca las zonas seguras de TikTok, Reels y Shorts directamente en tu linea de tiempo. Deja de adivinar donde va el texto: mira al instante que parte tapa la interfaz de cada red.',
+    tamano: 'Por definir',
+    link: 'PENDIENTE-LINK-DRIVE',
+    github: 'PENDIENTE-LINK-GITHUB',
+    tutorial: 'PENDIENTE-LINK-YOUTUBE',
+    imagen: 'assets/device-mobile.png'
+  },
+  {
+    nombre: 'Subtitulador TextPlus',
+    software: 'DaVinci Resolve',
+    sistema: 'Windows',
+    version: 'v1.0',
+    descripcion: 'Convierte tus subtitulos en capas Text+ editables de forma automatica. Te ahorra horas de trabajo manual y te deja personalizar el estilo de todos los subtitulos de una sola vez.',
+    tamano: 'Por definir',
+    link: 'PENDIENTE-LINK-DRIVE',
+    github: 'PENDIENTE-LINK-GITHUB',
+    tutorial: 'PENDIENTE-LINK-YOUTUBE',
+    imagen: 'assets/video.png'
+  }
+];
+
 const RECURSOS = [
 
   // Audio
@@ -159,6 +203,57 @@ const RECURSOS = [
 
 ];
 
+// Los plugins tambien entran al catalogo de abajo (categoria 'plugins'),
+// asi el filtro funciona sin tener que escribirlos dos veces.
+PLUGINS.forEach(p => {
+  RECURSOS.unshift({
+    nombre: p.nombre,
+    categoria: 'plugins',
+    descripcion: p.descripcion,
+    tamano: p.tamano,
+    link: p.link,
+    icono: '🔌',
+    imagen: p.imagen
+  });
+});
+
+// Pinta la seccion destacada "Mis plugins" (arriba del catalogo)
+function renderPlugins() {
+  const grid = document.getElementById('pluginsGrid');
+  if (!grid) return;
+
+  const iconoGitHub = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>';
+  const iconoPlay = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+
+  grid.innerHTML = PLUGINS.map(p => {
+    const listo = url => url && !String(url).startsWith('PENDIENTE');
+    return `
+    <article class="plugin-card">
+      <div class="plugin-top">
+        <div class="plugin-icon">
+          ${p.imagen ? `<img src="${p.imagen}" alt="" class="plugin-img">` : '<span>🔌</span>'}
+        </div>
+        <span class="plugin-version">${p.version}</span>
+      </div>
+      <h3 class="plugin-name">${p.nombre}</h3>
+      <div class="plugin-meta">
+        <span class="plugin-chip">${p.software}</span>
+        <span class="plugin-chip">${p.sistema}</span>
+      </div>
+      <p class="plugin-desc">${p.descripcion}</p>
+      <div class="plugin-actions">
+        ${listo(p.link)
+          ? `<a href="${p.link}" class="btn-download" target="_blank" rel="noopener noreferrer" data-recurso="${p.nombre}" download>Descargar</a>`
+          : `<span class="btn-download btn-pronto">Muy pronto</span>`}
+        ${listo(p.github)
+          ? `<a href="${p.github}" class="btn-plugin-sec" target="_blank" rel="noopener noreferrer">${iconoGitHub} GitHub</a>` : ''}
+        ${listo(p.tutorial)
+          ? `<a href="${p.tutorial}" class="btn-plugin-sec" target="_blank" rel="noopener noreferrer">${iconoPlay} Tutorial</a>` : ''}
+      </div>
+    </article>`;
+  }).join('');
+}
+
 // Pinta una tarjeta del recurso. Si el item tiene imagen, la usa; si no, usa el emoji.
 function renderRecursos(filtro = 'todos') {
   const grid = document.getElementById('recursosGrid');
@@ -289,6 +384,7 @@ function initReveal() {
 }
 
 function init() {
+  renderPlugins();
   renderRecursos();
   initFiltros();
   initVerMas();
