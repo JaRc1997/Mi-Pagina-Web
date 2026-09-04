@@ -37,9 +37,11 @@ const PLUGINS = [
     version: 'v1.0',
     descripcion: 'Coloca las zonas seguras de TikTok, Reels y Shorts directamente en tu linea de tiempo. Deja de adivinar donde va el texto: mira al instante que parte tapa la interfaz de cada red.',
     tamano: 'Por definir',
-    link: 'PENDIENTE-LINK-DRIVE',
-    github: 'PENDIENTE-LINK-GITHUB',
-    tutorial: 'PENDIENTE-LINK-YOUTUBE',
+    link: 'https://drive.google.com/uc?export=download&id=1jERuGHzvnS_UdOY2-MQ7fVeM8L_9_1Mq',
+    github: 'https://github.com/JaRc1997/zonas-seguras-davinci',
+    tutorial: 'https://youtu.be/9kjaO7WI5s4',
+    // 2026-09-23T13:45(hora de Colombia).
+    tutorialDesde: '2026-09-23T13:45:00-05:00',
     imagen: 'assets/device-mobile.png'
   },
   {
@@ -49,9 +51,11 @@ const PLUGINS = [
     version: 'v1.0',
     descripcion: 'Convierte tus subtitulos en capas Text+ editables de forma automatica. Te ahorra horas de trabajo manual y te deja personalizar el estilo de todos los subtitulos de una sola vez.',
     tamano: 'Por definir',
-    link: 'PENDIENTE-LINK-DRIVE',
-    github: 'PENDIENTE-LINK-GITHUB',
-    tutorial: 'PENDIENTE-LINK-YOUTUBE',
+    link: 'https://drive.google.com/uc?export=download&id=1_Jtj0ssiwSSWmr3o9ibgjafAQSa_IhUp',
+    github: 'https://github.com/JaRc1997/subtitulador-ia-davinci',
+    tutorial: 'https://youtu.be/5R739n2bTjQ',
+    //2026-09-16T13:17
+    tutorialDesde: '2026-09-16T13:17:00-05:00',
     imagen: 'assets/video.png'
   }
 ];
@@ -223,10 +227,22 @@ function renderPlugins() {
   if (!grid) return;
 
   const iconoGitHub = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>';
-  const iconoPlay = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  const iconoDrive = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.4 2.9v10.7L2.9 18.6 11.4 2.9z"/><path d="M12.6 2.9 21.1 18.6l-8.5-5V2.9z"/><path d="M3.4 19.7 12 14.6l8.6 5.1H3.4z"/></svg>';
+  const iconoYouTube = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>';
 
   grid.innerHTML = PLUGINS.map(p => {
     const listo = url => url && !String(url).startsWith('PENDIENTE');
+    // Si el enlace tiene fecha de estreno, se oculta hasta que esa fecha llegue.
+    const disponible = (url, desde) => {
+      if (!listo(url)) return false;
+      if (!desde) return true;
+      const fecha = new Date(desde);
+      if (isNaN(fecha.getTime())) {
+        console.warn('Fecha de estreno mal escrita:', desde, '- se muestra el boton igual. Usa el formato 2026-09-12T18:00:00-05:00');
+        return true;
+      }
+      return Date.now() >= fecha.getTime();
+    };
     return `
     <article class="plugin-card">
       <div class="plugin-top">
@@ -243,12 +259,12 @@ function renderPlugins() {
       <p class="plugin-desc">${p.descripcion}</p>
       <div class="plugin-actions">
         ${listo(p.link)
-          ? `<a href="${p.link}" class="btn-download" target="_blank" rel="noopener noreferrer" data-recurso="${p.nombre}" download>Descargar</a>`
+          ? `<a href="${p.link}" class="btn-download" target="_blank" rel="noopener noreferrer" data-recurso="${p.nombre}" download>${iconoDrive} Descargar</a>`
           : `<span class="btn-download btn-pronto">Muy pronto</span>`}
         ${listo(p.github)
           ? `<a href="${p.github}" class="btn-plugin-sec" target="_blank" rel="noopener noreferrer">${iconoGitHub} GitHub</a>` : ''}
-        ${listo(p.tutorial)
-          ? `<a href="${p.tutorial}" class="btn-plugin-sec" target="_blank" rel="noopener noreferrer">${iconoPlay} Tutorial</a>` : ''}
+        ${disponible(p.tutorial, p.tutorialDesde)
+          ? `<a href="${p.tutorial}" class="btn-plugin-sec" target="_blank" rel="noopener noreferrer">${iconoYouTube} Tutorial</a>` : ''}
       </div>
     </article>`;
   }).join('');

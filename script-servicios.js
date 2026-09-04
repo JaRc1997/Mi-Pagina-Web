@@ -108,3 +108,61 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* Casos de estudio en acordeón: solo uno abierto a la vez.
+   Así la página no crece aunque se sumen más proyectos. */
+(function () {
+  const tarjetas = document.querySelectorAll('.caso-card');
+  if (!tarjetas.length) return;
+
+  function abrir(tarjeta) {
+    const cuerpo = tarjeta.querySelector('.caso-cuerpo');
+    const boton = tarjeta.querySelector('.caso-toggle');
+    tarjeta.classList.add('is-abierto');
+    boton.setAttribute('aria-expanded', 'true');
+    cuerpo.style.maxHeight = cuerpo.scrollHeight + 'px';
+  }
+
+  function cerrar(tarjeta) {
+    const cuerpo = tarjeta.querySelector('.caso-cuerpo');
+    const boton = tarjeta.querySelector('.caso-toggle');
+    // si no tiene altura fija todavía, la fijamos y forzamos el cálculo
+    // para que la transición tenga un punto de partida real
+    if (!cuerpo.style.maxHeight.endsWith('px')) {
+      cuerpo.style.maxHeight = cuerpo.scrollHeight + 'px';
+      void cuerpo.offsetHeight;
+    }
+    cuerpo.style.maxHeight = '0px';
+    tarjeta.classList.remove('is-abierto');
+    boton.setAttribute('aria-expanded', 'false');
+  }
+
+  tarjetas.forEach(tarjeta => {
+    const boton = tarjeta.querySelector('.caso-toggle');
+    if (!boton) return;
+    boton.addEventListener('click', () => {
+      const estaAbierta = tarjeta.classList.contains('is-abierto');
+      tarjetas.forEach(otra => { if (otra !== tarjeta) cerrar(otra); });
+      estaAbierta ? cerrar(tarjeta) : abrir(tarjeta);
+    });
+  });
+
+  // La primera arranca abierta.
+  const inicial = document.querySelector('.caso-card.is-abierto') || tarjetas[0];
+  abrir(inicial);
+
+  // Si cambia el ancho, recalculamos la altura de la que esté abierta.
+  let temporizador;
+  window.addEventListener('resize', () => {
+    clearTimeout(temporizador);
+    temporizador = setTimeout(() => {
+      const abierta = document.querySelector('.caso-card.is-abierto');
+      if (abierta) {
+        const cuerpo = abierta.querySelector('.caso-cuerpo');
+        cuerpo.style.maxHeight = 'none';
+        const alto = cuerpo.scrollHeight;
+        cuerpo.style.maxHeight = alto + 'px';
+      }
+    }, 150);
+  });
+})();

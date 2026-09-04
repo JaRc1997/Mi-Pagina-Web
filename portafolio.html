@@ -29,8 +29,8 @@
 
   <!-- SEO basico -->
   <title>Portafolio - Proyectos web, edición y miniaturas | JarcOnline</title>
-  <meta name="description" content="Portafolio de trabajos reales de JarcOnline: sitios web para clientes, edición de video en DaVinci Resolve y miniaturas para YouTube. Mira lo que entrego." />
-  <meta name="keywords" content="portafolio JarcOnline, trabajos de desarrollo web, ejemplos de páginas web, portafolio edición de video, miniaturas YouTube, casos de clientes" />
+  <meta name="description" content="Portafolio de JarcOnline: sitios web para clientes reales como GCP Gorras y LUAR JOYAS, edición de video en DaVinci Resolve y miniaturas para YouTube. Casos de estudio con resultados." />
+  <meta name="keywords" content="portafolio JarcOnline, trabajos de desarrollo web, ejemplos de páginas web Colombia, casos de estudio web, GCP Gorras, LUAR JOYAS, portafolio edición de video, miniaturas YouTube" />
   <meta name="author" content="Javier Rueda" />
   <link rel="canonical" href="https://jarconline.com/portafolio.html" />
 
@@ -38,7 +38,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="JarcOnline" />
   <meta property="og:title" content="Portafolio - Proyectos web, edición y miniaturas" />
-  <meta property="og:description" content="Trabajos reales, no promesas. Sitios web para clientes, edición de video y miniaturas. Mira lo que entrego." />
+  <meta property="og:description" content="Trabajos reales, no promesas. Sitios web para clientes, casos de estudio, edición de video y miniaturas. Mira lo que entrego." />
   <meta property="og:url" content="https://jarconline.com/portafolio.html" />
   <meta property="og:image" content="https://jarconline.com/assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
@@ -118,8 +118,6 @@
       <li><a href="portafolio.html" class="active">Portafolio</a></li>
       <li><a href="recursos.html">Recursos</a></li>
       <li><a href="index.html#about">Sobre mí</a></li>
-      <li><a href="index.html#productos">Productos</a></li>
-      <li><a href="index.html#youtube">YouTube</a></li>
       <li><a href="index.html#contacto">Contacto</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false" aria-controls="navOverlay">
@@ -133,8 +131,6 @@
     <a href="portafolio.html" class="active">Portafolio</a>
     <a href="recursos.html">Recursos</a>
     <a href="index.html#about">Sobre mí</a>
-    <a href="index.html#productos">Productos</a>
-    <a href="index.html#youtube">YouTube</a>
     <a href="index.html#contacto">Contacto</a>
   </div>
 
@@ -165,13 +161,13 @@
 
     <div class="marcas-row reveal">
       <!-- Tile oscuro: para logos claros/blancos (como LUAR) -->
-      <div class="marca-logo marca-logo--dark">
+      <a class="marca-logo marca-logo--dark" href="https://luarjoyas.com/" target="_blank" rel="noopener noreferrer" title="Ver el sitio de LUAR JOYAS">
         <img src="assets/marcas/luar.jpeg" alt="LUAR JOYAS" loading="lazy">
-      </div>
+      </a>
       <!-- Tile claro: para logos oscuros o de color (como GCP) -->
-      <div class="marca-logo">
+      <a class="marca-logo" href="https://gcpgorras.com/" target="_blank" rel="noopener noreferrer" title="Ver el sitio de GCP Gorras">
         <img src="assets/marcas/gcp.png" alt="GCP Gorras, confecciones publicitarias" loading="lazy">
-      </div>
+      </a>
     </div>
   </section>
 
@@ -184,14 +180,26 @@
        Si un trabajo NO tiene destino en línea, usa <figure class="trabajo-card">
        en lugar de <a...> y quita la línea del <span class="trabajo-cta"> (queda como
        muestra, sin clic). -->
-  <section id="portafolio" class="section-alt">
-    <div class="section-label reveal"><span>Trabajos recientes</span></div>
-    <h2 class="section-title reveal">Esto es lo que entrego</h2>
+  <section id="proyectos-web" class="section-alt">
+    <div class="section-label reveal"><span>Desarrollo web</span></div>
+    <h2 class="section-title reveal">Páginas web que he creado</h2>
     <p class="section-sub reveal">
-      Proyectos reales, no promesas. Toca una tarjeta para ver el trabajo en línea.
+      Sitios en línea, hechos a la medida. Toca una tarjeta para verlo funcionando.
     </p>
 
     <div class="trabajos-grid reveal">
+
+      <!-- Proyecto web para cliente: GCP GORRAS -->
+      <a class="trabajo-card" href="https://gcpgorras.com/" target="_blank" rel="noopener noreferrer">
+        <div class="trabajo-thumb"><img src="assets/portafolio/gcp-gorras.jpg" alt="Sitio web de GCP Gorras, fábrica de gorras publicitarias" loading="lazy"></div>
+        <div class="trabajo-body">
+          <span class="trabajo-tag">Proyecto web</span>
+          <h3 class="trabajo-title">GCP Gorras</h3>
+          <p class="trabajo-desc">Fábrica de gorras: personalizador, línea premium y cotización por WhatsApp.</p>
+          <span class="trabajo-cta">Ver proyecto </span>
+        </div>
+      </a>
+
 
       <!-- Proyecto web para cliente: LUAR JOYAS -->
       <a class="trabajo-card" href="https://luarjoyas.com/" target="_blank" rel="noopener noreferrer">
@@ -204,6 +212,7 @@
         </div>
       </a>
 
+
       <!-- Proyecto web: este sitio -->
       <a class="trabajo-card" href="https://jarconline.com" target="_blank" rel="noopener noreferrer">
         <div class="trabajo-thumb"><img src="assets/portafolio/web-1.png" alt="Sitio web JarcOnline.com" loading="lazy" style="object-position: left top;"></div>
@@ -214,6 +223,129 @@
           <span class="trabajo-cta">Ver proyecto </span>
         </div>
       </a>
+
+
+      <!-- Para agregar un trabajo copia un bloque <a class="trabajo-card"> completo
+           de esta misma seccion y cambia imagen, etiqueta, titulo, texto y enlace.
+           Si el trabajo NO tiene enlace, usa <figure class="trabajo-card"> ... </figure>
+           y quita la linea del <span class="trabajo-cta">. -->
+
+    </div>
+  </section>
+
+  <!-- CASOS DE ESTUDIO
+       Para agregar otro caso copia un <article class="caso-card"> completo y cambia
+       el cliente, el reto, lo que hiciste, el resultado y el enlace. -->
+  <section id="casos">
+    <div class="section-label reveal"><span>Casos de estudio</span></div>
+    <h2 class="section-title reveal">Cómo trabajo un proyecto</h2>
+    <p class="section-sub reveal">
+      No solo entrego un archivo: resuelvo un problema. Así fue con clientes reales.
+    </p>
+
+    <div class="casos-lista reveal">
+
+      <article class="caso-card is-abierto">
+        <h3 class="caso-encabezado">
+          <button class="caso-toggle" type="button" aria-expanded="true" aria-controls="caso-luar-joyas">
+            <span class="caso-toggle-txt">
+              <span class="caso-eyebrow">Caso de estudio - Cliente</span>
+              <span class="caso-nombre">LUAR JOYAS</span>
+            </span>
+            <span class="caso-toggle-meta">
+              <span class="caso-estrellas-iconos caso-estrellas-mini" aria-hidden="true">★★★★★</span>
+              <svg class="caso-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+        </h3>
+        <div class="caso-cuerpo" id="caso-luar-joyas">
+          <div class="caso-cuerpo-int">
+            <div class="caso-bloques">
+              <div class="caso-bloque">
+                <span class="caso-etq">El reto</span>
+                <p>Una marca de alta joyería necesitaba mostrar su catálogo y vender sin pagar mensualidades de plataformas, con compra directa por WhatsApp.</p>
+              </div>
+              <div class="caso-bloque">
+                <span class="caso-etq">Lo que hice</span>
+                <p>Diseñé y programé un sitio a medida: catálogo por categorías y género, fichas de producto, galería y botón de compra por WhatsApp en cada pieza. Estructura lista para crecer a tienda online.</p>
+              </div>
+              <div class="caso-bloque">
+                <span class="caso-etq">El resultado</span>
+                <p>Un sitio propio, rápido y sin suscripciones, que el cliente actualiza por su cuenta, con envíos a toda Colombia.</p>
+              </div>
+            </div>
+            <div class="caso-resena">
+              <div class="caso-estrellas">
+                <span class="caso-estrellas-iconos" aria-hidden="true">★★★★★</span>
+                <span class="caso-estrellas-texto">Satisfacción del cliente</span>
+              </div>
+              <blockquote class="caso-cita">
+                "Uffffff 🔥 Qué emoción, quedó muy elegante mano, me gusta mucho."
+                <span class="caso-cita-autor">LUAR JOYAS</span>
+              </blockquote>
+            </div>
+            <a class="caso-link" href="https://luarjoyas.com/" target="_blank" rel="noopener noreferrer">Ver el sitio en vivo</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="caso-card">
+        <h3 class="caso-encabezado">
+          <button class="caso-toggle" type="button" aria-expanded="false" aria-controls="caso-gcp-gorras">
+            <span class="caso-toggle-txt">
+              <span class="caso-eyebrow">Caso de estudio - Cliente</span>
+              <span class="caso-nombre">GCP Gorras</span>
+            </span>
+            <span class="caso-toggle-meta">
+              <span class="caso-estrellas-iconos caso-estrellas-mini" aria-hidden="true">★★★★★</span>
+              <svg class="caso-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+        </h3>
+        <div class="caso-cuerpo" id="caso-gcp-gorras">
+          <div class="caso-cuerpo-int">
+            <div class="caso-bloques">
+              <div class="caso-bloque">
+                <span class="caso-etq">El reto</span>
+                <p>La clienta ya tenía página web, pero le parecía anticuada y le daba pena promocionarla. Quería algo moderno que mostrara el respaldo de una fábrica y que además diera espacio propio a R Caps, su línea premium.</p>
+              </div>
+              <div class="caso-bloque">
+                <span class="caso-etq">Lo que hice</span>
+                <p>Rediseñé el sitio desde cero: personalizador de gorras, servicios de bordado, sublimación y DTF, sección propia para R Caps, videos verticales de la fábrica, sedes con horarios y cotización directa por WhatsApp. Sumé SEO con datos estructurados y optimicé las imágenes de 28 MB a 2,8 MB.</p>
+              </div>
+              <div class="caso-bloque">
+                <span class="caso-etq">El resultado</span>
+                <p>Una web moderna y rápida que la clienta sí quiere mostrar, con las dos marcas bien diferenciadas, cotizaciones que llegan directo por WhatsApp y envíos a todo el país.</p>
+              </div>
+            </div>
+            <div class="caso-resena">
+              <div class="caso-estrellas">
+                <span class="caso-estrellas-iconos" aria-hidden="true">★★★★★</span>
+                <span class="caso-estrellas-texto">Satisfacción del cliente</span>
+              </div>
+              <blockquote class="caso-cita">
+                "Quedó hermosaaaaaaa."
+                <span class="caso-cita-autor">GCP Gorras</span>
+              </blockquote>
+            </div>
+            <a class="caso-link" href="https://gcpgorras.com/" target="_blank" rel="noopener noreferrer">Ver el sitio en vivo</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+
+  <section id="audiovisual" class="section-alt">
+    <div class="section-label reveal"><span>Audiovisual</span></div>
+    <h2 class="section-title reveal">Edición y miniaturas</h2>
+    <p class="section-sub reveal">
+      Miniaturas y edición de video para YouTube, pensadas para que la gente haga clic.
+    </p>
+
+    <div class="trabajos-grid reveal">
 
       <!-- Edición de video -> YouTube -->
       <a class="trabajo-card" href="https://youtu.be/5dv1NNyfM10" target="_blank" rel="noopener noreferrer">
@@ -226,6 +358,7 @@
         </div>
       </a>
 
+
       <!-- Miniatura -> YouTube -->
       <a class="trabajo-card" href="https://youtu.be/CJp-QWyVnD4" target="_blank" rel="noopener noreferrer">
         <div class="trabajo-thumb"><img src="assets/portafolio/miniatura-16.jpg" alt="Miniatura para video de DaVinci Resolve" loading="lazy"></div>
@@ -236,6 +369,7 @@
           <span class="trabajo-cta">Ver en YouTube </span>
         </div>
       </a>
+
 
       <!-- Miniatura -> YouTube -->
       <a class="trabajo-card" href="https://youtu.be/mvEYCI79QGY" target="_blank" rel="noopener noreferrer">
@@ -248,6 +382,7 @@
         </div>
       </a>
 
+
       <!-- Miniatura -> YouTube -->
       <a class="trabajo-card" href="https://youtu.be/1_-HhJNrfAA" target="_blank" rel="noopener noreferrer">
         <div class="trabajo-thumb"><img src="assets/portafolio/miniatura-3.jpg" alt="Kit de viaje para crear contenido: gimbal, estuche y accesorios" loading="lazy"></div>
@@ -258,6 +393,7 @@
           <span class="trabajo-cta">Ver en YouTube </span>
         </div>
       </a>
+
 
       <!-- Miniatura -> YouTube -->
       <a class="trabajo-card" href="https://youtu.be/IC_vTxQmdgM" target="_blank" rel="noopener noreferrer">
@@ -281,87 +417,18 @@
         </div>
       </a>
 
-      <!-- Para agregar un trabajo NUEVO con enlace, copia un bloque <a class="trabajo-card"> completo:
 
-      <a class="trabajo-card" href="https://enlace-del-proyecto.com" target="_blank" rel="noopener noreferrer">
-        <div class="trabajo-thumb"><img src="assets/portafolio/tu-imagen.png" alt="Descripción de la imagen" loading="lazy"></div>
-        <div class="trabajo-body">
-          <span class="trabajo-tag">Tipo de trabajo</span>
-          <h3 class="trabajo-title">Nombre del trabajo</h3>
-          <p class="trabajo-desc">Descripción corta de qué hiciste.</p>
-          <span class="trabajo-cta">Ver proyecto <span aria-hidden="true">↗</span></span>
-        </div>
-      </a>
-
-      Si el trabajo NO tiene enlace, usa <figure class="trabajo-card"> ... </figure>
-      y quita la línea del <span class="trabajo-cta">. -->
+      <!-- Para agregar un trabajo copia un bloque <a class="trabajo-card"> completo
+           de esta misma seccion y cambia imagen, etiqueta, titulo, texto y enlace.
+           Si el trabajo NO tiene enlace, usa <figure class="trabajo-card"> ... </figure>
+           y quita la linea del <span class="trabajo-cta">. -->
 
     </div>
-  </section>
-
-  <!-- CASOS DE ESTUDIO
-       Para agregar otro caso copia un <article class="caso-card"> completo y cambia
-       el cliente, el reto, lo que hiciste, el resultado y el enlace. -->
-  <section id="casos">
-    <div class="section-label reveal"><span>Casos de estudio</span></div>
-    <h2 class="section-title reveal">Cómo trabajo un proyecto</h2>
-    <p class="section-sub reveal">
-      No solo entrego un archivo: resuelvo un problema. Así fue con un cliente real.
-    </p>
-
-    <div class="casos-grid reveal">
-
-      <!-- Caso: LUAR JOYAS -->
-      <article class="caso-card">
-        <span class="caso-eyebrow">Caso de estudio - Cliente</span>
-        <h3 class="caso-title">LUAR JOYAS</h3>
-        <div class="caso-bloques">
-          <div class="caso-bloque">
-            <span class="caso-etq">El reto</span>
-            <p>Una marca de alta joyería necesitaba mostrar su catálogo y vender sin pagar mensualidades de plataformas, con compra directa por WhatsApp.</p>
-          </div>
-          <div class="caso-bloque">
-            <span class="caso-etq">Lo que hice</span>
-            <p>Diseñé y programé un sitio a medida: catálogo por categorías y género, fichas de producto, galería y botón de compra por WhatsApp en cada pieza. Estructura lista para crecer a tienda online.</p>
-          </div>
-          <div class="caso-bloque">
-            <span class="caso-etq">El resultado</span>
-            <p>Un sitio propio, rápido y sin suscripciones, que el cliente actualiza por su cuenta, con envíos a toda Colombia.</p>
-          </div>
-        </div>
-        <a class="caso-link" href="https://luarjoyas.com/" target="_blank" rel="noopener noreferrer">Ver el sitio en vivo </a>
-      </article>
-
-      <!-- Caso: GCP GORRAS (plantilla — completa con los datos reales del proyecto)
-      <article class="caso-card">
-        <span class="caso-eyebrow">Caso de estudio · Cliente</span>
-        <h3 class="caso-title">GCP Gorras</h3>
-        <div class="caso-bloques">
-          <div class="caso-bloque">
-            <span class="caso-etq">El reto</span>
-            <p>Qué necesitaba el cliente.</p>
-          </div>
-          <div class="caso-bloque">
-            <span class="caso-etq">Lo que hice</span>
-            <p>Qué entregaste (web, logo, contenido, etc.).</p>
-          </div>
-          <div class="caso-bloque">
-            <span class="caso-etq">El resultado</span>
-            <p>Qué logró el cliente con tu trabajo.</p>
-          </div>
-        </div>
-        <a class="caso-link" href="ENLACE-DEL-PROYECTO" target="_blank" rel="noopener noreferrer">Ver el trabajo <span aria-hidden="true">↗</span></a>
-      </article>
-      -->
-
-    </div>
-  </section>
-
-  <!-- TESTIMONIOS / Reseñas de clientes y comunidad
+  </section>  <!-- TESTIMONIOS / Reseñas de clientes y comunidad
        IMPORTANTE: reemplaza los textos por comentarios REALES de clientes y de tus redes
        (YouTube, Instagram, Facebook, WhatsApp). Para agregar uno nuevo copia un bloque
        <figure class="testimonio-card"> y cambia el texto, el nombre y el ícono. -->
-  <section id="testimonios" class="section-alt">
+  <section id="testimonios">
     <div class="section-label reveal"><span>Reseñas</span></div>
     <h2 class="section-title reveal">Lo que dicen</h2>
     <p class="section-sub reveal">
@@ -451,7 +518,7 @@ Excelente trabajo, Javi</blockquote>
   </section>
 
   <!-- CTA FINAL -->
-  <section id="cta">
+  <section id="cta" class="section-alt">
     <div class="cta-inner">
       <div class="section-label">
         <span>¿Listo?</span>
