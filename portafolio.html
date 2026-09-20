@@ -28,8 +28,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- SEO basico -->
-  <title>Portafolio - Proyectos web, edición y miniaturas | JarcOnline</title>
-  <meta name="description" content="Portafolio de JarcOnline: sitios web para clientes reales como GCP Gorras y LUAR JOYAS, edición de video en DaVinci Resolve y miniaturas para YouTube. Casos de estudio con resultados." />
+  <title>Portafolio de proyectos web y video | JarcOnline</title>
+  <meta name="description" content="Sitios web para clientes reales como GCP Gorras y LUAR JOYAS, con casos de estudio y reseñas. También edición de video y miniaturas para YouTube." />
   <meta name="keywords" content="portafolio JarcOnline, trabajos de desarrollo web, ejemplos de páginas web Colombia, casos de estudio web, GCP Gorras, LUAR JOYAS, portafolio edición de video, miniaturas YouTube" />
   <meta name="author" content="Javier Rueda" />
   <link rel="canonical" href="https://jarconline.com/portafolio.html" />
@@ -61,6 +61,70 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Datos estructurados: ayudan a Google a entender la pagina -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Portafolio de JarcOnline",
+    "url": "https://jarconline.com/portafolio.html",
+    "description": "Proyectos web para clientes reales, casos de estudio, edición de video y miniaturas.",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "WebSite",
+            "name": "GCP Gorras",
+            "url": "https://gcpgorras.com/",
+            "description": "Fábrica de gorras publicitarias: personalizador, línea premium R Caps y cotización por WhatsApp.",
+            "creator": {
+              "@type": "Person",
+              "name": "Javier Antonio Rueda Cifuentes"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "WebSite",
+            "name": "LUAR JOYAS",
+            "url": "https://luarjoyas.com/",
+            "description": "Catálogo de alta joyería con compra directa por WhatsApp, sin mensualidades de plataforma.",
+            "creator": {
+              "@type": "Person",
+              "name": "Javier Antonio Rueda Cifuentes"
+            }
+          }
+        }
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://jarconline.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Portafolio",
+        "item": "https://jarconline.com/portafolio.html"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -234,8 +298,11 @@
   </section>
 
   <!-- CASOS DE ESTUDIO
-       Para agregar otro caso copia un <article class="caso-card"> completo y cambia
-       el cliente, el reto, lo que hiciste, el resultado y el enlace. -->
+       Se ordenan solos por data-entregado: el proyecto mas reciente
+       aparece de primero y abierto.
+       Para agregar otro caso copia un <article class="caso-card"> completo,
+       ponle su fecha de entrega en data-entregado (formato AAAA-MM-DD) y
+       cambia el cliente, el reto, lo que hiciste, el resultado y el enlace. -->
   <section id="casos">
     <div class="section-label reveal"><span>Casos de estudio</span></div>
     <h2 class="section-title reveal">Cómo trabajo un proyecto</h2>
@@ -245,9 +312,9 @@
 
     <div class="casos-lista reveal">
 
-      <article class="caso-card is-abierto">
+      <article class="caso-card" data-entregado="2026-07-15">
         <h3 class="caso-encabezado">
-          <button class="caso-toggle" type="button" aria-expanded="true" aria-controls="caso-luar-joyas">
+          <button class="caso-toggle" type="button" aria-expanded="false" aria-controls="caso-luar-joyas">
             <span class="caso-toggle-txt">
               <span class="caso-eyebrow">Caso de estudio - Cliente</span>
               <span class="caso-nombre">LUAR JOYAS</span>
@@ -289,7 +356,7 @@
         </div>
       </article>
 
-      <article class="caso-card">
+      <article class="caso-card" data-entregado="2026-09-03">
         <h3 class="caso-encabezado">
           <button class="caso-toggle" type="button" aria-expanded="false" aria-controls="caso-gcp-gorras">
             <span class="caso-toggle-txt">
@@ -338,7 +405,85 @@
 
 
 
-  <section id="audiovisual" class="section-alt">
+  <!-- HERRAMIENTAS
+       Logos de Simple Icons (licencia CC0), guardados como simbolos
+       para poder teñirlos desde el CSS. Todos son solidos y de 24x24,
+       para que se vean como un conjunto.
+       Para agregar una: copia su <symbol> y su <li>. -->
+  <section id="herramientas" class="section-alt">
+    <div class="section-label reveal"><span>Con qué trabajo</span></div>
+    <h2 class="section-title reveal">Las herramientas que uso</h2>
+    <p class="section-sub reveal">
+      Programas profesionales, no plantillas. Esto es lo que hay detrás
+      de cada página que construyo y de cada dato que te reporto.
+    </p>
+
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <symbol id="tool-git" viewBox="0 0 24 24"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"/></symbol>
+      <symbol id="tool-github" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+      <symbol id="tool-netlify" viewBox="0 0 24 24"><path d="M6.49 19.04h-.23L5.13 17.9v-.23l1.73-1.71h1.2l.15.15v1.2L6.5 19.04ZM5.13 6.31V6.1l1.13-1.13h.23L8.2 6.68v1.2l-.15.15h-1.2L5.13 6.31Zm9.96 9.09h-1.65l-.14-.13v-3.83c0-.68-.27-1.2-1.1-1.23-.42 0-.9 0-1.43.02l-.07.08v4.96l-.14.14H8.9l-.13-.14V8.73l.13-.14h3.7a2.6 2.6 0 0 1 2.61 2.6v4.08l-.13.14Zm-8.37-2.44H.14L0 12.82v-1.64l.14-.14h6.58l.14.14v1.64l-.14.14Zm17.14 0h-6.58l-.14-.14v-1.64l.14-.14h6.58l.14.14v1.64l-.14.14ZM11.05 6.55V1.64l.14-.14h1.65l.14.14v4.9l-.14.14h-1.65l-.14-.13Zm0 15.81v-4.9l.14-.14h1.65l.14.13v4.91l-.14.14h-1.65l-.14-.14Z"/></symbol>
+      <symbol id="tool-davinciresolve" viewBox="0 0 24 24"><path d="M17.621 0 5.977.004c-1.37 0-2.756.345-3.762 1.11a4.925 4.925 0 0 0-1.61 2.003C.233 3.93 0 5.02 0 5.951l.012 12.2c.002 1.604.479 3.057 1.461 4.112.984 1.056 2.462 1.683 4.331 1.691L16.856 24c1.26.005 3.095-.036 4.303-.714 1.075-.605 2.025-1.556 2.497-2.984.278-.84.345-2.084.344-3.147l-.021-11.13c-.002-.888-.15-2.023-.547-2.934-.425-.976-1.181-1.815-2.322-2.425C20.353.26 19.123 0 17.622 0zm0 .93c1.378 0 2.538.295 3.04.565.977.523 1.544 1.166 1.889 1.96.315.721.47 1.793.473 2.572l.018 11.13c.002 1.013-.097 2.257-.298 2.86-.396 1.202-1.146 1.946-2.063 2.462-.814.457-2.612.593-3.82.588l-11.05-.044c-1.657-.007-2.832-.534-3.626-1.386-.792-.851-1.212-2.06-1.212-3.485L.999 5.95c0-.829.196-1.827.474-2.437.345-.757.75-1.207 1.365-1.674C3.585 1.27 4.868.97 6.08.97zm-5.66 3.423c-1.976.089-3.204 1.658-3.214 3.29.019 1.443 1.635 3.481 2.884 4.53.12.099.154.109.33.18.062.025.198-.047.327-.135.36-.245.993-.947 1.648-1.738a7.67 7.67 0 0 0 1.031-1.683c.409-.89.261-1.599.235-1.888a3.983 3.983 0 0 0-.99-1.692 3.36 3.36 0 0 0-2.251-.864zm4.172 7.922a10.185 10.185 0 0 0-3.244.61c-.15.058-.26.1-.374.17-.057.036-.11.135-.105.292.017.433.29 1.278.624 2.27.384 1.135 1.066 2.27 1.844 2.74a3.23 3.23 0 0 0 2.53.342c.832-.243 1.595-.868 1.962-1.546.986-1.818.19-3.548-1.121-4.417-.447-.296-1.133-.445-1.89-.46-.074 0-.15-.002-.226-.001zm-8.432.038a6.201 6.201 0 0 0-.752.047c-.596.078-.932.273-1.29.51a3.177 3.177 0 0 0-1.365 1.979c-.075.552-.086 1.053.033 1.507.433 1.389 1.326 2.222 2.847 2.452.636.028 1.37-.063 1.99-.45 1.269-.782 2.08-3.17 2.412-4.742.053-.176.035-.357-.013-.42-.005-.067-.044-.113-.19-.183-.398-.192-1.32-.417-2.375-.6a7.68 7.68 0 0 0-1.297-.1z"/></symbol>
+      <symbol id="tool-affinity" viewBox="0 0 24 24"><path d="M9.368 1.08h3.778l.318.55h1.082L24 18.004v.001l-2.036 3.47H13.69l.84 1.445h-.365l-.84-1.446H3.057l-.526-.923h-.652L0 17.298l.002-.001 2.41-4.176 2.23-1.288 3.69-6.39-.742-1.285L9.368 1.08zm2.224 5.652L5.066 18.008h6.25l-.723-1.246 6.808.006-5.809-10.036Z"/></symbol>
+      <symbol id="tool-googleanalytics" viewBox="0 0 24 24"><path d="M22.84 2.9982v17.9987c.0086 1.6473-1.3197 2.9897-2.967 2.9984a2.9808 2.9808 0 01-.3677-.0208c-1.528-.226-2.6477-1.5558-2.6105-3.1V3.1204c-.0369-1.5458 1.0856-2.8762 2.6157-3.1 1.6361-.1915 3.1178.9796 3.3093 2.6158.014.1201.0208.241.0202.3619zM4.1326 18.0548c-1.6417 0-2.9726 1.331-2.9726 2.9726C1.16 22.6691 2.4909 24 4.1326 24s2.9726-1.3309 2.9726-2.9726-1.331-2.9726-2.9726-2.9726zm7.8728-9.0098c-.0171 0-.0342 0-.0513.0003-1.6495.0904-2.9293 1.474-2.891 3.1256v7.9846c0 2.167.9535 3.4825 2.3505 3.763 1.6118.3266 3.1832-.7152 3.5098-2.327.04-.1974.06-.3983.0593-.5998v-8.9585c.003-1.6474-1.33-2.9852-2.9773-2.9882z"/></symbol>
+      <symbol id="tool-googletagmanager" viewBox="0 0 24 24"><path d="M12.003 0a3 3 0 0 0-2.121 5.121l6.865 6.865-4.446 4.541 1.745 1.836a3.432 3.432 0 0 1 .7.739l.012.011-.001.002a3.432 3.432 0 0 1 .609 1.953 3.432 3.432 0 0 1-.09.78l7.75-7.647c.031-.029.067-.05.098-.08.023-.023.038-.052.06-.076a2.994 2.994 0 0 0-.06-4.166l-9-9A2.99 2.99 0 0 0 12.003 0zM8.63 2.133L.88 9.809a2.998 2.998 0 0 0 0 4.238l7.7 7.75a3.432 3.432 0 0 1-.077-.729 3.432 3.432 0 0 1 3.431-3.431 3.432 3.432 0 0 1 .826.101l-5.523-5.81 4.371-4.373-2.08-2.08c-.903-.904-1.193-2.183-.898-3.342zm3.304 16.004a2.932 2.932 0 0 0-2.931 2.931A2.932 2.932 0 0 0 11.934 24a2.932 2.932 0 0 0 2.932-2.932 2.932 2.932 0 0 0-2.932-2.931z"/></symbol>
+      <symbol id="tool-googlesearchconsole" viewBox="0 0 24 24"><path d="M8.548 1.156L6.832 2.872v1.682h1.716zm0 3.398v.035H6.832v-.035H3.386L0 7.844v3.577h2.826V8.94c0-.525.429-.954.954-.954h16.476c.525 0 .954.43.954.954v2.48h2.754V7.844l-3.386-3.29H17.3v.035h-1.717v-.035zm7.035 0H17.3V2.872l-1.717-1.716zM8.679 1.188V2.84h6.773V1.188zm11.471 7.07a.834.834 0 00-.132.01l-.543.002c-5.216.014-10.432-.008-15.648.01-.435-.063-.794.436-.716.883v2.264h17.812c-.016-.888.045-1.782-.034-2.666-.104-.342-.427-.502-.739-.502zm-15.422.634a.689.698 0 01.689.698.689.698 0 01-.689.697.689.698 0 01-.688-.697.689.698 0 01.688-.698zm2.134 0a.689.698 0 01.689.698.689.698 0 01-.689.697.689.698 0 01-.688-.697.689.698 0 01.688-.698zM.036 11.645v9.156c0 1.05.858 1.908 1.907 1.908h.883V11.645zm21.174 0v11.064h.882c1.05 0 1.908-.858 1.908-1.908v-9.156zM4.057 13.133v6.85h6.137v-6.85zm13.243.021v3.777l-1.708.977-1.708-.977v-3.758a4.006 4.006 0 000 7.23v2.441h3.457v-2.442a4.006 4.006 0 00-.041-7.248zm-13.243 8.26v1.43h7.925v-1.43z"/></symbol>
+      <symbol id="tool-looker" viewBox="0 0 24 24"><path d="M11.9475 0c-1.1598.0021-2.0982.944-2.096 2.1038a2.1 2.1 0 00.356 1.166l.895-.8959a.884.884 0 11.565.564l-.895.895c.9593.6478 2.2621.3953 2.91-.564.6478-.9593.3953-2.262-.564-2.91A2.096 2.096 0 0011.9475 0zm-.835 6.1128a3.2629 3.2629 0 00-.653-1.965l-1.164 1.162a1.667 1.667 0 01-.318 2.012l.632 1.5449a3.2819 3.2819 0 001.503-2.754zm-3.2499 1.666h-.03c-.9217.0009-1.6697-.7455-1.6707-1.6673-.001-.9217.7454-1.6697 1.6672-1.6707a1.669 1.669 0 01.9195.275l1.152-1.152c-1.4069-1.141-3.4724-.9257-4.6135.4811s-.9257 3.4723.481 4.6135a3.2799 3.2799 0 002.7275.6652l-.633-1.5439v-.001zm4.1279 1.3359c-.728 0-1.452.106-2.15.315l.922 2.2519c2.6872-.6819 5.4184.9438 6.1002 3.631.6818 2.6873-.9439 5.4184-3.6311 6.1002s-5.4184-.9439-6.1002-3.631c-.5682-2.2394.4655-4.5774 2.5041-5.6643l-.91-2.2449c-3.6908 1.808-5.2173 6.2657-3.4093 9.9567l.0005.001c1.808 3.6909 6.2657 5.2173 9.9567 3.4093l.001-.0005c3.6913-1.8071 5.2187-6.2645 3.4116-9.9558a7.4417 7.4417 0 00-6.6865-4.1696h-.008l-.001.001z"/></symbol>
+      <symbol id="tool-googleads" viewBox="0 0 24 24"><path d="M3.9998 22.9291C1.7908 22.9291 0 21.1383 0 18.9293s1.7908-3.9998 3.9998-3.9998 3.9998 1.7908 3.9998 3.9998-1.7908 3.9998-3.9998 3.9998zm19.4643-6.0004L15.4632 3.072C14.3586 1.1587 11.9121.5028 9.9988 1.6074S7.4295 5.1585 8.5341 7.0718l8.0009 13.8567c1.1046 1.9133 3.5511 2.5679 5.4644 1.4646 1.9134-1.1046 2.568-3.5511 1.4647-5.4644zM7.5137 4.8438L1.5645 15.1484A4.5 4.5 0 0 1 4 14.4297c2.5597-.0075 4.6248 2.1585 4.4941 4.7148l3.2168-5.5723-3.6094-6.25c-.4499-.7793-.6322-1.6394-.5878-2.4784z"/></symbol>
+      <symbol id="tool-capcut" viewBox="0 0 24 24"><path d="M3.6 7.35a2.1 2.1 0 0 1 2.1-2.1h8.55c1.16 0 2.1.94 2.1 2.1v.92l4.06-2.3a1.05 1.05 0 0 1 1.59.9v10.26a1.05 1.05 0 0 1-1.59.9l-4.06-2.3v.92a2.1 2.1 0 0 1-2.1 2.1H5.7a2.1 2.1 0 0 1-2.1-2.1zm2.1 0v9.3h8.55v-9.3zm10.65 3.25v2.8l3.75 2.12V8.48z"/></symbol>
+      <symbol id="tool-clarity" viewBox="0 0 24 24"><path d="M12 2.4a1.5 1.5 0 0 1 1.3.76l8.5 14.72A1.5 1.5 0 0 1 20.5 20.1h-17a1.5 1.5 0 0 1-1.3-2.22L10.7 3.16A1.5 1.5 0 0 1 12 2.4zm0 3.4L5.2 17.7h13.6zm4.2 6.1 1.5 2.6-9.6-2.6 4.1-1.06z"/></symbol>
+    </svg>
+
+    <ul class="herramientas-grid reveal">
+        <li class="herramienta">
+          <svg class="herramienta-logo" aria-hidden="true"><use href="#tool-git"></use></svg>
+          <span class="herramienta-nombre">Git</span>
+        </li>
+        <li class="herramienta">
+          <svg class="herramienta-logo" aria-hidden="true"><use href="#tool-github"></use></svg>
+          <span class="herramienta-nombre">GitHub</span>
+        </li>
+        <li class="herramienta">
+          <svg class="herramienta-logo" aria-hidden="true"><use href="#tool-netlify"></use></svg>
+          <span class="herramienta-nombre">Netlify</span>
+        </li>
+        <li class="herramienta">
+          <svg class="herramienta-logo" aria-hidden="true"><use href="#tool-davinciresolve"></use></svg>
+          <span class="herramienta-nombre">DaVinci Resolve</span>
+        </li>
+        <li class="herramienta">
+          <svg class="herramienta-logo" aria-hidden="true"><use href="#tool-capcut"></use></svg>
+          <span class="herramienta-nombre">CapCut</span>
+        </li>
+        <li class="herramienta">
+          <svg class="herramienta-logo" aria-hidden="true"><use href="#tool-affinity"></use></svg>
+          <span class="herramienta-nombre">Affinity</span>
+        </li>
+        <li class="herramienta">
+          <svg class="herramienta-logo" aria-hidden="true"><use href="#tool-googleanalytics"></use></svg>
+          <span class="herramienta-nombre">Google Analytics</span>
+        </li>
+        <li class="herramienta">
+          <svg class="herramienta-logo" aria-hidden="true"><use href="#tool-clarity"></use></svg>
+          <span class="herramienta-nombre">Clarity</span>
+        </li>
+        <li class="herramienta">
+          <svg class="herramienta-logo" aria-hidden="true"><use href="#tool-googletagmanager"></use></svg>
+          <span class="herramienta-nombre">Tag Manager</span>
+        </li>
+        <li class="herramienta">
+          <svg class="herramienta-logo" aria-hidden="true"><use href="#tool-googlesearchconsole"></use></svg>
+          <span class="herramienta-nombre">Search Console</span>
+        </li>
+        <li class="herramienta">
+          <svg class="herramienta-logo" aria-hidden="true"><use href="#tool-looker"></use></svg>
+          <span class="herramienta-nombre">Looker Studio</span>
+        </li>
+        <li class="herramienta">
+          <svg class="herramienta-logo" aria-hidden="true"><use href="#tool-googleads"></use></svg>
+          <span class="herramienta-nombre">Google Ads</span>
+        </li>
+    </ul>
+  </section><section id="audiovisual" class="section-alt">
     <div class="section-label reveal"><span>Audiovisual</span></div>
     <h2 class="section-title reveal">Edición y miniaturas</h2>
     <p class="section-sub reveal">
@@ -361,11 +506,11 @@
 
       <!-- Miniatura -> YouTube -->
       <a class="trabajo-card" href="https://youtu.be/CJp-QWyVnD4" target="_blank" rel="noopener noreferrer">
-        <div class="trabajo-thumb"><img src="assets/portafolio/miniatura-16.jpg" alt="Miniatura para video de DaVinci Resolve" loading="lazy"></div>
+        <div class="trabajo-thumb"><img src="assets/portafolio/miniatura-56.jpg" alt="Miniatura para video de DaVinci Resolve" loading="lazy"></div>
         <div class="trabajo-body">
           <span class="trabajo-tag">Miniatura</span>
-          <h3 class="trabajo-title">Fuentes gratis en segundos</h3>
-          <p class="trabajo-desc">Miniatura de alto contraste, pensada para subir el CTR.</p>
+          <h3 class="trabajo-title">Plugin gratuito para DaVinci Resolve</h3>
+          <p class="trabajo-desc">Miniatura de alto contraste, plugin completamente gratuito para DaVinci Resolve que genera subtítulos automáticos</p>
           <span class="trabajo-cta">Ver en YouTube </span>
         </div>
       </a>
@@ -407,12 +552,12 @@
       </a>
 
             <!-- Miniatura -> YouTube -->
-      <a class="trabajo-card" href="https://youtu.be/ZfGa73pV7jE" target="_blank" rel="noopener noreferrer">
-        <div class="trabajo-thumb"><img src="assets/portafolio/miniatura-20.jpg" alt="Miniatura de tutorial de edición en DaVinci Resolve" loading="lazy"></div>
+      <a class="trabajo-card" href="https://youtu.be/MWEMMGzG_eA" target="_blank" rel="noopener noreferrer">
+        <div class="trabajo-thumb"><img src="assets/portafolio/miniatura-54.jpg" alt="Miniatura de tutorial de edición en DaVinci Resolve" loading="lazy"></div>
         <div class="trabajo-body">
           <span class="trabajo-tag">Miniatura</span>
-          <h3 class="trabajo-title">Edita en DaVinci Resolve</h3>
-          <p class="trabajo-desc">Miniatura para tutorial de cronometro paso a paso.</p>
+          <h3 class="trabajo-title">Monitor de rendimiento integrado de Steam</h3>
+          <p class="trabajo-desc">Miniatura para tutorial del monitor de rendimiento integrado de Steam.</p>
           <span class="trabajo-cta">Ver en YouTube </span>
         </div>
       </a>
@@ -531,20 +676,20 @@ Excelente trabajo, Javi</blockquote>
       <p class="contact-also reveal">También puedes escribirme por:</p>
       <div class="contact-social-row reveal">
         <a href="https://www.instagram.com/jarconline/" target="_blank" rel="noopener noreferrer" class="cs-btn">Instagram DM</a>
-        <a href="https://wa.me/573229426949" target="_blank" rel="noopener noreferrer" class="cs-btn">WhatsApp</a>
+        <a href="https://wa.me/573212137807" target="_blank" rel="noopener noreferrer" class="cs-btn">WhatsApp</a>
         <a href="https://www.facebook.com/share/1DzqaMsKxz/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="cs-btn">Facebook</a>
       </div>
     </div>
   </section>
 
   <!-- WHATSAPP FLOAT -->
-  <a href="https://wa.me/573229426949" target="_blank" rel="noopener noreferrer" class="wa-float" title="WhatsApp">
+  <a href="https://wa.me/573212137807" target="_blank" rel="noopener noreferrer" class="wa-float" title="WhatsApp">
     <svg viewBox="0 0 32 32"><use href="#icon-whatsapp"/></svg>
   </a>
 
   <!-- FOOTER -->
   <footer>
-    <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="JarcOnline">JARC<span>.ONLINE</span></a>
+    <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="JarcOnline" loading="lazy" decoding="async">JARC<span>.ONLINE</span></a>
     <div class="footer-meta">
       <a href="privacidad.html" class="footer-link">Política de privacidad</a>
       <p>© 2026 JARCONLINE. Todos los derechos reservados.</p>

@@ -112,7 +112,22 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 /* Casos de estudio en acordeón: solo uno abierto a la vez.
    Así la página no crece aunque se sumen más proyectos. */
 (function () {
-  const tarjetas = document.querySelectorAll('.caso-card');
+  const lista = document.querySelector('.casos-lista');
+  if (!lista) return;
+
+  // El proyecto entregado mas recientemente va de primero.
+  // Basta con ponerle data-entregado a cada caso; el orden del HTML da igual.
+  const porFecha = [...lista.querySelectorAll('.caso-card')].sort((a, b) => {
+    const fa = a.dataset.entregado || '';
+    const fb = b.dataset.entregado || '';
+    if (fa === fb) return 0;
+    if (!fa) return 1;          // los que no tienen fecha van al final
+    if (!fb) return -1;
+    return fb.localeCompare(fa);
+  });
+  porFecha.forEach(c => lista.appendChild(c));
+
+  const tarjetas = lista.querySelectorAll('.caso-card');
   if (!tarjetas.length) return;
 
   function abrir(tarjeta) {
@@ -148,8 +163,8 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   });
 
   // La primera arranca abierta.
-  const inicial = document.querySelector('.caso-card.is-abierto') || tarjetas[0];
-  abrir(inicial);
+  // se abre el primero del orden, que es el mas reciente
+  abrir(tarjetas[0]);
 
   // Si cambia el ancho, recalculamos la altura de la que esté abierta.
   let temporizador;

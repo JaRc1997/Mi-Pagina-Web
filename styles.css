@@ -2450,3 +2450,65 @@ a.marca-logo { text-decoration: none; cursor: pointer; }
   .porque-item { padding: 1.4rem 1.3rem; }
   .porque-num { font-size: 1.3rem; margin-bottom: 0.7rem; }
 }
+
+/* Herramientas de trabajo (portafolio).
+   Los logos son simbolos SVG monocromos: heredan el color del texto,
+   por eso basta cambiar 'color' para teñirlos. */
+.herramientas-grid {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 980px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.9rem;
+}
+.herramienta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 1.4rem 0.8rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: #6E7466;              /* gris apagado con algo de lima dentro */
+  transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+.herramienta:hover {
+  color: var(--accent);
+  border-color: rgba(200, 255, 0, 0.35);
+  transform: translateY(-3px);
+}
+.herramienta-logo {
+  width: 30px;
+  height: 30px;
+  fill: currentColor;
+  display: block;
+  flex-shrink: 0;
+}
+.herramienta-nombre {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.4px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.3;
+  transition: color 0.25s ease;
+}
+.herramienta:hover .herramienta-nombre { color: var(--text); }
+
+@media (max-width: 700px) {
+  .herramientas-grid { grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+  .herramienta { padding: 1rem 0.4rem; gap: 0.5rem; }
+  .herramienta-logo { width: 24px; height: 24px; }
+  .herramienta-nombre { font-size: 0.58rem; }
+}
+@media (max-width: 380px) {
+  .herramientas-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .herramienta { transition: color 0.25s ease, border-color 0.25s ease; }
+  .herramienta:hover { transform: none; }
+}

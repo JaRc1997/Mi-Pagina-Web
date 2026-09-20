@@ -23,6 +23,7 @@ function initYouTubeThumbnails() {
     const desc  = featured.dataset.desc  || '';
     if (id) {
       const img = featured.querySelector('.yt-auto-thumb');
+      img.alt = title ? 'Miniatura del video: ' + title : 'Video de JarcOnline en YouTube';
       img.src = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
       img.onerror = () => { img.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`; };
       const link = featured.querySelector('.yt-auto-link');
@@ -41,6 +42,7 @@ function initYouTubeThumbnails() {
     if (id) {
       const img = card.querySelector('.yt-auto-thumb');
       if (img) {
+        img.alt = title ? 'Miniatura del video: ' + title : 'Video de JarcOnline en YouTube';
         img.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
         img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
       }
@@ -122,12 +124,12 @@ const PRODUCTOS = [
     badge: "Nuevo"
   },
   {
-    imagen: "assets/productos/prod-03.jpg",
-    nombre: "KZ EDX PRO X",
-    cat: "audio",
-    desc: "Auriculares in-ear Hi-Fi con driver dinámico de 10mm y bajos potentes. Cable desmontable y aislamiento de ruido, ideales para monitorear audio al editar.",
+    imagen: "assets/productos/prod-23.jpg",
+    nombre: "Ulanzi Vijim VL120 3200K-6500K",
+    cat: "video",
+    desc: "Luz de Video LED Ulanzi Vijim VL120 3200K-6500K con Softbox y Filtros de Color RGB para Videoconferencias, Iluminación de Relleno",
     precio: "",
-    link: "https://s.click.aliexpress.com/e/_c4kAf8dL",
+    link: "https://s.click.aliexpress.com/e/_c3GMnYuD",
     emoji: "🎧",
     badge: "Nuevo"
   },
@@ -320,6 +322,16 @@ const PRODUCTOS = [
     precio: "",
     link: "https://s.click.aliexpress.com/e/_c3ywmYs9",
     emoji: "📱",
+    badge: ""
+  },
+  {
+    imagen: "assets/productos/prod-03.jpg",
+    nombre: "KZ EDX PRO X",
+    cat: "audio",
+    desc: "Auriculares in-ear Hi-Fi con driver dinámico de 10mm y bajos potentes. Cable desmontable y aislamiento de ruido, ideales para monitorear audio al editar.",
+    precio: "",
+    link: "https://s.click.aliexpress.com/e/_c4kAf8dL",
+    emoji: "🎧",
     badge: ""
   }
 
