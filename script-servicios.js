@@ -181,3 +181,103 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     }, 150);
   });
 })();
+
+/* Carrusel de marcas: con el dedo ya se desliza solo, pero en computador la
+   rueda del mouse no mueve una fila horizontal y tampoco se podia arrastrar.
+   Esto agrega las dos cosas, y solo cuando de verdad sobran logos: si caben
+   todos, la fila se queda quieta y la rueda sigue moviendo la pagina. */
+(function () {
+  const fila = document.querySelector('.marcas-row');
+  if (!fila) return;
+
+  const sobra = () => fila.scrollWidth - fila.clientWidth > 1;
+
+  // Marca la fila cuando hay algo que mover, para el cursor de "agarrar".
+  function revisar() { fila.classList.toggle('es-deslizable', sobra()); }
+  revisar();
+  window.addEventListener('resize', revisar);
+  // El ancho de la fila no cambia al sumar un logo (ya esta en su maximo), asi
+  // que un ResizeObserver sobre la fila no se entera: hay que mirar los hijos.
+  if (window.ResizeObserver) {
+    const ro = new ResizeObserver(revisar);
+    ro.observe(fila);
+    [...fila.children].forEach(c => ro.observe(c));
+  }
+  if (window.MutationObserver) {
+    new MutationObserver(revisar).observe(fila, { childList: true });
+  }
+  // las imagenes entran tarde y recien ahi la fila toma su ancho real
+  fila.querySelectorAll('img').forEach(img => {
+    if (!img.complete) img.addEventListener('load', revisar, { once: true });
+  });
+
+  // --- Rueda del mouse: vertical se traduce en horizontal ---
+  fila.addEventListener('wheel', e => {
+    if (!sobra() || e.ctrlKey) return;
+    const giro = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    if (!giro) return;
+    const tope = fila.scrollWidth - fila.clientWidth;
+    // si ya esta en el borde hacia donde gira la rueda, que siga la pagina
+    if ((giro < 0 && fila.scrollLeft <= 0) || (giro > 0 && fila.scrollLeft >= tope - 1)) return;
+    e.preventDefault();
+    // Avanza un logo entero, no unos pixeles: el iman de posicion devuelve
+    // cualquier paso corto al mismo sitio y pareceria que la rueda no hace nada.
+    const tile = fila.querySelector('.marca-logo');
+    const hueco = parseFloat(getComputedStyle(fila).columnGap) || 0;
+    const salto = tile ? tile.getBoundingClientRect().width + hueco : 200;
+    // Asignacion directa a proposito: el desplazamiento "smooth" se apoya en la
+    // animacion del navegador y se congela cuando la pestana no esta dibujando,
+    // igual que pasaba con el acordeon. Instantaneo siempre responde.
+    fila.scrollLeft += Math.sign(giro) * salto;
+  }, { passive: false });
+
+  // --- Arrastrar con el mouse ---
+  // En pantalla tactil no se toca nada: el desplazamiento nativo es mejor.
+  let inicioX = 0, inicioScroll = 0, agarrando = false, arrastro = false;
+
+  fila.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'mouse' || e.button !== 0 || !sobra()) return;
+    agarrando = true;
+    arrastro = false;
+    inicioX = e.clientX;
+    inicioScroll = fila.scrollLeft;
+    fila.classList.add('esta-agarrada');
+  });
+
+  fila.addEventListener('pointermove', e => {
+    if (!agarrando) return;
+    const avance = e.clientX - inicioX;
+    // umbral: por debajo de esto es un clic tembloroso, no un arrastre
+    if (!arrastro && Math.abs(avance) < 6) return;
+    if (!arrastro) {
+      arrastro = true;
+      fila.setPointerCapture(e.pointerId);
+      // mientras se arrastra no queremos el iman, pelean entre si
+      fila.style.scrollSnapType = 'none';
+    }
+    e.preventDefault();
+    fila.scrollLeft = inicioScroll - avance;
+  });
+
+  function soltar(e) {
+    if (!agarrando) return;
+    agarrando = false;
+    fila.classList.remove('esta-agarrada');
+    fila.style.scrollSnapType = '';
+    if (arrastro && e && fila.hasPointerCapture && fila.hasPointerCapture(e.pointerId)) {
+      fila.releasePointerCapture(e.pointerId);
+    }
+    // el clic llega despues de soltar: se anula solo si hubo arrastre real,
+    // para no abrir el sitio del cliente cuando lo unico que se hizo fue mover
+    setTimeout(() => { arrastro = false; }, 0);
+  }
+  fila.addEventListener('pointerup', soltar);
+  fila.addEventListener('pointercancel', soltar);
+
+  fila.addEventListener('click', e => {
+    if (arrastro) { e.preventDefault(); e.stopPropagation(); }
+  }, true);
+
+  // Arrastrar dentro de un <a> dispara el arrastre nativo de imagenes; estorba.
+  fila.addEventListener('dragstart', e => { if (sobra()) e.preventDefault(); });
+})();

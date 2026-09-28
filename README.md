@@ -13,7 +13,7 @@ Sitio web personal de **Javier Rueda** (@jarconline7), creador de contenido enfo
 | Página | Descripción |
 |---|---|
 | `index.html` | Página principal — Hero, About, YouTube, Productos, Redes, Contacto |
-| `servicios.html` | Página de servicios — Producción audiovisual y creación de webs |
+| `servicios.html` | Página de servicios — Páginas web y tiendas en línea |
 
 ---
 
@@ -71,15 +71,14 @@ jarconline-web/
 
 ## Servicios — servicios.html
 
-**Audiovisual**
-- Edición de video (DaVinci Resolve)
-- Thumbnails / Miniaturas
-- Contenido para redes sociales
-
 **Desarrollo web**
-- Páginas web personales / portafolio
-- Landing pages
-- Sitios para creadores de contenido
+- Plan Básico — una sola página
+- Plan Estándar — varias páginas con catálogo
+- Plan Avanzado — sitio completo sin límites
+- Tienda Online — con pasarela de pagos, inventario y envíos
+
+**Marca y web**
+- Mantenimiento mensual, SEO, analítica, velocidad, chatbot, identidad de marca
 
 ---
 

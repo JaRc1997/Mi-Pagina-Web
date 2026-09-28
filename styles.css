@@ -1660,6 +1660,43 @@ button:focus-visible {
   line-height: 1.8;
 }
 .pricing-note strong { color: var(--text); font-weight: 600; }
+/* Condiciones de contratacion. Van en lista y no en parrafo a proposito: un
+   bloque de condiciones corrido no lo lee nadie, y estas hay que leerlas. */
+.pricing-condiciones {
+  max-width: 680px;
+  margin: 2.5rem auto 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--muted);
+  text-align: left;
+}
+.pricing-condiciones li { padding-left: 1.2rem; position: relative; }
+.pricing-condiciones li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.pricing-condiciones strong { color: var(--text); font-weight: 600; }
+/* Nota dentro de la tarjeta de Tienda Online: el mantenimiento incluido.
+   Va alineada a la izquierda, pegada al precio, no centrada como las otras. */
+.tienda-online-nota {
+  margin: 0.9rem 0 1.2rem;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--muted);
+  border-left: 2px solid var(--accent);
+  padding-left: 0.8rem;
+}
+.tienda-online-nota strong { color: var(--text); font-weight: 600; }
 
 @media (max-width: 860px) {
   .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
@@ -1843,19 +1880,46 @@ a.trabajo-card:hover .trabajo-cta { gap: 0.6rem; }
 /* Marcas / logos de clientes (portafolio). Tiles uniformes: cada logo va sobre
    el fondo que le conviene. Por defecto el tile es claro (para logos oscuros);
    agrega la clase marca-logo--dark para logos claros o blancos. */
+/* Es un carrusel que se desliza con el dedo, no una cuadricula: mientras los
+   logos quepan se ven centrados y quietos, y en cuanto sobra uno la fila se
+   vuelve deslizable sola. Asi no hay que tocar nada al sumar marcas. */
 .marcas-row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: stretch;
-  justify-content: center;
   gap: 1.5rem;
-  max-width: 720px;
+  /* Da para tres tiles de 260 px sin deslizar (260x3 + 2 huecos). */
+  max-width: 840px;
   margin: 0 auto;
+  overflow-x: auto;
+  /* deja aire para la elevacion y la sombra del hover, que si no se recortan */
+  padding: 6px 4px 14px;
+  scroll-snap-type: x proximity;
+  scroll-padding: 0 4px;
+  -webkit-overflow-scrolling: touch;
+  /* que deslizar la fila no dispare el "atras" del navegador */
+  overscroll-behavior-x: contain;
+  /* sin barra visible: la pista es el logo cortado del borde */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  justify-content: center;
+  /* 'safe' evita que al desbordar se pierdan los primeros logos, que es el
+     defecto conocido de centrar dentro de un contenedor que se desplaza */
+  justify-content: safe center;
 }
+.marcas-row::-webkit-scrollbar { display: none; }
+/* El script pone estas clases solo cuando de verdad sobran logos: si caben
+   todos no hay nada que arrastrar y el cursor no debe prometerlo. */
+.marcas-row.es-deslizable { cursor: grab; }
+.marcas-row.esta-agarrada { cursor: grabbing; }
+.marcas-row.esta-agarrada .marca-logo { pointer-events: none; }
+.marcas-row.es-deslizable img { -webkit-user-drag: none; user-select: none; }
 .marca-logo {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
+  scroll-snap-align: center;
   width: 260px;
   height: 130px;
   padding: 1.4rem 1.8rem;
@@ -1878,18 +1942,21 @@ a.marca-logo { text-decoration: none; cursor: pointer; }
   transform: translateY(-4px);
   box-shadow: 0 12px 30px rgba(0,0,0,0.45);
 }
-/* En movil los logos van lado a lado y mas pequenos: ocupan mucho menos
-   pantalla que apilados y la fila se lee de un vistazo. */
+/* En movil el tile es mas chico y se deja ver un pedazo del siguiente: ese
+   corte es lo que le dice al dedo que la fila se desliza. */
 @media (max-width: 600px) {
-  .marcas-row { gap: 0.7rem; flex-wrap: nowrap; }
+  .marcas-row { gap: 0.7rem; padding: 6px 4px 12px; }
   .marca-logo {
-    flex: 1 1 0;
-    width: auto;
-    max-width: 190px;
+    width: 175px;
     height: 88px;
     padding: 0.85rem 1rem;
     border-radius: 12px;
   }
+}
+
+/* Si el navegador pide menos movimiento, el deslizamiento no se anima. */
+@media (prefers-reduced-motion: reduce) {
+  .marcas-row { scroll-behavior: auto; scroll-snap-type: none; }
 }
 
 /* Casos de estudio (portafolio): tarjeta con reto, lo que hice y resultado. */
@@ -1933,6 +2000,20 @@ a.marca-logo { text-decoration: none; cursor: pointer; }
 }
 .caso-toggle-meta { display: flex; align-items: center; gap: 0.9rem; flex-shrink: 0; }
 .caso-estrellas-mini { font-size: 0.85rem; letter-spacing: 1px; }
+/* Para los casos sin resena de cliente (proyectos propios): ocupa el lugar
+   de las estrellas para que la fila no se vea coja. */
+.caso-insignia {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.22rem 0.6rem;
+  white-space: nowrap;
+  line-height: 1;
+}
 .caso-chevron {
   width: 20px;
   height: 20px;
@@ -1990,6 +2071,7 @@ a.marca-logo { text-decoration: none; cursor: pointer; }
   .caso-cuerpo-int { padding: 0 1.3rem 1.6rem; }
   .caso-nombre { font-size: 1.15rem; }
   .caso-estrellas-mini { font-size: 0.75rem; letter-spacing: 0; }
+  .caso-insignia { font-size: 0.55rem; letter-spacing: 0.5px; padding: 0.2rem 0.45rem; }
   .caso-chevron { width: 17px; height: 17px; }
 }
 /* Sin animación si el navegador pide menos movimiento. */
