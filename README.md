@@ -82,6 +82,24 @@ jarconline-web/
 
 ---
 
+## Cómo agregar un recurso
+
+1. Abre `script-recursos.js` y agrega el objeto al array `RECURSOS` (o a
+   `PLUGINS` si es un plugin), igual que los que ya están.
+2. Doble clic en **`ACTUALIZAR RECURSOS.bat`**.
+
+El segundo paso **no es opcional**. Las tarjetas de `recursos.html` están
+escritas en el HTML para que Google pueda leerlas; antes las pintaba
+JavaScript y el buscador llegaba a esa página y veía 121 palabras. El `.bat`
+las vuelve a escribir desde los datos. Si lo olvidas, el recurso nuevo no
+aparece en la web.
+
+No edites las tarjetas a mano dentro de `recursos.html`: están entre los
+marcadores `RECURSOS:INICIO` / `RECURSOS:FIN` y el generador las reemplaza
+enteras.
+
+---
+
 ## Cómo agregar un producto
 
 1. Abre `index.html`

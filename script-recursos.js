@@ -35,8 +35,11 @@ const PLUGINS = [
     software: 'DaVinci Resolve',
     sistema: 'Windows',
     version: 'v1.0',
-    descripcion: 'Coloca las zonas seguras de TikTok, Reels y Shorts directamente en tu linea de tiempo. Deja de adivinar donde va el texto: mira al instante que parte tapa la interfaz de cada red.',
-    tamano: 'Por definir',
+    // Si este campo tiene texto, sale un aviso amarillo en la tarjeta.
+    // Dejalo en '' el dia que Blackmagic devuelva el scripting a la version gratis.
+    compatibilidad: 'Funciona en DaVinci Resolve 20 o anterior (gratis) y en Resolve Studio. Desde la versión 21.1, la versión gratis ya no permite plugins.',
+    descripcion: 'Coloca las zonas seguras de TikTok, Reels y Shorts directamente en tu línea de tiempo. Deja de adivinar dónde va el texto: mira al instante qué parte tapa la interfaz de cada red.',
+    tamano: '3 KB',
     link: 'https://drive.google.com/uc?export=download&id=1jERuGHzvnS_UdOY2-MQ7fVeM8L_9_1Mq',
     github: 'https://github.com/JaRc1997/zonas-seguras-davinci',
     tutorial: 'https://youtu.be/9kjaO7WI5s4',
@@ -49,8 +52,11 @@ const PLUGINS = [
     software: 'DaVinci Resolve',
     sistema: 'Windows',
     version: 'v1.0',
-    descripcion: 'Convierte tus subtitulos en capas Text+ editables de forma automatica. Te ahorra horas de trabajo manual y te deja personalizar el estilo de todos los subtitulos de una sola vez.',
-    tamano: 'Por definir',
+    // Si este campo tiene texto, sale un aviso amarillo en la tarjeta.
+    // Dejalo en '' el dia que Blackmagic devuelva el scripting a la version gratis.
+    compatibilidad: 'Funciona en DaVinci Resolve 20 o anterior (gratis) y en Resolve Studio. Desde la versión 21.1, la versión gratis ya no permite plugins.',
+    descripcion: 'Convierte tus subtítulos en capas Text+ editables de forma automática. Te ahorra horas de trabajo manual y te deja personalizar el estilo de todos los subtítulos de una sola vez.',
+    tamano: '92 MB',
     link: 'https://drive.google.com/uc?export=download&id=1_Jtj0ssiwSSWmr3o9ibgjafAQSa_IhUp',
     github: 'https://github.com/JaRc1997/subtitulador-ia-davinci',
     tutorial: 'https://youtu.be/5R739n2bTjQ',
@@ -66,14 +72,14 @@ const RECURSOS = [
   {
     nombre: 'Pack de efectos de sonido',
     categoria: 'audio',
-    descripcion: 'Coleccion de 9 efectos sin derechos de autor. Perfectos para transiciones, momentos clave y dar dinamismo a tus videos.',
+    descripcion: 'Colección de 9 efectos sin derechos de autor. Perfectos para transiciones, momentos clave y dar dinamismo a tus videos.',
     tamano: '1.2 MB',
     link: 'https://drive.google.com/uc?export=download&id=1YrA-uwGksTxMaktycnrdTu_wzOT0FOCP',
     icono: '',
     imagen: 'assets/headphones.png'
   },
   {
-    nombre: 'Pack de musica de fondo 2026',
+    nombre: 'Pack de música de fondo 2026',
     categoria: 'audio',
     descripcion: '44 tracks instrumentales libres de derechos para ambientar tus videos sin riesgo de bloqueos en YouTube.',
     tamano: '98 MB',
@@ -86,7 +92,7 @@ const RECURSOS = [
   {
     nombre: 'Zona segura - Facebook Reels',
     categoria: 'video',
-    descripcion: 'Plantilla PNG en formato 9:16 que marca el area visible para que el texto no quede tapado por la interfaz de Facebook.',
+    descripcion: 'Plantilla PNG en formato 9:16 que marca el área visible para que el texto no quede tapado por la interfaz de Facebook.',
     tamano: '24 KB',
     link: 'https://drive.google.com/uc?export=download&id=1zQTIRu2XDUQo395Kz_kZ8E8cfbNV_Bfb',
     icono: '📐',
@@ -95,7 +101,7 @@ const RECURSOS = [
   {
     nombre: 'Zona segura - Instagram Reels',
     categoria: 'video',
-    descripcion: 'Plantilla PNG en formato 9:16 con los margenes seguros de Instagram para que tu contenido nunca quede oculto.',
+    descripcion: 'Plantilla PNG en formato 9:16 con los márgenes seguros de Instagram para que tu contenido nunca quede oculto.',
     tamano: '24 KB',
     link: 'https://drive.google.com/uc?export=download&id=1sHJeCtqTJH8XNpMjORAlSRMs_bB8XzG4',
     icono: '📐',
@@ -113,7 +119,7 @@ const RECURSOS = [
   {
     nombre: 'Zona segura - YouTube Shorts',
     categoria: 'video',
-    descripcion: 'Plantilla PNG en formato 9:16 que indica el area visible de YouTube Shorts sin interferencia de la UI.',
+    descripcion: 'Plantilla PNG en formato 9:16 que indica el área visible de YouTube Shorts sin interferencia de la UI.',
     tamano: '28 KB',
     link: 'https://drive.google.com/uc?export=download&id=1dfhk0l8LgBSSuoBxWrYjYyT63Q7Lq6HI',
     icono: '📐',
@@ -124,7 +130,7 @@ const RECURSOS = [
   {
     nombre: 'Efecto cinta quemada',
     categoria: 'video',
-    descripcion: 'Clip overlay con efecto de cinta vieja quemada. Anade textura vintage y retro a tus videos.',
+    descripcion: 'Clip overlay con efecto de cinta vieja quemada. Añade textura vintage y retro a tus videos.',
     tamano: '878 KB',
     link: 'https://drive.google.com/uc?export=download&id=1h9J4UUtihTFbH2NiVzOlvO31jmrUhF6c',
     icono: '🎞️',
@@ -133,7 +139,7 @@ const RECURSOS = [
   {
     nombre: 'Efecto cinta VHS',
     categoria: 'video',
-    descripcion: 'Clip overlay con efecto VHS para darle aspecto retro y nostalgico a tus tomas.',
+    descripcion: 'Clip overlay con efecto VHS para darle aspecto retro y nostálgico a tus tomas.',
     tamano: '70 KB',
     link: 'https://drive.google.com/uc?export=download&id=1jEW7XJym78CR84tCh1inH73P46MzWgwg',
     icono: '📼',
@@ -142,23 +148,23 @@ const RECURSOS = [
   {
     nombre: 'Efecto cursor del mouse',
     categoria: 'video',
-    descripcion: 'Clip overlay con animacion de cursor. Util para tutoriales, demostraciones y videos explicativos.',
+    descripcion: 'Clip overlay con animación de cursor. Útil para tutoriales, demostraciones y videos explicativos.',
     tamano: '298 KB',
     link: 'https://drive.google.com/uc?export=download&id=1479YxXHE3VkByT59TcRfvz-GvJPR7Pgn',
     icono: '🖱️',
     imagen: 'assets/cursor-click.png'
   },
   {
-    nombre: 'Efecto sin senal de TV',
+    nombre: 'Efecto sin señal de TV',
     categoria: 'video',
-    descripcion: 'Clip overlay con efecto de TV antigua sin senal. Perfecto para transiciones impactantes o intros.',
+    descripcion: 'Clip overlay con efecto de TV antigua sin señal. Perfecto para transiciones impactantes o intros.',
     tamano: '637 KB',
     link: 'https://drive.google.com/uc?export=download&id=1uhJQWfiod19a89YjGvGkxcdMtbuCOGj4',
     icono: '📺',
     imagen: 'assets/television.png'
   },
   {
-    nombre: 'Animacion "Suscribete"',
+    nombre: 'Animación "Suscríbete"',
     categoria: 'video',
     descripcion: 'Clip listo para insertar al final de tus videos invitando a tus espectadores a suscribirse al canal.',
     tamano: '1 MB',
@@ -180,7 +186,7 @@ const RECURSOS = [
   {
     nombre: 'Mockup iPhone - Setup tech',
     categoria: 'thumbnails',
-    descripcion: 'iPhone con pantalla verde (chroma key) sobre fondo de escritorio con luces RGB calidas. Ideal para reviews de apps, tutoriales tech o videos gaming.',
+    descripcion: 'iPhone con pantalla verde (chroma key) sobre fondo de escritorio con luces RGB cálidas. Ideal para reviews de apps, tutoriales tech o videos gaming.',
     tamano: '542 KB',
     link: 'https://drive.google.com/uc?export=download&id=1DDJZomkcJ75SzTJTLPfTvQf_7Lu4_stm',
     icono: '📱',
@@ -189,16 +195,16 @@ const RECURSOS = [
   {
     nombre: 'Fondo de pantalla',
     categoria: 'thumbnails',
-    descripcion: 'Fondo de alta resolucion para usar como base en miniaturas, thumbnails o como wallpaper.',
+    descripcion: 'Fondo de alta resolución para usar como base en miniaturas, thumbnails o como wallpaper.',
     tamano: '1.1 MB',
     link: 'https://drive.google.com/uc?export=download&id=1N4s1WiTUNzsEtkqNYBi5l4L5P-scluiq',
     icono: '🌆',
     imagen: 'assets/book-bookmark.png'
   },
   {
-    nombre: 'Mockup iPhone - Ciudad neon',
+    nombre: 'Mockup iPhone - Ciudad neón',
     categoria: 'thumbnails',
-    descripcion: 'iPhone con pantalla verde (chroma key) sobre fondo urbano nocturno con neones. Perfecta para apps lifestyle, contenido moderno o estetica cyberpunk.',
+    descripcion: 'iPhone con pantalla verde (chroma key) sobre fondo urbano nocturno con neones. Perfecta para apps lifestyle, contenido moderno o estética cyberpunk.',
     tamano: '868 KB',
     link: 'https://drive.google.com/uc?export=download&id=12PWYJvs9bIz7fhhfvpgk5j_tDhibUXzy',
     icono: '📱',
@@ -222,9 +228,27 @@ PLUGINS.forEach(p => {
 });
 
 // Pinta la seccion destacada "Mis plugins" (arriba del catalogo)
+// Oculta los enlaces de tutorial cuyo estreno todavia no ha llegado.
+// El HTML los trae escritos con su fecha para que Google los vea; el
+// navegador decide si se muestran.
+function aplicarEstrenos() {
+  document.querySelectorAll('[data-desde]').forEach(enlace => {
+    const fecha = new Date(enlace.dataset.desde);
+    if (isNaN(fecha.getTime())) {
+      console.warn('Fecha de estreno mal escrita:', enlace.dataset.desde,
+        '- se deja visible. Usa el formato 2026-09-12T18:00:00-05:00');
+      return;
+    }
+    if (Date.now() < fecha.getTime()) enlace.remove();
+  });
+}
+
 function renderPlugins() {
   const grid = document.getElementById('pluginsGrid');
   if (!grid) return;
+  // El HTML ya viene escrito por scripts/generar-recursos.mjs, que es lo que
+  // permite que Google lea los plugins. Solo se pinta aca si llegara vacio.
+  if (grid.querySelector('.plugin-card')) return;
 
   const iconoGitHub = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>';
   const iconoDrive = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.4 2.9v10.7L2.9 18.6 11.4 2.9z"/><path d="M12.6 2.9 21.1 18.6l-8.5-5V2.9z"/><path d="M3.4 19.7 12 14.6l8.6 5.1H3.4z"/></svg>';
@@ -257,6 +281,7 @@ function renderPlugins() {
         <span class="plugin-chip">${p.sistema}</span>
       </div>
       <p class="plugin-desc">${p.descripcion}</p>
+      ${p.compatibilidad ? `<p class="plugin-aviso"><strong>Antes de descargar:</strong> ${p.compatibilidad}</p>` : ''}
       <div class="plugin-actions">
         ${listo(p.link)
           ? `<a href="${p.link}" class="btn-download" target="_blank" rel="noopener noreferrer" data-recurso="${p.nombre}" download>${iconoDrive} Descargar</a>`
@@ -270,7 +295,51 @@ function renderPlugins() {
   }).join('');
 }
 
-// Pinta una tarjeta del recurso. Si el item tiene imagen, la usa; si no, usa el emoji.
+// Muestra solo las tarjetas de la categoria elegida.
+// Las tarjetas ya estan escritas en el HTML, asi que aca no se vuelve a
+// pintar nada: solo se esconden y se muestran.
+function aplicarFiltro(filtro = 'todos') {
+  const grid = document.getElementById('recursosGrid');
+  if (!grid) return;
+
+  const tarjetas = [...grid.querySelectorAll('.recurso-card')];
+  // Red de seguridad: si el HTML llegara sin tarjetas, las pinta el navegador.
+  if (!tarjetas.length) { renderRecursos(filtro); return; }
+
+  grid.querySelector('.empty-state')?.remove();
+
+  const visibles = [];
+  tarjetas.forEach(t => {
+    const mostrar = filtro === 'todos' || t.dataset.cat === filtro;
+    t.hidden = !mostrar;
+    if (mostrar) visibles.push(t);
+  });
+
+  if (!visibles.length) {
+    grid.insertAdjacentHTML('beforeend',
+      '<p class="empty-state">No hay recursos en esta categoria todavia.</p>');
+    document.getElementById('recursosVerMasWrap')?.classList.remove('activo');
+    return;
+  }
+
+  // "Ver mas" (solo movil): marca las que sobran contando las VISIBLES, no
+  // todas, porque el filtro pudo esconder algunas de las primeras.
+  const VISIBLES_MOVIL = 4;
+  tarjetas.forEach(t => t.classList.remove('sobrante'));
+  visibles.slice(VISIBLES_MOVIL).forEach(t => t.classList.add('sobrante'));
+
+  grid.classList.add('colapsado');
+  document.getElementById('recursosVerMasWrap')?.classList.toggle('activo', visibles.length > VISIBLES_MOVIL);
+  const btn = document.getElementById('recursosVerMas');
+  if (btn) {
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.querySelector('span').textContent = 'Ver más';
+  }
+}
+
+// Red de seguridad: pinta las tarjetas si el HTML generado no estuviera.
+// En condiciones normales esto no corre.
 function renderRecursos(filtro = 'todos') {
   const grid = document.getElementById('recursosGrid');
   if (!grid) return;
@@ -314,6 +383,11 @@ function renderRecursos(filtro = 'todos') {
   // Modo "ver más" (solo afecta en móvil vía CSS): colapsa el grid y muestra
   // el botón si la lista filtrada tiene más de 4 recursos. Se reinicia en cada render.
   const VISIBLES_MOVIL = 4;
+  // El CSS esconde las que lleven la clase 'sobrante', asi que hay que
+  // marcarlas tambien en este camino de respaldo.
+  [...grid.querySelectorAll('.recurso-card')]
+    .slice(VISIBLES_MOVIL)
+    .forEach(t => t.classList.add('sobrante'));
   grid.classList.add('colapsado');
   document.getElementById('recursosVerMasWrap')?.classList.toggle('activo', lista.length > VISIBLES_MOVIL);
   const btn = document.getElementById('recursosVerMas');
@@ -346,7 +420,7 @@ function initFiltros() {
       document.querySelectorAll('#recursosFilter .filter-btn')
         .forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      renderRecursos(btn.dataset.filter);
+      aplicarFiltro(btn.dataset.filter);
     });
   });
 }
@@ -401,7 +475,8 @@ function initReveal() {
 
 function init() {
   renderPlugins();
-  renderRecursos();
+  aplicarEstrenos();
+  aplicarFiltro();
   initFiltros();
   initVerMas();
   initDescargasTracking();

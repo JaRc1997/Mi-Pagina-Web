@@ -1283,6 +1283,9 @@ footer a span { color: var(--accent); }
   gap: 1.2rem;
 }
 
+/* El "display: flex" de aqui abajo le gana al atributo hidden del navegador,
+   asi que una tarjeta filtrada se seguia viendo. Esta regla lo deja claro. */
+.recurso-card[hidden] { display: none; }
 .recurso-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -1406,8 +1409,10 @@ footer a span { color: var(--accent); }
   .recursos-grid { grid-template-columns: 1fr; }
   .recurso-card { padding: 1.4rem 1.2rem; }
 
-  /* En móvil, cuando está colapsado, oculta del 5º recurso en adelante */
-  .recursos-grid.colapsado .recurso-card:nth-child(n+5) { display: none; }
+  /* En móvil, cuando está colapsado, oculta del 5º recurso VISIBLE en adelante.
+     La clase la calcula el JS y no se usa :nth-child porque ese cuenta todas
+     las tarjetas, incluidas las que el filtro acaba de esconder. */
+  .recursos-grid.colapsado .recurso-card.sobrante { display: none; }
   /* El botón solo se muestra si hay recursos de sobra (clase la pone el JS) */
   .recursos-vermas-wrap.activo { display: block; }
 }
@@ -2398,6 +2403,20 @@ a.marca-logo { text-decoration: none; cursor: pointer; }
   line-height: 1.6;
   flex: 1;
 }
+/* Aviso de compatibilidad. En ambar y no en lima: el lima es el color de
+   "haz clic aqui" en todo el sitio, y esto es justo lo contrario, es un alto
+   antes de descargar. Va antes del boton para que se lea a tiempo. */
+.plugin-aviso {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: #D9C27A;
+  background: rgba(217, 194, 122, 0.08);
+  border-left: 2px solid #D9C27A;
+  border-radius: 0 6px 6px 0;
+  padding: 0.6rem 0.75rem;
+  margin: 0;
+}
+.plugin-aviso strong { color: #F0E0AE; font-weight: 600; }
 .plugin-actions {
   display: flex;
   flex-wrap: wrap;
@@ -2536,6 +2555,39 @@ a.marca-logo { text-decoration: none; cursor: pointer; }
 /* Herramientas de trabajo (portafolio).
    Los logos son simbolos SVG monocromos: heredan el color del texto,
    por eso basta cambiar 'color' para teñirlos. */
+/* Cierre de la seccion de herramientas: los plugins propios. Mismo ancho que
+   la cuadricula de arriba para que se lea como parte del mismo bloque. */
+.herramientas-pie {
+  max-width: 980px;
+  margin: 2rem auto 0;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--muted);
+  text-align: center;
+}
+.herramientas-pie a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(200, 255, 0, 0.5);
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+.herramientas-pie a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+.herramientas-pie-link {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+  text-decoration: none;
+}
+.herramientas-pie-link::after { content: " \2192"; }
+.herramientas-pie-link:hover { text-decoration: underline; }
+@media (max-width: 600px) {
+  .herramientas-pie { font-size: 0.82rem; margin-top: 1.5rem; text-align: left; }
+}
+
 .herramientas-grid {
   list-style: none;
   margin: 0 auto;
