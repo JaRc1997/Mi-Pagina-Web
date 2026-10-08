@@ -104,6 +104,16 @@ reveals.forEach(el => observer.observe(el));
 // Categorias validas: audio, movil, video, accesorios.
 const PRODUCTOS = [
   {
+    imagen: "assets/productos/prod-24.jpg",
+    nombre: "UGREEN-Cable de carga rápida",
+    cat: "movil",
+    desc: "UGREEN-Cable de carga rápida MFi USB C A Lightning PD20W para iPhone 14, 13, 12 Pro Max, Mini Cable de datos para iPhone y iPad",
+    precio: "",
+    link: "https://s.click.aliexpress.com/e/_c40RRtpX",
+    emoji: "🎧",
+    badge: "Nuevo"
+  },
+  {
     imagen: "assets/productos/prod-01.jpg",
     nombre: "Herramientas Multifuncionales",
     cat: "accesorios",
