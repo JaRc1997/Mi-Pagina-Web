@@ -1594,6 +1594,24 @@ button:focus-visible {
   padding: 0.25rem 0.7rem;
   border-radius: 100px;
 }
+/* Descripcion corta dentro de una tarjeta de plan. */
+.pricing-desc {
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0;
+}
+/* Aviso al pie de la tarjeta (mantenimiento, forma de cotizar). */
+.pricing-nota {
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--muted);
+  border-left: 2px solid var(--accent);
+  padding-left: 0.8rem;
+  margin: 0;
+}
+.pricing-nota strong { color: var(--text); font-weight: 600; }
+
 .pricing-head { display: flex; flex-direction: column; gap: 0.2rem; }
 .pricing-name {
   font-family: var(--font-head);
@@ -1691,68 +1709,32 @@ button:focus-visible {
   background: var(--accent);
 }
 .pricing-condiciones strong { color: var(--text); font-weight: 600; }
-/* Nota dentro de la tarjeta de Tienda Online: el mantenimiento incluido.
-   Va alineada a la izquierda, pegada al precio, no centrada como las otras. */
-.tienda-online-nota {
-  margin: 0.9rem 0 1.2rem;
-  font-size: 0.78rem;
-  line-height: 1.6;
-  color: var(--muted);
-  border-left: 2px solid var(--accent);
-  padding-left: 0.8rem;
-}
-.tienda-online-nota strong { color: var(--text); font-weight: 600; }
-
 @media (max-width: 860px) {
   .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
 }
 
-/* Tienda Online: tarjeta insignia del e-commerce (info a la izquierda, lista a la derecha) */
-.tienda-online {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: center;
-  max-width: 900px;
-  margin: 1.5rem auto 0;
-  background: var(--card);
-  border: 1px solid rgba(200,255,0,0.35);
-  border-radius: 14px;
-  box-shadow: 0 0 0 1px rgba(200,255,0,0.12);
-  padding: 2.4rem 2.5rem;
+/* Fila de los dos planes mayores. Va despues de la media query de arriba a
+   proposito: esa define .pricing-grid con "margin: 0 auto", que borraba el
+   margen superior de esta fila. Sin ese margen la insignia, que vive 12 px por
+   encima del borde, se montaba sobre la tarjeta anterior. */
+.pricing-grid--duo {
+  grid-template-columns: repeat(2, 1fr);
+  /* aire suficiente para la insignia que sobresale */
+  margin: 2.4rem 0 0;
+  max-width: none;
+  /* que las dos tarjetas midan lo mismo aunque una liste mas cosas */
+  align-items: stretch;
 }
-.tienda-online-tag {
-  display: inline-block;
-  background: var(--accent);
-  color: var(--bg);
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0.28rem 0.7rem;
-  border-radius: 4px;
-}
-.tienda-online-title {
-  font-family: var(--font-head);
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-  color: var(--text);
-  margin: 0.9rem 0 0.6rem;
-}
-.tienda-online-desc {
-  font-size: 0.85rem;
-  color: var(--muted);
-  line-height: 1.6;
-  margin-bottom: 1.2rem;
-}
-.tienda-online .pricing-price { border-bottom: none; padding-bottom: 0; }
-.tienda-online .pricing-delivery { margin-top: 0.3rem; }
-.tienda-online .btn-wa-service { margin-top: 1rem; }
-.tienda-online-list { margin: 0; }
-@media (max-width: 800px) {
-  .tienda-online { grid-template-columns: 1fr; gap: 1.4rem; padding: 1.8rem; max-width: 420px; }
+/* La nota y el boton se van al fondo: asi los botones de las dos tarjetas
+   quedan a la misma altura y la de menos items no se ve a medio llenar. */
+.pricing-grid--duo .pricing-nota { margin-top: auto; }
+
+@media (max-width: 860px) {
+  .pricing-grid--duo {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 2.4rem auto 0;
+  }
 }
 
 /* Trabajos recientes (servicios.html) - desfile horizontal automático, solo visual.

@@ -129,6 +129,17 @@
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
+            "name": "Sitio web a la medida",
+            "description": "Sitios con funcionalidad propia: agendamiento o reservas, varias marcas en un mismo sitio, formularios con validaciones y contenido construido desde cero."
+          },
+          "price": "1200000",
+          "priceCurrency": "COP",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
             "name": "Tienda en línea",
             "description": "Tienda con pasarela de pagos (tarjeta, PSE y Nequi), inventario automático, cálculo de envíos y panel de administración."
           },
@@ -351,7 +362,7 @@
         <div class="porque-item">
           <span class="porque-num">05</span>
           <h3 class="porque-title">Sabes desde el primer día cuándo lo tendrás</h3>
-          <p class="porque-desc">Entre 3 y 30 días según lo que necesites, con la fecha acordada antes de empezar: anticipo del 50% y avances que revisas durante el proceso.</p>
+          <p class="porque-desc">Entre 5 y 30 días según lo que necesites, con la fecha acordada antes de empezar: anticipo del 50% y avances que revisas durante el proceso.</p>
         </div>
 
         <div class="porque-item">
@@ -380,7 +391,7 @@
           <span class="pricing-for">Una sola página</span>
         </div>
         <div class="pricing-price">desde <strong>$250.000</strong></div>
-        <div class="pricing-delivery">Entrega 3 a 5 días</div>
+        <div class="pricing-delivery">Entrega 5 a 7 días</div>
         <ul class="pricing-list">
           <li>Página de una sola sección (landing)</li>
           <li>Logo y colores de tu negocio</li>
@@ -402,7 +413,7 @@
           <span class="pricing-for">Varias páginas con catálogo</span>
         </div>
         <div class="pricing-price">desde <strong>$450.000</strong></div>
-        <div class="pricing-delivery">Entrega 7 a 10 días</div>
+        <div class="pricing-delivery">Entrega 10 a 14 días</div>
         <ul class="pricing-list">
           <li>Todo lo del Plan Básico</li>
           <li>Secciones: Inicio, Sobre nosotros, Productos, Contacto</li>
@@ -425,7 +436,7 @@
           <span class="pricing-for">Sitio completo sin límites</span>
         </div>
         <div class="pricing-price">desde <strong>$750.000</strong></div>
-        <div class="pricing-delivery">Entrega 10 a 15 días</div>
+        <div class="pricing-delivery">Entrega 15 a 21 días</div>
         <ul class="pricing-list">
           <li>Todo lo del Plan Estándar</li>
           <li>Catálogo sin límite de productos</li>
@@ -442,20 +453,63 @@
 
     </div>
 
-    <!-- Tienda Online: servicio insignia (e-commerce con pago en línea).
-         Ajusta el precio y los ítems de la lista según lo que ofrezcas. -->
-    <div class="tienda-online reveal">
-      <div class="tienda-online-info">
-        <span class="tienda-online-tag">Lo más completo</span>
-        <h3 class="tienda-online-title">Tienda Online</h3>
-        <p class="tienda-online-desc">
-          Tu negocio cobrando de verdad: el cliente elige, paga con tarjeta, PSE o Nequi
-          y recibe su confirmación, sin salir de tu web y sin que tú escribas un mensaje.
-          El inventario se descuenta solo.
+    <!-- Los dos planes mayores van en su propia fila de dos columnas, con la
+         misma tarjeta que los tres de arriba. Antes eran bloques anchos
+         apilados; en fila se comparan de un vistazo. -->
+    <div class="pricing-grid pricing-grid--duo">
+
+      <!-- A la medida -->
+      <div class="pricing-card reveal">
+        <span class="pricing-badge">Proyecto a cotizar</span>
+        <div class="pricing-head">
+          <span class="pricing-name">A la medida</span>
+          <span class="pricing-for">Cuando no cabe en un plan</span>
+        </div>
+        <div class="pricing-price">desde <strong>$1.200.000</strong></div>
+        <div class="pricing-delivery">Entrega 20 a 30 días</div>
+        <p class="pricing-desc">
+          Sitios con funcionalidad propia, construidos sobre lo que tu negocio
+          necesita y no al revés.
         </p>
+        <ul class="pricing-list">
+          <li>Sistemas de agendamiento o reservas</li>
+          <li>Varias marcas bajo un mismo sitio</li>
+          <li>Formularios con validaciones y políticas</li>
+          <li>Contenido construido desde cero</li>
+          <li>Alcance por escrito antes de empezar</li>
+        </ul>
+        <p class="pricing-nota">
+          Se cotiza <strong>por proyecto</strong>, después de una reunión.
+          Te entrego el alcance por escrito antes de empezar.
+        </p>
+        <a href="https://wa.me/573212137807?text=Hola%20Javier%2C%20me%20interesa%20un%20proyecto%20a%20la%20medida" target="_blank" rel="noopener noreferrer" class="btn-wa-service">
+          Consultar por WhatsApp
+        </a>
+      </div>
+
+      <!-- Tienda Online: el servicio insignia, por eso conserva el resaltado -->
+      <div class="pricing-card pricing-featured reveal">
+        <span class="pricing-badge">Para vender en línea</span>
+        <div class="pricing-head">
+          <span class="pricing-name">Tienda Online</span>
+          <span class="pricing-for">Cobra con tarjeta, PSE y Nequi</span>
+        </div>
         <div class="pricing-price">desde <strong>$2.200.000</strong></div>
         <div class="pricing-delivery">Entrega 20 a 30 días</div>
-        <p class="tienda-online-nota">
+        <p class="pricing-desc">
+          Tu negocio cobrando de verdad: el cliente elige, paga y recibe su
+          confirmación sin salir de tu web. El inventario se descuenta solo.
+        </p>
+        <ul class="pricing-list">
+          <li>Todo lo del Plan Avanzado</li>
+          <li>Carrito y pago en línea: tarjeta, PSE y Nequi</li>
+          <li>Inventario que se descuenta solo</li>
+          <li>Cálculo de envíos por zona</li>
+          <li>Panel propio para cargar productos, fotos y precios</li>
+          <li>Correos automáticos de confirmación y de envío</li>
+          <li>Páginas legales y respaldo automático de tus pedidos</li>
+        </ul>
+        <p class="pricing-nota">
           Ese es el valor del desarrollo. Aparte, el primer año lleva
           <strong>mantenimiento de $150.000/mes</strong>: una tienda que cobra plata
           necesita quien responda el día que algo falle.
@@ -464,17 +518,7 @@
           Consultar por WhatsApp
         </a>
       </div>
-      <ul class="pricing-list tienda-online-list">
-        <li>Todo lo del Plan Avanzado</li>
-        <li>Carrito de compras completo</li>
-        <li>Pago en línea: tarjeta, PSE y Nequi (vía pasarela)</li>
-        <li>Gestión de inventario y stock, que se descuenta solo</li>
-        <li>Cálculo de envíos por zona</li>
-        <li>Panel propio para cargar productos, fotos y precios</li>
-        <li>Correos automáticos de confirmación y de envío</li>
-        <li>Páginas legales para vender en línea en Colombia</li>
-        <li>Respaldo automático de tus pedidos</li>
-      </ul>
+
     </div>
 
     <!-- El salto de precio se explica solo si el cliente ve al lado la opcion
@@ -485,11 +529,16 @@
       línea: pasarela, inventario y envíos. Son dos trabajos distintos.
     </p>
 
+    <!-- Van en el orden en que le pasan al cliente: antes de empezar, durante
+         la entrega y despues. Asi no se confunden las rondas de cambios (que son
+         parte de la entrega) con el mantenimiento (que es posterior). -->
     <ul class="pricing-condiciones reveal">
       <li><strong>Anticipo del 50%</strong> para empezar, el resto al entregar.</li>
       <li>El <strong>dominio</strong> (.com, .co) va por tu cuenta. Te asesoro para elegirlo.</li>
-      <li>¿Cambios después? <strong>Mantenimiento mensual</strong> o sueltos desde $50.000. El plan Avanzado trae el primer mes incluido.</li>
-      <li>En la Tienda Online el <strong>mantenimiento del primer año no es opcional</strong>. La <strong>comisión de la pasarela</strong> y los servicios que use tu tienda al crecer se facturan a tu nombre; te aviso antes de que superes el plan gratuito.</li>
+      <li>Si el <strong>contenido</strong> (textos, fotos, logos) no llega completo, el cronograma se corre desde el día en que lo recibo.</li>
+      <li><strong>Dos rondas de cambios incluidas</strong> en todos los planes. A partir de la tercera, o si cambia lo acordado al inicio, se cotizan aparte desde $50.000.</li>
+      <li>Ya entregado el sitio, los cambios van por <strong>mantenimiento mensual</strong> o sueltos desde $50.000. El plan Avanzado incluye el primer mes de soporte.</li>
+      <li>En <strong>Tienda Online y A la medida</strong> el mantenimiento del primer año no es opcional: son sitios con servicios activos que necesitan quien responda. En la Tienda, además, la <strong>comisión de la pasarela</strong> y los servicios que use al crecer se facturan a tu nombre; te aviso antes de que superes el plan gratuito.</li>
     </ul>
   </section>
 
@@ -716,9 +765,11 @@
       </div>
       <div class="process-step">
         <span class="step-num">04</span>
-        <div class="step-title">Entrega y revisión</div>
+        <div class="step-title">Entrega y ajustes</div>
         <p class="step-desc">
-          Recibes el resultado final, revisas y hacemos los ajustes necesarios hasta dejarlo perfecto.
+          Recibes el sitio terminado y tienes <strong>dos rondas de cambios incluidas</strong>
+          para afinarlo. Te digo desde el principio qué entra en cada ronda, para que
+          sepas a qué atenerte.
         </p>
       </div>
     </div>
