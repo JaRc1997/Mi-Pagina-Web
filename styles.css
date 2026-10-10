@@ -1503,6 +1503,39 @@ button:focus-visible {
   flex-wrap: wrap;
   margin-top: 0.5rem;
 }
+/* Boton principal del cierre de servicios: lleva al cuestionario de Google.
+   Mas grande que los de redes porque es la accion que se quiere, no una
+   alternativa mas de la fila. */
+.btn-cuestionario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 2.2rem;
+  margin: 0.4rem 0 1.6rem;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: var(--bg);
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-cuestionario:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(200, 255, 0, 0.25);
+}
+.btn-cuestionario:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+@media (max-width: 600px) {
+  .btn-cuestionario { width: 100%; padding: 0.9rem 1rem; font-size: 0.95rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-cuestionario { transition: none; }
+  .btn-cuestionario:hover { transform: none; }
+}
+
 .btn-wa-service {
   display: inline-flex;
   align-items: center;

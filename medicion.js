@@ -95,6 +95,13 @@
       return;
     }
 
+    // --- Cuestionario de proyecto. Es la conversion mas valiosa: quien lo
+    //     abre viene a contar un proyecto, no a saludar. ---
+    if (href.indexOf('forms.gle') !== -1 || href.indexOf('docs.google.com/forms') !== -1) {
+      medir('abrir_cuestionario', { pagina: pagina(), seccion: seccion(enlace) });
+      return;
+    }
+
     // --- Llamada ---
     if (href.indexOf('tel:') === 0) {
       medir('contacto_llamada', { pagina: pagina(), seccion: seccion(enlace) });
