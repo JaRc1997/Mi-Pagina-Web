@@ -29,7 +29,16 @@
   <link rel="apple-touch-icon" href="assets/marca/icono-180.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- La hoja de fuentes pesa 1,8 KB pero bloqueaba el dibujado 780 ms en 4G
+       lenta: antes de pintar nada hay que resolver el dominio, abrir conexion
+       y negociar TLS con un servidor ajeno. Con media="print" el navegador la
+       descarga sin bloquear y la activa al terminar. La URL ya lleva
+       display=swap, asi que el texto se ve de una con la fuente del sistema y
+       cambia cuando llega la definitiva. El <noscript> cubre a quien navegue
+       sin JavaScript. -->
+  <link rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
   <link rel="stylesheet" href="styles.css" />
   <style>
     .nf-wrap {

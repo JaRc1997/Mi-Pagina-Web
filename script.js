@@ -24,7 +24,11 @@ function initYouTubeThumbnails() {
     if (id) {
       const img = featured.querySelector('.yt-auto-thumb');
       img.alt = title ? 'Miniatura del video: ' + title : 'Video de JarcOnline en YouTube';
-      img.src = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+      // sddefault (640x480) en vez de maxresdefault (1280x720): la miniatura
+      // se muestra a 650x366, asi que la version grande eran 97 KB tirados.
+      // hqdefault se veria borroso a ese ancho; en las tarjetas si se usa,
+      // porque se muestran mucho mas pequenas.
+      img.src = `https://img.youtube.com/vi/${id}/sddefault.jpg`;
       img.onerror = () => { img.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`; };
       const link = featured.querySelector('.yt-auto-link');
       if (link) link.href = url;
