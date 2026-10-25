@@ -490,6 +490,11 @@ section { position: relative; padding: 5rem 4rem; z-index: 1; }
   transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 .yt-toggle-btn:hover { opacity: 0.85; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(200,255,0,0.25); }
+/* Cerrado el boton no necesita aire debajo, pero al abrir queda pegado a la
+   primera fila de tarjetas. Por eso el margen va solo en el estado abierto.
+   Sin transicion a proposito: animar un margen recalcula el diseno en cada
+   fotograma y se queda trabado. El hueco aparece de una, junto al panel. */
+.yt-toggle-btn.open { margin-bottom: 1.8rem; }
 .yt-toggle-btn .yt-arrow {
   display: inline-block;
   transition: transform 0.3s ease;
@@ -869,7 +874,9 @@ section { position: relative; padding: 5rem 4rem; z-index: 1; }
   margin-bottom: 2rem;
 }
 .contact-email:hover { border-color: rgba(200,255,0,0.35); box-shadow: 0 6px 24px rgba(200,255,0,0.08); transform: translateY(-2px); }
-.contact-also { color: var(--muted); font-size: 0.82rem; }
+/* El reset global deja los parrafos sin margen, asi que esta linea quedaba
+   pegada al recuadro del correo que va justo debajo. */
+.contact-also { color: var(--muted); font-size: 0.82rem; margin-bottom: 0.9rem; }
 .contact-social-row {
   display: flex;
   justify-content: center;
