@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-558876GV');</script>
-  <!-- End Google Tag Manager -->
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TRK1EGS3LL"></script>
   <script>
@@ -59,10 +52,6 @@
 </head>
 <body>
 
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-558876GV"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
   <!-- Animación de entrada: el logo se dibuja solo. Se muestra 1 vez por sesión. -->
   <div class="intro" id="intro" role="presentation">
@@ -80,8 +69,8 @@
     sessionStorage.setItem('jarcIntro', '1');
     setTimeout(function(){
       i.classList.add('intro--out');
-      setTimeout(function(){ if (i.parentNode) i.parentNode.removeChild(i); }, 650);
-    }, 1600);
+      setTimeout(function(){ if (i.parentNode) i.parentNode.removeChild(i); }, 450);
+    }, 500);
   })();
   </script>
 
@@ -145,14 +134,14 @@
 
       <h2>2. Qué información recopilamos</h2>
       <ul>
-        <li><strong>Datos de navegación (automáticos):</strong> a través de <strong>Google Analytics</strong>, <strong>Google Tag Manager</strong> y <strong>Microsoft Clarity</strong> recopilamos de forma anónima datos como las páginas que visitas, el tiempo que permaneces, el tipo de dispositivo, tu ubicación aproximada (ciudad o país), desde qué sitio llegaste y en qué botones haces clic (por ejemplo, abrir WhatsApp o descargar un recurso). Es un conteo de acciones, no un registro de quién las hizo. Microsoft Clarity también genera mapas de calor y grabaciones anónimas de la navegación (sin capturar lo que escribes en los campos de texto) para mejorar la experiencia. No identificamos quién eres personalmente.</li>
+        <li><strong>Datos de navegación (automáticos):</strong> a través de <strong>Google Analytics</strong> y <strong>Microsoft Clarity</strong> recopilamos de forma anónima datos como las páginas que visitas, el tiempo que permaneces, el tipo de dispositivo, tu ubicación aproximada (ciudad o país), desde qué sitio llegaste y en qué botones haces clic (por ejemplo, abrir WhatsApp o descargar un recurso). Es un conteo de acciones, no un registro de quién las hizo. Microsoft Clarity también genera mapas de calor y grabaciones anónimas de la navegación (sin capturar lo que escribes en los campos de texto) para mejorar la experiencia. No identificamos quién eres personalmente.</li>
         <li><strong>Datos de contacto (los que tú nos das):</strong> si nos escribes por correo o WhatsApp, o nos llamas, recibimos los datos que decidas compartir (nombre, correo, número, mensaje).</li>
         <li><strong>Datos del cuestionario de proyecto (voluntario):</strong> si decides diligenciar el <strong>Cuestionario de Proyecto Web</strong>, que es un formulario alojado en <strong>Google Forms</strong>, recibimos lo que escribas en él: nombre, nombre del negocio, correo, WhatsApp, a qué se dedica, qué tipo de sitio buscas, el plazo y el presupuesto que tienes en mente. Llenarlo es opcional y no es requisito para contactarnos. Las respuestas llegan a una hoja de cálculo de Google a la que solo tiene acceso el responsable de este sitio.</li>
       </ul>
 
       <h2>3. Cookies</h2>
       <p>
-        Usamos cookies de Google Analytics, Google Tag Manager y Microsoft Clarity para entender cómo se usa el sitio y mejorarlo. Las cookies
+        Usamos cookies de Google Analytics y Microsoft Clarity para entender cómo se usa el sitio y mejorarlo. Las cookies
         son pequeños archivos que se guardan en tu navegador. Puedes borrarlas o bloquearlas desde la
         configuración de tu navegador en cualquier momento; el sitio seguirá funcionando.
       </p>
@@ -189,7 +178,7 @@
 
       <h2>5. Con quién se comparte</h2>
       <p>
-        La analítica del sitio la procesan <strong>Google</strong> (Google Analytics y Tag Manager) y
+        La analítica del sitio la procesan <strong>Google</strong> (Google Analytics) y
         <strong>Microsoft</strong> (Clarity), según sus propias políticas de privacidad.
       </p>
       <p>

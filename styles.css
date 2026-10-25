@@ -2117,7 +2117,7 @@ a.marca-logo { text-decoration: none; cursor: pointer; }
   align-items: center;
   justify-content: center;
 }
-.intro--out { animation: introOut 0.6s ease forwards; }
+.intro--out { animation: introOut 0.4s ease forwards; }
 @keyframes introOut { to { opacity: 0; visibility: hidden; } }
 .intro-logo {
   width: 118px;
@@ -2131,9 +2131,9 @@ a.marca-logo { text-decoration: none; cursor: pointer; }
   84%  { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
-.il-border { stroke-dasharray: 400; stroke-dashoffset: 400; animation: introDraw 0.75s 0.1s ease forwards; }
-.il-arrow  { stroke-dasharray: 80;  stroke-dashoffset: 80;  animation: introDraw 0.5s 0.55s ease forwards; }
-.il-j      { stroke-dasharray: 95;  stroke-dashoffset: 95;  animation: introDraw 0.5s 0.85s ease forwards; }
+.il-border { stroke-dasharray: 400; stroke-dashoffset: 400; animation: introDraw 0.28s 0.04s ease forwards; }
+.il-arrow  { stroke-dasharray: 80;  stroke-dashoffset: 80;  animation: introDraw 0.2s 0.18s ease forwards; }
+.il-j      { stroke-dasharray: 95;  stroke-dashoffset: 95;  animation: introDraw 0.2s 0.28s ease forwards; }
 @keyframes introDraw { to { stroke-dashoffset: 0; } }
 @media (prefers-reduced-motion: reduce) {
   .intro-logo, .il-border, .il-arrow, .il-j { animation: none; stroke-dashoffset: 0; opacity: 1; }
