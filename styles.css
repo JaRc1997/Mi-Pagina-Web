@@ -2879,3 +2879,43 @@ a.marca-logo { text-decoration: none; cursor: pointer; }
   .resenas-ver { margin-left: 0; }
   .resena-card { padding: 1.3rem; }
 }
+
+/* Resena del cliente dentro de un caso de estudio. Va despues de los tres
+   bloques y antes del enlace al sitio: cierra el caso con la voz de quien
+   lo recibio, no con la mia. */
+.caso-satisfaccion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1.6rem 0 0;
+  padding: 1.2rem 1.4rem;
+  background: rgba(200, 255, 0, 0.04);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+}
+.caso-satisfaccion .caso-estrellas-iconos {
+  color: #FFC107;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.caso-satisfaccion-etq {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.caso-satisfaccion-texto {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.caso-satisfaccion-texto::before { content: '\201C'; color: var(--accent); }
+.caso-satisfaccion-texto::after  { content: '\201D'; color: var(--accent); }
+
+@media (max-width: 600px) {
+  .caso-satisfaccion { padding: 1rem 1.1rem; margin-top: 1.3rem; }
+  .caso-satisfaccion-texto { font-size: 0.88rem; }
+}
