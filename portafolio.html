@@ -168,6 +168,12 @@
 
   <!-- Sprite de íconos SVG -->
   <svg style="display:none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-google" viewBox="0 0 24 24">
+      <path fill="#4285F4" d="M23.5 12.27c0-.79-.07-1.54-.2-2.27H12v4.51h6.47a5.54 5.54 0 0 1-2.4 3.63v3.02h3.88c2.27-2.09 3.55-5.17 3.55-8.89z"/>
+      <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.94-2.91l-3.88-3.01c-1.08.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.95H1.26v3.11A12 12 0 0 0 12 24z"/>
+      <path fill="#FBBC05" d="M5.27 14.28a7.2 7.2 0 0 1 0-4.56V6.61H1.26a12 12 0 0 0 0 10.78l4.01-3.11z"/>
+      <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.61l4.01 3.11C6.22 6.88 8.87 4.75 12 4.75z"/>
+    </symbol>
     <symbol id="icon-whatsapp" viewBox="0 0 32 32">
       <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.471 2.027 7.774L0 32l8.468-2.004A15.93 15.93 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.771-1.851l-.485-.288-5.027 1.189 1.224-4.895-.317-.503A13.234 13.234 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.878c-.398-.199-2.355-1.162-2.72-1.294-.366-.133-.632-.199-.899.199-.266.398-1.031 1.294-1.264 1.56-.233.266-.465.299-.863.1-.398-.2-1.681-.619-3.202-1.976-1.184-1.056-1.983-2.36-2.216-2.758-.233-.398-.025-.613.175-.811.18-.178.398-.465.597-.698.2-.233.266-.398.398-.664.133-.266.067-.498-.033-.697-.1-.2-.899-2.168-1.231-2.967-.324-.778-.653-.673-.899-.685l-.765-.013c-.266 0-.698.1-1.064.498-.366.398-1.397 1.365-1.397 3.328s1.43 3.86 1.629 4.127c.2.266 2.815 4.3 6.822 6.03.953.412 1.697.658 2.277.842.957.305 1.828.262 2.516.159.767-.115 2.355-.963 2.688-1.893.333-.93.333-1.727.233-1.893-.1-.166-.366-.266-.764-.465z"/>
     </symbol>
@@ -656,8 +662,57 @@
     <div class="section-label reveal"><span>Reseñas</span></div>
     <h2 class="section-title reveal">Lo que dicen</h2>
     <p class="section-sub reveal">
-      Comentarios reales de clientes y de mi comunidad en redes.
+      Reseñas verificadas de clientes en Google, y los comentarios que me dejan
+      en YouTube, Instagram y WhatsApp.
     </p>
+
+
+    <!-- RESENAS VERIFICADAS DE GOOGLE
+         Se actualizan a mano. Cuando lleguen nuevas, copia una tarjeta y
+         cambia el texto y el nombre; la nota media va en resena-nota. -->
+    <div class="resenas-google reveal">
+      <div class="resenas-cabecera">
+        <span class="resena-nota">5,0</span>
+        <span class="resena-estrellas" role="img" aria-label="5 de 5 estrellas">
+          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+        </span>
+        <span class="resenas-conteo">en Google</span>
+        <a class="resenas-ver" href="https://www.google.com/maps/place/JarcOnline/@4.7506275,-74.135747,17z" target="_blank" rel="noopener noreferrer">
+          Verificar en Google
+        </a>
+      </div>
+
+      <div class="resenas-grid">
+        <figure class="resena-card">
+          <div class="resena-estrellas" role="img" aria-label="5 de 5 estrellas">
+            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+          </div>
+          <blockquote class="resena-texto">Una empresa que ofrece servicios de desarrollo, me crearon mi sitio web, un 10/10, la atención, el precio los recomiendo.</blockquote>
+          <figcaption class="resena-autor">
+            <span class="resena-nombre">Palabra Viva Es Jesús</span>
+            <span class="resena-fuente">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-google"/></svg>
+              Rese&ntilde;a verificada en Google
+            </span>
+          </figcaption>
+        </figure>
+        <figure class="resena-card">
+          <div class="resena-estrellas" role="img" aria-label="5 de 5 estrellas">
+            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+          </div>
+          <blockquote class="resena-texto">No tengo mucho que decir, recomiendo sus servicios son muy profesionales 10/10</blockquote>
+          <figcaption class="resena-autor">
+            <span class="resena-nombre">vhoz Ministerio Comunicaciones Audiovisuales</span>
+            <span class="resena-fuente">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-google"/></svg>
+              Rese&ntilde;a verificada en Google
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <p class="resenas-separador reveal">Y lo que dice mi comunidad en redes</p>
 
     <!-- Desfile automático: el JS duplica las tarjetas para el bucle continuo.
          Tú solo escribe cada testimonio UNA vez aquí dentro. -->

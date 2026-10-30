@@ -2668,3 +2668,185 @@ a.marca-logo { text-decoration: none; cursor: pointer; }
   .herramienta { transition: color 0.25s ease, border-color 0.25s ease; }
   .herramienta:hover { transform: none; }
 }
+
+/* ============================================================
+   PREGUNTAS FRECUENTES
+   Usa <details>/<summary> nativos: abren sin JavaScript, responden
+   al teclado y el buscador lee la respuesta aunque este cerrada.
+   ============================================================ */
+.faq-lista {
+  max-width: 760px;
+  margin: 2.6rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.faq-item[open] { border-color: rgba(200, 255, 0, 0.3); }
+.faq-item:hover { border-color: rgba(255, 255, 255, 0.14); }
+
+.faq-pregunta {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1.05rem 1.3rem;
+  cursor: pointer;
+  font-family: var(--font-head);
+  font-size: 0.97rem;
+  font-weight: 600;
+  color: var(--text);
+  list-style: none;
+}
+/* Safari pinta su propio triangulo; este lo quita. */
+.faq-pregunta::-webkit-details-marker { display: none; }
+
+/* El signo + hecho con CSS: un elemento menos que cargar. */
+.faq-pregunta::after {
+  content: '+';
+  margin-left: auto;
+  flex: 0 0 auto;
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--accent);
+  transition: transform 0.25s ease;
+}
+.faq-item[open] .faq-pregunta::after { transform: rotate(45deg); }
+.faq-pregunta:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.faq-respuesta {
+  padding: 0 1.3rem 1.2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+.faq-respuesta p { margin: 0; }
+
+@media (max-width: 600px) {
+  .faq-pregunta { font-size: 0.9rem; padding: 0.95rem 1.1rem; gap: 0.7rem; }
+  .faq-respuesta { padding: 0 1.1rem 1.1rem; font-size: 0.86rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq-pregunta::after { transition: none; }
+}
+
+/* ============================================================
+   RESENAS VERIFICADAS DE GOOGLE
+   Van arriba del desfile de comentarios. Son dos cosas distintas y
+   por eso se ven distintas: estas las firma un cliente con nombre de
+   negocio y se pueden comprobar en Google; las de abajo son de la
+   comunidad en redes.
+   ============================================================ */
+.resenas-google { max-width: 900px; margin: 2.6rem auto 0; }
+
+.resenas-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-bottom: 1.6rem;
+}
+.resena-nota {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+.resena-estrellas {
+  display: inline-flex;
+  gap: 0.1rem;
+  color: #FFC107;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+.resenas-conteo { color: var(--muted); font-size: 0.85rem; }
+.resenas-ver {
+  margin-left: 0.3rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+}
+.resenas-ver:hover { color: var(--accent); border-color: rgba(200, 255, 0, 0.35); }
+
+.resenas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+.resena-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.resena-texto {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.93rem;
+  line-height: 1.7;
+}
+.resena-texto::before { content: '\201C'; color: var(--accent); }
+.resena-texto::after  { content: '\201D'; color: var(--accent); }
+
+.resena-autor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: auto;
+}
+.resena-nombre {
+  font-family: var(--font-head);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.resena-fuente {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
+.resena-fuente svg { width: 13px; height: 13px; flex: 0 0 13px; }
+
+/* Separador entre las resenas y el desfile de la comunidad. */
+.resenas-separador {
+  max-width: 900px;
+  margin: 3rem auto 0;
+  text-align: center;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .resenas-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
+  .resenas-cabecera { gap: 0.5rem; }
+  .resenas-ver { margin-left: 0; }
+  .resena-card { padding: 1.3rem; }
+}
