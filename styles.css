@@ -2835,7 +2835,9 @@ a.marca-logo { text-decoration: none; cursor: pointer; }
 /* Separador entre las resenas y el desfile de la comunidad. */
 .resenas-separador {
   max-width: 900px;
-  margin: 3rem auto 0;
+  /* El margen de abajo no es opcional: sin el, el rotulo queda pegado a la
+     primera fila del desfile y parece parte de una tarjeta. */
+  margin: 3rem auto 1.6rem;
   text-align: center;
   color: var(--muted);
   font-family: var(--font-mono);
