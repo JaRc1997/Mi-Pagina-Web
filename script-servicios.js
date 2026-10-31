@@ -285,3 +285,89 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   // Arrastrar dentro de un <a> dispara el arrastre nativo de imagenes; estorba.
   fila.addEventListener('dragstart', e => { if (sobra()) e.preventDefault(); });
 })();
+
+// Stack por ecosistema: pestanas que rotan solas. Se detiene en cuanto el
+// visitante interactua (mouse encima, clic, teclado o dedo) y no vuelve a
+// arrancar: si eligio una categoria, cambiarsela seria pelear con el.
+(function () {
+  var stack = document.querySelector('.stack');
+  if (!stack) return;
+
+  var tabs = Array.prototype.slice.call(stack.querySelectorAll('.stack-tab'));
+  var paneles = Array.prototype.slice.call(stack.querySelectorAll('.stack-panel'));
+  var puntos = Array.prototype.slice.call(stack.querySelectorAll('.stack-punto'));
+  if (!tabs.length) return;
+
+  var actual = 0;
+  var temporizador = null;
+  var ESPERA = 6000;
+
+  // Respeta a quien pidio menos animacion en su sistema.
+  var quietud = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function mostrar(i) {
+    if (i === actual) return;
+    actual = i;
+    tabs.forEach(function (t, k) {
+      var on = k === i;
+      t.classList.toggle('is-activa', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    paneles.forEach(function (p, k) {
+      var on = k === i;
+      p.hidden = !on;
+      // la clase se quita y se vuelve a poner para que la animacion reinicie
+      p.classList.remove('is-activa');
+      if (on) { void p.offsetWidth; p.classList.add('is-activa'); }
+    });
+    puntos.forEach(function (d, k) { d.classList.toggle('is-activa', k === i); });
+  }
+
+  function detener() {
+    if (temporizador) { clearInterval(temporizador); temporizador = null; }
+    stack.classList.add('en-pausa');
+  }
+
+  function arrancar() {
+    if (quietud && quietud.matches) { stack.classList.add('en-pausa'); return; }
+    temporizador = setInterval(function () {
+      mostrar((actual + 1) % tabs.length);
+    }, ESPERA);
+  }
+
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { detener(); mostrar(i); });
+  });
+  puntos.forEach(function (d, i) {
+    d.addEventListener('click', function () { detener(); mostrar(i); });
+  });
+
+  // Flechas del teclado dentro de la fila de pestanas
+  stack.querySelector('.stack-tabs').addEventListener('keydown', function (e) {
+    var paso = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (!paso) return;
+    e.preventDefault();
+    detener();
+    var i = (actual + paso + tabs.length) % tabs.length;
+    mostrar(i);
+    tabs[i].focus();
+  });
+
+  stack.addEventListener('mouseenter', detener);
+  stack.addEventListener('touchstart', detener, { passive: true });
+  stack.addEventListener('focusin', detener);
+
+  // No gasta tiempo rotando mientras la seccion no se ve en pantalla.
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (en) {
+        if (en.isIntersecting) { if (!temporizador && !stack.classList.contains('en-pausa')) arrancar(); }
+        else if (temporizador) { clearInterval(temporizador); temporizador = null; }
+      });
+    }, { threshold: 0.25 }).observe(stack);
+  } else {
+    arrancar();
+  }
+
+  paneles[0].classList.add('is-activa');
+})();

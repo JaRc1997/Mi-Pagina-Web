@@ -2903,3 +2903,215 @@ a.marca-logo { text-decoration: none; cursor: pointer; }
   .resenas-ver { margin-left: 0; }
   .resena-card { padding: 1.3rem; }
 }
+
+/* ============================================================
+   STACK POR ECOSISTEMA
+   Una cuadricula de logos solo dice "conozco esto". Agrupado por
+   ecosistema dice como se combinan segun el trabajo, que es lo que
+   un cliente necesita entender.
+   El color de marca aparece solo al pasar el mouse o en el activo:
+   24 logos a todo color de entrada serian un arcoiris.
+   ============================================================ */
+.stack {
+  max-width: 980px;
+  margin: 2.6rem auto 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* --- pestanas --- */
+.stack-tabs {
+  display: flex;
+  gap: 0.2rem;
+  padding: 0.5rem 0.5rem 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--border);
+}
+.stack-tabs::-webkit-scrollbar { display: none; }
+.stack-tab {
+  position: relative;
+  flex: 0 0 auto;
+  padding: 0.75rem 1.1rem;
+  background: none;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.25s, background 0.25s;
+}
+.stack-tab:hover { color: var(--text); background: rgba(255,255,255,0.03); }
+.stack-tab.is-activa { color: var(--bg); background: var(--accent); }
+.stack-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+/* --- paneles --- */
+.stack-paneles { padding: 1.7rem; }
+.stack-panel[hidden] { display: none; }
+.stack-titulo {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-head);
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.stack-desc {
+  margin: 0 0 1.4rem;
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+.stack-fila {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+/* la herramienta que ancla el ecosistema */
+.stack-principal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.85rem 1.2rem;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.stack-principal svg { width: 26px; height: 26px; fill: var(--marca); flex: 0 0 26px; }
+
+.stack-con {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stack-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.stack-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.85rem;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  cursor: default;
+  transition: color 0.2s, border-color 0.2s, transform 0.2s;
+}
+.stack-chip svg {
+  width: 15px; height: 15px; flex: 0 0 15px;
+  fill: currentColor;
+  transition: fill 0.25s;
+}
+/* el color de marca entra solo al pasar por encima */
+.stack-chip:hover {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--marca) 45%, transparent);
+  transform: translateY(-2px);
+}
+.stack-chip:hover svg { fill: var(--marca); }
+
+/* monograma para las marcas sin logo en el catalogo */
+.stack-mono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px; height: 15px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  line-height: 1;
+}
+.stack-principal .stack-mono { width: 26px; height: 26px; font-size: 0.9rem; border-radius: 7px; }
+
+/* --- entrada escalonada al cambiar de pestana --- */
+.stack-panel.is-activa .stack-principal { animation: stackEntra 0.45s ease both; }
+.stack-panel.is-activa .stack-con { animation: stackEntra 0.45s 0.06s ease both; }
+.stack-panel.is-activa .stack-chip { animation: stackEntra 0.4s ease both; }
+.stack-panel.is-activa .stack-chip:nth-child(1) { animation-delay: 0.10s; }
+.stack-panel.is-activa .stack-chip:nth-child(2) { animation-delay: 0.16s; }
+.stack-panel.is-activa .stack-chip:nth-child(3) { animation-delay: 0.22s; }
+.stack-panel.is-activa .stack-chip:nth-child(4) { animation-delay: 0.28s; }
+.stack-panel.is-activa .stack-chip:nth-child(5) { animation-delay: 0.34s; }
+.stack-panel.is-activa .stack-chip:nth-child(6) { animation-delay: 0.40s; }
+.stack-panel.is-activa .stack-chip:nth-child(7) { animation-delay: 0.46s; }
+.stack-panel.is-activa .stack-titulo,
+.stack-panel.is-activa .stack-desc { animation: stackEntra 0.4s ease both; }
+@keyframes stackEntra {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* --- pie: puntos y aviso de rotacion --- */
+.stack-pie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.7rem;
+  border-top: 1px solid var(--border);
+}
+.stack-puntos { display: flex; gap: 0.45rem; }
+.stack-punto {
+  width: 7px; height: 7px;
+  padding: 0;
+  background: rgba(255,255,255,0.18);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.25s, width 0.25s;
+}
+.stack-punto:hover { background: rgba(255,255,255,0.4); }
+.stack-punto.is-activa { width: 22px; background: var(--accent); }
+.stack-punto:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.stack-auto {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.stack-auto-punto {
+  width: 6px; height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  animation: stackLatido 2s ease-in-out infinite;
+}
+@keyframes stackLatido {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.25; }
+}
+.stack.en-pausa .stack-auto-punto { animation: none; opacity: 0.25; }
+
+@media (max-width: 700px) {
+  .stack-paneles { padding: 1.3rem 1.1rem; }
+  .stack-pie { padding: 0.8rem 1.1rem; }
+  .stack-fila { gap: 0.7rem; }
+  .stack-principal { width: 100%; }
+  .stack-con { display: none; }
+  .stack-desc { font-size: 0.84rem; margin-bottom: 1.1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stack-panel.is-activa * { animation: none !important; }
+  .stack-chip:hover { transform: none; }
+  .stack-auto-punto { animation: none; }
+}
