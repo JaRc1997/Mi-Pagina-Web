@@ -635,7 +635,14 @@ section { position: relative; padding: 5rem 4rem; z-index: 1; }
   margin-top: -1.5rem;
   font-size: 0.95rem;
 }
-.products-intro a { color: var(--accent); text-decoration: none; }
+.products-intro a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(200, 255, 0, 0.45);
+  transition: text-decoration-color 0.2s;
+}
+.products-intro a:hover { text-decoration-color: var(--accent); }
 
 .btn-toggle-products {
   display: inline-flex;
@@ -740,7 +747,9 @@ section { position: relative; padding: 5rem 4rem; z-index: 1; }
 .product-badge {
   position: absolute;
   top: 10px; left: 10px;
-  background: #16a34a;
+  /* #16a34a daba 3,30:1 con el texto blanco y la norma pide 4,5 en letra
+     pequena. Este verde da 5,02:1 y se sigue viendo verde. */
+  background: #15803d;
   color: #fff;
   font-family: var(--font-mono);
   font-size: 0.62rem;
@@ -2212,8 +2221,17 @@ a.marca-logo { text-decoration: none; cursor: pointer; }
   color: var(--accent);
   font-weight: 700;
 }
-.legal-content a { color: var(--accent); text-decoration: none; }
-.legal-content a:hover { text-decoration: underline; }
+.legal-content a {
+  color: var(--accent);
+  /* Subrayado a proposito: el lima contra el gris del parrafo da 3,00:1, el
+     minimo exacto que pide la norma para distinguir un enlace solo por color.
+     Quien no diferencia bien los colores no veria que ahi hay un enlace. */
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(200, 255, 0, 0.45);
+  transition: text-decoration-color 0.2s;
+}
+.legal-content a:hover { text-decoration-color: var(--accent); }
 .legal-content strong { color: var(--text); font-weight: 600; }
 .legal-updated {
   font-family: var(--font-mono);
@@ -2793,28 +2811,35 @@ a.marca-logo { text-decoration: none; cursor: pointer; }
 }
 .resenas-ver:hover { color: var(--accent); border-color: rgba(200, 255, 0, 0.35); }
 
-/* Fila horizontal deslizable con el dedo. Todavia no se mueve sola: con
-   tres resenas una animacion continua se nota repetitiva. Cuando haya
-   suficientes para llenar la fila, se activa el desplazamiento automatico
-   igual que en el desfile de la comunidad.
-   justify-content: safe center centra mientras quepan, pero deja de centrar
-   cuando desbordan; sin "safe", las primeras tarjetas quedan inalcanzables. */
+/* Desfile continuo de resenas. El JS clona las tarjetas hasta llenar la
+   pantalla y duplica el bloque, asi el punto de reinicio no se nota. Se
+   mueve solo, se pausa al pasar el mouse y se puede arrastrar o deslizar.
+   Sin scroll-snap a proposito: pelearia contra el desplazamiento automatico
+   tirando de las tarjetas hacia el punto de anclaje mas cercano. */
 .resenas-grid {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 1rem;
-  align-items: stretch;
   overflow-x: auto;
-  padding: 4px 4px 14px;
-  scroll-snap-type: x proximity;
+  overflow-y: hidden;
+  width: 100%;
+  cursor: grab;
+  padding: 4px 0 14px;
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
-  justify-content: center;
-  justify-content: safe center;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  /* difumina los bordes para que las tarjetas entren y salgan suave */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
 }
 .resenas-grid::-webkit-scrollbar { display: none; }
+.resenas-grid.arrastrando { cursor: grabbing; }
+.resenas-track {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+  width: max-content;
+  user-select: none;
+  -webkit-user-select: none;
+}
 .resena-card {
   display: flex;
   flex-direction: column;
@@ -2822,7 +2847,6 @@ a.marca-logo { text-decoration: none; cursor: pointer; }
   margin: 0;
   flex: 0 0 340px;
   max-width: 340px;
-  scroll-snap-align: center;
   padding: 1.5rem;
   background: var(--card);
   border: 1px solid var(--border);

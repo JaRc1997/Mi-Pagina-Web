@@ -30,9 +30,9 @@ if (hamburger && navOverlay) {
 // Carrusel horizontal en bucle continuo (testimonios). Se desplaza solo y además
 // se puede arrastrar con el mouse (escritorio) o deslizar con el dedo (móvil).
 // El auto-desplazamiento se pausa mientras el usuario interactúa.
-function montarCarrusel(marquee, velocidad) {
+function montarCarrusel(marquee, velocidad, selectorRiel) {
   if (!marquee) return;
-  const track = marquee.querySelector('.testimonios-track');
+  const track = marquee.querySelector(selectorRiel || '.testimonios-track');
   if (!track || track.children.length === 0) return;
   const originales = Array.prototype.slice.call(track.children);
 
@@ -98,6 +98,10 @@ function montarCarrusel(marquee, velocidad) {
 }
 
 montarCarrusel(document.querySelector('.testimonios-marquee'), 45);
+// Las resenas van mas lento: son pocas y el texto es mas largo, hay que
+// alcanzar a leerlas. Se pausa al pasar el mouse o al tocarlas, igual que
+// el desfile de comentarios.
+montarCarrusel(document.querySelector('.resenas-grid'), 28, '.resenas-track');
 
 // Animaciones al hacer scroll
 const observer = new IntersectionObserver(entries => {
