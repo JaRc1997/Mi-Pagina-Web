@@ -371,3 +371,63 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   paneles[0].classList.add('is-activa');
 })();
+
+// Reflector sobre las herramientas: enciende una a la vez en su color de
+// marca. El color estaba atado al hover, asi que en celular no aparecia
+// nunca. Se detiene si el visitante pasa el mouse: ahi manda el.
+(function () {
+  var stack = document.querySelector('.stack');
+  if (!stack) return;
+
+  var quietud = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (quietud && quietud.matches) return;
+
+  var PASO = 850;
+  var reloj = null, i = 0, manual = false;
+
+  function piezas() {
+    var panel = stack.querySelector('.stack-panel:not([hidden])');
+    return panel ? Array.prototype.slice.call(panel.querySelectorAll('.stack-chip')) : [];
+  }
+
+  function apagar() {
+    Array.prototype.forEach.call(stack.querySelectorAll('.stack-chip.brilla'),
+      function (c) { c.classList.remove('brilla'); });
+  }
+
+  function latir() {
+    var lista = piezas();
+    apagar();
+    if (!lista.length) return;
+    if (i >= lista.length) i = 0;
+    lista[i].classList.add('brilla');
+    i++;
+  }
+
+  function arrancar() {
+    if (reloj || manual) return;
+    i = 0;
+    latir();
+    reloj = setInterval(latir, PASO);
+  }
+
+  function parar() {
+    if (reloj) { clearInterval(reloj); reloj = null; }
+    apagar();
+  }
+
+  // Mientras el visitante tiene el mouse encima, manda su hover.
+  stack.addEventListener('mouseenter', function () { manual = true; parar(); });
+  stack.addEventListener('mouseleave', function () { manual = false; arrancar(); });
+
+  // Al cambiar de pestana el reflector vuelve a empezar por la primera pieza.
+  stack.addEventListener('click', function () { i = 0; });
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) arrancar(); else parar(); });
+    }, { threshold: 0.25 }).observe(stack);
+  } else {
+    arrancar();
+  }
+})();

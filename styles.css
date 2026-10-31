@@ -3115,3 +3115,22 @@ a.marca-logo { text-decoration: none; cursor: pointer; }
   .stack-chip:hover { transform: none; }
   .stack-auto-punto { animation: none; }
 }
+
+/* Reflector: el JS enciende una pieza a la vez en su color de marca. Antes el
+   color solo salia al pasar el mouse, asi que en celular no se veia nunca.
+   Ahora recorre la fila solo, y el hover sigue funcionando encima. */
+.stack-chip.brilla {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--marca) 50%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--marca) 18%, transparent),
+              0 6px 18px color-mix(in srgb, var(--marca) 12%, transparent);
+  transform: translateY(-2px);
+}
+.stack-chip.brilla svg { fill: var(--marca); }
+.stack-chip .stack-mono { transition: color 0.25s, border-color 0.25s; }
+.stack-chip.brilla .stack-mono,
+.stack-chip:hover .stack-mono { color: var(--marca); border-color: var(--marca); }
+
+@media (prefers-reduced-motion: reduce) {
+  .stack-chip.brilla { transform: none; box-shadow: none; }
+}
