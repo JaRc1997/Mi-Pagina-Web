@@ -300,6 +300,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   var actual = 0;
   var temporizador = null;
+  var elegido = false;      // el visitante eligio una categoria a mano
   var ESPERA = 6000;
 
   // Respeta a quien pidio menos animacion en su sistema.
@@ -330,16 +331,19 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   function arrancar() {
     if (quietud && quietud.matches) { stack.classList.add('en-pausa'); return; }
+    if (temporizador) return;
+    stack.classList.remove('en-pausa');
     temporizador = setInterval(function () {
       mostrar((actual + 1) % tabs.length);
     }, ESPERA);
   }
 
+  // Un clic si es una eleccion: ahi se para del todo y no vuelve.
   tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { detener(); mostrar(i); });
+    t.addEventListener('click', function () { elegido = true; detener(); mostrar(i); });
   });
   puntos.forEach(function (d, i) {
-    d.addEventListener('click', function () { detener(); mostrar(i); });
+    d.addEventListener('click', function () { elegido = true; detener(); mostrar(i); });
   });
 
   // Flechas del teclado dentro de la fila de pestanas
@@ -354,14 +358,17 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   });
 
   stack.addEventListener('mouseenter', detener);
+  stack.addEventListener('mouseleave', function () {
+    if (!elegido) { stack.classList.remove('en-pausa'); arrancar(); }
+  });
   stack.addEventListener('touchstart', detener, { passive: true });
-  stack.addEventListener('focusin', detener);
+  stack.addEventListener('focusin', function () { elegido = true; detener(); });
 
   // No gasta tiempo rotando mientras la seccion no se ve en pantalla.
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (entradas) {
       entradas.forEach(function (en) {
-        if (en.isIntersecting) { if (!temporizador && !stack.classList.contains('en-pausa')) arrancar(); }
+        if (en.isIntersecting) { if (!temporizador && !elegido) arrancar(); }
         else if (temporizador) { clearInterval(temporizador); temporizador = null; }
       });
     }, { threshold: 0.25 }).observe(stack);

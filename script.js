@@ -351,8 +351,21 @@ const PRODUCTOS = [
 
 ];
 
-// Cuantos productos se muestran antes del boton "Ver todas"
-const PRODUCTOS_VISIBLES = 6;
+// Cuantos productos se muestran antes del boton "Ver todas".
+// La cuadricula usa auto-fill, asi que en una pantalla ancha crea mas
+// columnas de las que se llenaban con un numero fijo y quedaba un hueco a
+// la derecha. Ahora se cuentan las columnas reales y se redondea hacia
+// arriba para completar filas enteras, con seis como minimo.
+const PRODUCTOS_MINIMOS = 6;
+
+function productosVisibles() {
+  var grid = document.getElementById('productsGrid');
+  if (!grid) return PRODUCTOS_MINIMOS;
+  var cols = getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length;
+  if (!cols) return PRODUCTOS_MINIMOS;
+  var base = Math.max(PRODUCTOS_MINIMOS, cols);
+  return Math.ceil(base / cols) * cols;
+}
 let filtroActual = 'todos';
 let mostrarTodos = false;
 
@@ -368,7 +381,8 @@ function renderProductos() {
   // Orden fijo: primero los nuevos, luego los populares y al final el resto.
   // Dentro de cada grupo se respeta el orden en que estan en la lista.
   const filtered = base.slice().sort((a, b) => prioridadBadge(a) - prioridadBadge(b));
-  const lista = mostrarTodos ? filtered : filtered.slice(0, PRODUCTOS_VISIBLES);
+  const limite = productosVisibles();
+  const lista = mostrarTodos ? filtered : filtered.slice(0, limite);
   grid.innerHTML = lista.map(p => `
     <a class="product-card" data-cat="${p.cat}" href="${p.link}" target="_blank" rel="noopener noreferrer sponsored">
       <div class="product-img">
@@ -400,7 +414,7 @@ function renderProductos() {
   const btn = document.getElementById('toggleProducts');
   if (btn) {
     const label = btn.querySelector('span');
-    const ocultos = filtered.length - PRODUCTOS_VISIBLES;
+    const ocultos = filtered.length - limite;
     btn.style.display = ocultos > 0 ? '' : 'none';
     btn.classList.toggle('open', mostrarTodos);
     btn.setAttribute('aria-expanded', mostrarTodos);
@@ -414,6 +428,21 @@ function renderProductos() {
 
 function initProductos() {
   renderProductos();
+
+  // Al cambiar el ancho cambian las columnas, asi que hay que recalcular
+  // cuantos productos llenan la fila. Solo repinta si el numero cambio:
+  // redibujar en cada pixel del arrastre seria tirar trabajo a la basura.
+  var ultimoLimite = productosVisibles();
+  var esperando;
+  window.addEventListener('resize', function () {
+    clearTimeout(esperando);
+    esperando = setTimeout(function () {
+      var ahora = productosVisibles();
+      if (ahora !== ultimoLimite && !mostrarTodos) renderProductos();
+      ultimoLimite = ahora;
+    }, 180);
+  });
+
   document.querySelectorAll('#productsFilter .filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('#productsFilter .filter-btn').forEach(b => b.classList.remove('active'));
